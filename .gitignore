@@ -32,3 +32,6 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# GitHub Pages - 不要提交 .nojekyll（Jekyll 项目需要被处理）
+.nojekyll
