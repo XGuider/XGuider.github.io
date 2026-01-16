@@ -2,7 +2,7 @@
 layout:     post
 title:      "push本地代码到github出错"
 date:       2017-1-1 00:00:00
-author:     "wblearn"
+author:     "XGuider"
 header-img: "img/post-bg-alitrip.jpg"
 tags:
     - git

@@ -1,21 +1,21 @@
 # Site settings
-title: Wblearn Blog
-SEOTitle: Wblearn的博客 | Wblearn Blog
+title: XGuider Blog
+SEOTitle: XGuider的博客 | XGuider Blog
 header-img: img/home-bg-art.jpg
 email: 1275660493@qq.com
-description: "@wblearn,不要让任何事情成为你不去学习的理由！"
-keyword: "wblearn, @wblearn, wblearn的博客,wblearn Blog, 博客, 个人网站, 互联网"
-url: "http://wblearn.github.io/"              # your host, for absolute URL
+description: "@XGuider,不要让任何事情成为你不去学习的理由！"
+keyword: "XGuider, @XGuider, XGuider的博客,XGuider Blog, 博客, 个人网站, 互联网"
+url: "https://XGuider.github.io/"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
 # SNS settings
 RSS: false
-weibo_username:     wudalanggd
-csdn_username:     wudalang_gd
-github_username:    wblearn
-#twitter_username:  wblearn
+weibo_username:     XGuider
+csdn_username:     XGuider
+github_username:    XGuider
+#twitter_username:  XGuider
 jianshu_username:  48599dc7ef1b
 # linkedin_username:  firstname-lastname-idxxxx
 
@@ -31,9 +31,12 @@ anchorjs: true                          # if you want to customize anchor. check
 
 
 
-# Gems
-# from PR#40, to support local preview for Jekyll 3.0
-gems: [jekyll-paginate]
+# Plugins
+# GitHub Pages支持的插件
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
 
 
 
@@ -51,7 +54,7 @@ kramdown:
 #disqus_username: _your_disqus_short_name_
 
 # Duoshuo settings
-duoshuo_username: wblearnblog
+duoshuo_username: XGuiderBlog
 # Share component is depend on Comment so we can NOT use share only.
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
@@ -65,8 +68,8 @@ livere_uid: MTAyMC8yODkzOC81NTA3
 # ba_track_id: [your track id]
 
 # Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: wblearn.github.io
+ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx (请更新为你的Google Analytics ID)
+ga_domain: XGuider.github.io
 
 
 
@@ -111,10 +114,10 @@ defaults:
 # Friends
 friends: [
     {
-        title: "wblearn的微博",
-        href: "http://weibo.com/wudalanggd"
+        title: "XGuider的微博",
+        href: "http://weibo.com/XGuider"
     },{
-        title: "study video",
-        href: "https://wblearn.github.io/study-video"
+        title: "XGuider GitHub",
+        href: "https://XGuider.github.io"
     }
 ]

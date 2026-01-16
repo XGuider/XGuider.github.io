@@ -2,7 +2,7 @@
 layout:     post
 title:      "Java打飞机小游戏（附完整源码）"
 date:       2016-10-28 00:00:00
-author:     "wblearn"
+author:     "XGuider"
 header-img: "img/post-bg-alitrip.jpg"
 tags:
     - java

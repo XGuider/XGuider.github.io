@@ -2,7 +2,7 @@
 layout:     post
 title:      "我的Web开发实战总结(二)"
 date:       2017-2-26 00:00:00
-author:     "wblearn"
+author:     "XGuider"
 header-img: "img/post-bg-2015.jpg"
 tags:
     - Web

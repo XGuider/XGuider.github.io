@@ -2,7 +2,7 @@
 layout:     post
 title:      "redis集群报错Node is not empty "
 date:       2016-8-08 00:00:00
-author:     "wblearn"
+author:     "XGuider"
 header-img: "img/contact-bg.jpg"
 tags:
     - redis

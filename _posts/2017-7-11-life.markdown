@@ -2,7 +2,7 @@
 layout:     post
 title:      "生活的智慧"
 date:       2017-7-11 00:00:00
-author:     "wblearn"
+author:     "XGuider"
 header-img: "img/post-bg-alitrip.jpg"
 tags:
     - 程序员

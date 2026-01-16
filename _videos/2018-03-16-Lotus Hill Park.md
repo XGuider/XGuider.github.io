@@ -3,13 +3,13 @@ title: 莲花山公园
 youtube_id: 21730861
 cover_id: img/videos_cover/88c56642ff5464a353d4863ce679924f2c0a1ce8.jpg
 date: 2018-03-16
-tags: [公园, vlog, 深圳,wblearn]
+tags: [公园, vlog, 深圳,XGuider]
 ---
 记录日常生活的vlog。。。
 
 逛公园~
 
-视频首发[我的微博](http://weibo.com/wudalanggd)，欢迎关注。视频原地址戳下面：
+视频首发[我的微博](http://weibo.com/XGuider)，欢迎关注。视频原地址戳下面：
 
 * [莲花山公园](https://www.bilibili.com/video/av21730861)
 

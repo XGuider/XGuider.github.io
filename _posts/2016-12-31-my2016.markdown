@@ -2,7 +2,7 @@
 layout:     post
 title:      "我的2016"
 date:       2016-12-31 00:00:00
-author:     "wblearn"
+author:     "XGuider"
 header-img: "img/post-zj-2016.jpg"
 tags:
     - 2016总结

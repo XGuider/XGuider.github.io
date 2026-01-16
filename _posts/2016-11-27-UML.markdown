@@ -2,7 +2,7 @@
 layout:     post
 title:      "UML学习归纳整理"
 date:       2016-11-27 00:00:00
-author:     "wblearn"
+author:     "XGuider"
 header-img: "img/post-bg-2015.jpg"
 tags:
     - UML

@@ -3,7 +3,7 @@ title: 深圳中心公园
 youtube_id: 21730913
 cover_id: img/videos_cover/b4b071602d5549bbfaa4eb105fd88453915c62ff.jpg
 date: 2018-01-13
-tags: [公园, vlog, 深圳,wblearn]
+tags: [公园, vlog, 深圳,XGuider]
 ---
 记录日常生活的vlog。。。
 

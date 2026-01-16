@@ -3,11 +3,11 @@ title: 世界之窗
 youtube_id: 22142794
 cover_id: img/videos_cover/105.jpg
 date: 2018-04-15
-tags: [世界之窗, vlog, 深圳,wblearn]
+tags: [世界之窗, vlog, 深圳,XGuider]
 ---
 我不想遗漏那些美好,也不想遗漏那些不足。
 
-视频首发[我的微博](http://weibo.com/wudalanggd)，欢迎关注。视频原地址戳下面：
+视频首发[我的微博](http://weibo.com/XGuider)，欢迎关注。视频原地址戳下面：
 
 * [ 世界之窗](https://www.bilibili.com/video/av22142794)
 

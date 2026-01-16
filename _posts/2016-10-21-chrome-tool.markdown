@@ -2,7 +2,7 @@
 layout:     post
 title:      "程序员的你是否熟练掌握Chrome开发者工具？"
 date:       2016-10-21 00:00:00
-author:     "wblearn"
+author:     "XGuider"
 header-img: "img/home-bg-o.jpg"
 tags:
     - 程序员

@@ -2,7 +2,7 @@
 layout:     post
 title:      "单点登录原理与简单实现"
 date:       2017-04-06 00:00:00
-author:     "wblearn"
+author:     "XGuider"
 header-img: "img/post-bg-rwd.jpg"
 tags:
     - Web

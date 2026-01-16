@@ -2,7 +2,7 @@
 layout:     post
 title:      "1024程序员节，向改变世界的程序员致敬"
 date:       2016-10-24 00:00:00
-author:     "wblearn"
+author:     "XGuider"
 header-img: "img/home-bg-o.jpg"
 tags:
     - 程序员
