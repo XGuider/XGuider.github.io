@@ -6,20 +6,13 @@ email: 1275660493@qq.com
 description: "@XGuider,不要让任何事情成为你不去学习的理由！"
 keyword: "XGuider, @XGuider, XGuider的博客,XGuider Blog, 博客, 个人网站, 互联网"
 url: "https://XGuider.github.io/"              # your host, for absolute URL
-baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+baseurl: "/blog"                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
 # SNS settings
 RSS: false
-weibo_username:     XGuider
-csdn_username:     XGuider
 github_username:    XGuider
-#twitter_username:  XGuider
-jianshu_username:  48599dc7ef1b
-# linkedin_username:  firstname-lastname-idxxxx
-
-
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
@@ -52,12 +45,6 @@ kramdown:
 
 # Disqus settings
 #disqus_username: _your_disqus_short_name_
-
-# Duoshuo settings
-# duoshuo_username: XGuiderBlog
-# Share component is depend on Comment so we can NOT use share only.
-# duoshuo_share: true                     # set to false if you want to use Comment without Sharing
-
 
 # LiveRe setttings
 # You can get your uid from https://livere.com/insight/myCode (General web site)

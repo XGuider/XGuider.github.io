@@ -302,7 +302,6 @@ github_username: XGuider
 
 支持多种评论系统，在 `_config.yml` 中配置：
 
-- **多说评论**：`duoshuo_username: XGuiderBlog`
 - **Disqus**：`disqus_username: your_disqus_short_name`
 - **LiveRe**：`livere_uid: your_livere_uid`
 

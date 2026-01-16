@@ -1,41 +1,22 @@
 ---
 layout: page
-title: "About"
-description: "Hi, this is XGuider."
-header-img: "img/post-bg-alitrip.jpg"
+title: "一碗资源"
+description: "精选资源导航，发现优质内容"
+header-img: "img/home-bg-art.jpg"
 ---
-
-<!-- Language Selector -->
-<select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-    <option value="0" selected> 中文 Chinese </option>
-    <option value="1"> 英文 English </option>
-</select>
 
 <!-- Chinese Version -->
 <div class="zh post-container">
-
-
-  <p> Hi，我是XGuider，90后程序猿一枚，昵称<Strong>XGuider</Strong>。<br></p>
-  目前投身于IT行业，同时在其他方面打打辅助!<br>   
-  <p>希望通过这个博客能结识更多志同道合的人，学习分享的路上与君共勉!<br> </p>  
-  <Strong>可通过以下方式联系到我:</Strong><br>
-   <Strong>QQ邮箱:1275660493@qq.com</Strong><br>
-   <Strong>微博:<a href='https://weibo.com/XGuider' target='_blank'>https://weibo.com/XGuider</a></Strong>
-   
+    <h2>一碗资源</h2>
+    <p>这里将展示精选的资源导航页面。</p>
+    <p>内容正在完善中...</p>
 </div>
 
 <!-- English Version -->
 <div class="en post-container">
-    <!--<blockquote><p>
-    Don't let anything become a reason for not studying</p></blockquote>-->
-
-    <p> Hi, I am XGuider，a software engineer，Nickname <Strong>XGuider</Strong>。<br></p>
-  My major career is Java Software Development Engineer at present!<br>   
-  <p>I hope that through this blog, we can get to know more like-minded people and learn to share with them on the road of sharing!<br> </p>  
-  <Strong>you can contact me in the following ways:</Strong><br>
-   <Strong>QQ Email:1275660493@qq.com</Strong><br>
-   <Strong>Weibo:<a href='https://weibo.com/XGuider' target='_blank'>https://weibo.com/XGuider</a></Strong>
-   
+    <h2>Yiwan Resources</h2>
+    <p>This page will display curated resource navigation.</p>
+    <p>Content is being updated...</p>
 </div>
 
 <!-- Handle Language Change -->
@@ -53,13 +34,12 @@ header-img: "img/post-bg-alitrip.jpg"
         var _hash = window.location.hash;
         // en
         if(_hash == "#en"){
-            $select.selectedIndex = 1;
+            if($select) $select.selectedIndex = 1;
             $en.style.display = "block";
             $zh.style.display = "none";
         // zh by default
         }else{
-            // not trigger onChange, otherwise cause a loop call.
-            $select.selectedIndex = 0;
+            if($select) $select.selectedIndex = 0;
             $zh.style.display = "block";
             $en.style.display = "none";
         }
