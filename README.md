@@ -224,7 +224,7 @@ bundle exec jekyll clean && bundle exec jekyll build
 
 - GitHub: [@XGuider](https://github.com/XGuider)
 - 博客: [https://XGuider.github.io](https://XGuider.github.io)
-- 邮箱: your-email@example.com
+- 邮箱: 973279990@qq.com
 
 ---
 
