@@ -61,16 +61,17 @@ kramdown:
 
 # LiveRe setttings
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-livere_uid: MTAyMC8yODkzOC81NTA3
-
+livere_uid: P8kPEyODUXCRxPCmhmVF
 
 # Analytics settings
-# Baidu Analytics (百度统计)
+# Baidu Analytics 
 ba_track_id: 969b089e87ca4b02f96f2c1ee3553b06
 
-# Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx (请更新为你的Google Analytics ID)
+# Google Analytics (GA4)
+ga_track_id: 'G-SD3JQVC25K'             # Google Analytics 4 测量ID (格式: G-XXXXXXXXXX)
 ga_domain: XGuider.github.io
+
+
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
@@ -111,7 +112,11 @@ defaults:
       layout: video
 
 # Friends
-friends: [{
+friends: [
+    {
+        title: "XGuider的微博",
+        href: "http://weibo.com/XGuider"
+    },{
         title: "XGuider GitHub",
         href: "https://XGuider.github.io"
     }
