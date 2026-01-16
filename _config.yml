@@ -5,8 +5,8 @@ header-img: img/home-bg-art.jpg
 email: 1275660493@qq.com
 description: "@XGuider,不要让任何事情成为你不去学习的理由！"
 keyword: "XGuider, @XGuider, XGuider的博客,XGuider Blog, 博客, 个人网站, 互联网"
-url: "https://XGuider.github.io/"              # your host, for absolute URL
-baseurl: "/blog"                             # for example, '/blog' if your blog hosted on 'host/blog'
+url: "https://XGuider.github.io"              # your host, for absolute URL
+baseurl: ""                                  # empty string for GitHub Pages root repository (username.github.io)
 
 
 
@@ -62,7 +62,7 @@ ga_domain: XGuider.github.io
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "不要让任何事情成为你不去学习的理由！"
-sidebar-avatar: /img/avatar-wb.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/favicon.ico      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
