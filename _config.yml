@@ -54,24 +54,23 @@ kramdown:
 #disqus_username: _your_disqus_short_name_
 
 # Duoshuo settings
-duoshuo_username: XGuiderBlog
+# duoshuo_username: XGuiderBlog
 # Share component is depend on Comment so we can NOT use share only.
-duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+# duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
 
 # LiveRe setttings
 # You can get your uid from https://livere.com/insight/myCode (General web site)
 livere_uid: MTAyMC8yODkzOC81NTA3
 
+
 # Analytics settings
-# Baidu Analytics 
-# ba_track_id: [your track id]
+# Baidu Analytics (百度统计)
+ba_track_id: 969b089e87ca4b02f96f2c1ee3553b06
 
 # Google Analytics
 ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx (请更新为你的Google Analytics ID)
 ga_domain: XGuider.github.io
-
-
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
@@ -112,11 +111,7 @@ defaults:
       layout: video
 
 # Friends
-friends: [
-    {
-        title: "XGuider的微博",
-        href: "http://weibo.com/XGuider"
-    },{
+friends: [{
         title: "XGuider GitHub",
         href: "https://XGuider.github.io"
     }
