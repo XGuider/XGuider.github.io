@@ -7,6 +7,7 @@
 这是一个基于 Jekyll 的现代化个人博客模板，具有以下特性：
 
 - 📝 支持 Markdown 写作
+- 📄 **支持 PDF/Word 文档自动转换为 Markdown**
 - 🎨 响应式设计，适配各种设备
 - 🔍 SEO 优化
 - 💬 支持多评论系统（多说、Disqus、LiveRe）
@@ -334,6 +335,40 @@ header-img: "img/post-bg-xxx.jpg"
 
 文章内容...
 ```
+
+### 📄 使用 PDF/Word 文档
+
+博客支持自动将 PDF 和 Word 文档转换为 Markdown 格式！
+
+#### 快速开始
+
+1. **安装 Pandoc**（如果尚未安装）：
+   ```bash
+   # macOS
+   brew install pandoc
+   
+   # Linux
+   sudo apt-get install pandoc
+   ```
+
+2. **放置文档**：
+   将 PDF 或 Word 文件放在 `_posts/` 目录下：
+   ```
+   _posts/
+     ├── 2024-01-15-文章标题.pdf
+     └── 2024-01-15-文章标题.docx
+   ```
+
+3. **自动转换**：
+   - 启动 Jekyll 服务器时，插件会自动转换文档
+   - 或手动运行：`ruby scripts/convert_documents.rb`
+
+4. **检查结果**：
+   转换后会生成对应的 `.markdown` 文件，可以直接使用。
+
+#### 详细说明
+
+更多信息请查看 [文档转换功能说明](DOCUMENT_CONVERTER.md)
 
 ### 创建新页面
 

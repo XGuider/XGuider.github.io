@@ -8,30 +8,20 @@ _site/
 .bundle/
 vendor/
 
-# Dependencies
-node_modules/
-
-# Environment
-.env
-.env.local
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
 # OS
 .DS_Store
 Thumbs.db
 
-# Logs
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 临时文件
+*.tmp
 *.log
 
-# Temporary files
-*.tmp
-*.temp
-
-# GitHub Pages - 不要提交 .nojekyll（Jekyll 项目需要被处理）
-.nojekyll
+# 转换后的临时文件（如果需要）
+# _posts/*.markdown（如果不想提交转换后的文件，取消注释）
