@@ -21,7 +21,14 @@ header-img: "img/home-bg-art.jpg"
 <!-- 按分类分组显示文章 -->
 {% if all_categories.size > 0 %}
     {% for category in all_categories %}
-        {% assign category_posts = site.posts | where_exp: "post", "post.categories contains category" | sort: 'date' | reverse %}
+        {% comment %} 使用循环过滤文章，因为 where_exp 的 contains 在某些 Jekyll 版本中可能不支持 {% endcomment %}
+        {% assign category_posts_filtered = '' | split: '' %}
+        {% for post in site.posts %}
+            {% if post.categories contains category %}
+                {% assign category_posts_filtered = category_posts_filtered | push: post %}
+            {% endif %}
+        {% endfor %}
+        {% assign category_posts = category_posts_filtered | sort: 'date' | reverse %}
         
         {% if category_posts.size > 0 %}
             <!-- 分类标题 -->
@@ -84,7 +91,13 @@ header-img: "img/home-bg-art.jpg"
 {% endif %}
 
 <!-- 显示没有分类的文章 -->
-{% assign uncategorized_posts = site.posts | where_exp: "post", "post.categories == nil or post.categories.size == 0" | sort: 'date' | reverse %}
+{% assign uncategorized_posts_filtered = '' | split: '' %}
+{% for post in site.posts %}
+    {% if post.categories == nil or post.categories.size == 0 %}
+        {% assign uncategorized_posts_filtered = uncategorized_posts_filtered | push: post %}
+    {% endif %}
+{% endfor %}
+{% assign uncategorized_posts = uncategorized_posts_filtered | sort: 'date' | reverse %}
 {% if uncategorized_posts.size > 0 %}
     <div class="category-header">
         <h2 class="category-title">
