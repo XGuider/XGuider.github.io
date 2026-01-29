@@ -38,16 +38,16 @@
     {% endif %}
 
     <!-- Preload critical resources -->
-    <link rel="preload" href="{{ '/css/main.min.css' | prepend: site.baseurl }}" as="style">
+    <link rel="preload" href="{{ '/css/main.min.css' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="font" type="font/woff2" crossorigin>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ '/css/main.min.css' | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ '/css/main.min.css' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- Syntax highlighting -->
-    <link rel="stylesheet" href="{{ '/css/syntax.css' | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ '/css/syntax.css' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}">
 
     <!-- Structured data -->
     <script type="application/ld+json">
@@ -122,7 +122,7 @@
     <!-- Service Worker Registration -->
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('{{ '/sw.bundle.js' | prepend: site.baseurl }}')
+        navigator.serviceWorker.register('{{ '/js/sw.bundle.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}')
           .then(reg => console.log('Service Worker registered'))
           .catch(err => console.error('Service Worker registration failed:', err));
       }

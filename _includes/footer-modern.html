@@ -44,7 +44,7 @@
 </footer>
 
 <!-- Modern JavaScript without jQuery/Bootstrap dependencies -->
-<script src="{{ '/js/main.bundle.js' | prepend: site.baseurl }}" defer></script>
+<script src="{{ '/js/main.bundle.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}" defer></script>
 
 <!-- Analytics with privacy-first approach -->
 {% if site.analytics.google.tag_id and site.analytics.google.tag_id != "G-XXXXXXXXXX" %}
@@ -98,7 +98,7 @@
 if ('serviceWorker' in navigator) {
   // Only register if not already registered
   if (!navigator.serviceWorker.controller) {
-    navigator.serviceWorker.register('{{ '/sw.bundle.js' | prepend: site.baseurl }}', { scope: '/' })
+    navigator.serviceWorker.register('{{ '/js/sw.bundle.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}', { scope: '/' })
       .then(registration => {
         console.log('Service Worker registered successfully');
       })

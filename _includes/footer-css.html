@@ -168,4 +168,4 @@
 {% endif %}
 
 <!-- Main bundle -->
-<script src="{{ '/js/main.bundle.js' | prepend: site.baseurl }}" defer></script>
+<script src="{{ '/js/main.bundle.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}" defer></script>

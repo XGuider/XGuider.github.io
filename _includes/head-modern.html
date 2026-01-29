@@ -19,8 +19,8 @@
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
     {# Modern Preloading #}
-    <link rel="preload" href="{{ '/css/main.min.css' | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ '/css/main.min.css' | prepend: site.baseurl }}"></noscript>
+    <link rel="preload" href="{{ '/css/main.min.css' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ '/css/main.min.css' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}"></noscript>
 
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="preload" as="font" type="font/woff2" crossorigin>
@@ -111,7 +111,7 @@
     <script>
       // Register service worker
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('{{ '/js/sw.bundle.js' | prepend: site.baseurl }}')
+        navigator.serviceWorker.register('{{ '/js/sw.bundle.js' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}')
           .then(reg => {
             console.log('Service Worker registered successfully');
           }).catch(err => {
