@@ -1,24 +1,74 @@
 ---
 layout: default
+title: "页面未找到"
 description: "你来到了没有知识的荒原 :("
-header-img: "img/404-bg.jpg"
 permalink: /404.html
 ---
 
-<!-- Page Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<div class="site-heading" id="tag-heading">
-					<h1>404</h1>
-					<span class="subheading">{{ page.description }}</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
+<div class="error-page">
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">页面未找到</h2>
+        <p class="error-message">{{ page.description }}</p>
+
+        <div class="error-actions">
+            <a href="{{ site.baseurl }}/" class="btn btn-primary">
+                <i class="fa-solid fa-house"></i> 返回首页
+            </a>
+
+            <button onclick="history.back()" class="btn">
+                <i class="fa-solid fa-arrow-left"></i> 返回上一页
+            </button>
+        </div>
+
+        <div class="search-suggestion">
+            <p>或者试试搜索：</p>
+            <form action="/" method="get" class="search-form">
+                <div class="search-input-group">
+                    <input
+                        type="text"
+                        name="q"
+                        placeholder="搜索文章..."
+                        class="search-input"
+                        required
+                        autofocus
+                    >
+                    <button type="submit" class="search-button">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="popular-posts">
+            <h3>热门文章</h3>
+            <ul class="post-list">
+                {% for post in site.posts limit:5 %}
+                <li>
+                    <a href="{{ post.url | relative_url }}" class="post-link">
+                        {{ post.title }}
+                        <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Analytics event tracking -->
+        <script defer>
+            // Track 404 error
+            if (typeof gtag === 'function') {
+                gtag('event', '404_error', {
+                    'event_category': 'error',
+                    'event_label': window.location.href,
+                    'custom_map': {'referrer': document.referrer}
+                });
+            }
+        </script>
+    </div>
+</div>
 
 <script>
-	document.body.classList.add('page-fullscreen');
+  document.body.classList.add('page-fullscreen');
+  document.body.classList.add('error-404-page');
 </script>

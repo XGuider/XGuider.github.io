@@ -1,0 +1,854 @@
+{
+  "version": "2.6",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 798,
+      "height": 559,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "QBzzG",
+      "x": 0,
+      "y": 0,
+      "name": "主页 - Home Page",
+      "width": 1440,
+      "fill": "#0D1117",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "p0nvl",
+          "name": "navBar",
+          "width": "fill_container",
+          "height": 60,
+          "fill": "#0D1117",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#21262D"
+          },
+          "padding": [
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "duVSS",
+              "name": "logo",
+              "fill": "#58A6FF",
+              "content": "XGuider Blog",
+              "fontFamily": "Courier New",
+              "fontSize": 18
+            },
+            {
+              "type": "frame",
+              "id": "08OCy",
+              "name": "navLinks",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IqR6O",
+                  "name": "navHome",
+                  "fill": "#C9D1D9",
+                  "content": "Home",
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "75MAy",
+                  "name": "navAI",
+                  "fill": "#C9D1D9",
+                  "content": "AI导航",
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "o7WU3",
+                  "name": "navResource",
+                  "fill": "#C9D1D9",
+                  "content": "一碗资源",
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "1Xrrl",
+                  "name": "navAbout",
+                  "fill": "#C9D1D9",
+                  "content": "About",
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "BKIl5",
+          "name": "header",
+          "width": "fill_container",
+          "height": 180,
+          "fill": "#0D1117",
+          "layout": "vertical",
+          "padding": [
+            40,
+            0
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "63cOq",
+              "name": "headerTitle",
+              "fill": "#58A6FF",
+              "content": "XGuider Blog",
+              "fontFamily": "Courier New",
+              "fontSize": 32
+            },
+            {
+              "type": "text",
+              "id": "r9aOU",
+              "name": "headerSubtitle",
+              "fill": "#7C3AED",
+              "content": "福祸相依_学以致用",
+              "fontFamily": "Courier New",
+              "fontSize": 13
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Lr2To",
+          "name": "mainContent",
+          "width": "fill_container",
+          "fill": "#0D1117",
+          "gap": 32,
+          "padding": [
+            24,
+            60
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "yF3Sb",
+              "name": "postList",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "soY7u",
+                  "name": "categoryHeader",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KQjb0",
+                      "name": "categoryTitle",
+                      "fill": "#58A6FF",
+                      "content": "JAVA",
+                      "fontFamily": "Courier New",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "fILa4",
+                      "name": "categoryCount",
+                      "fill": "#7C3AED",
+                      "content": "(3)",
+                      "fontFamily": "Courier New",
+                      "fontSize": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "aiowT",
+                      "name": "promptSymbol",
+                      "fill": "#7C3AED",
+                      "content": "$",
+                      "fontFamily": "Courier New",
+                      "fontSize": 16
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "kt8Po",
+                  "name": "postPreview",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    0,
+                    0,
+                    16,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PtmHo",
+                      "name": "postTitle",
+                      "fill": "#C9D1D9",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Spring实战",
+                      "fontFamily": "Courier New",
+                      "fontSize": 18
+                    },
+                    {
+                      "type": "text",
+                      "id": "I3Sdd",
+                      "name": "postSubtitle",
+                      "fill": "#7C3AED",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "深入学习Spring框架",
+                      "fontFamily": "Courier New",
+                      "fontSize": 12
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wpQXT",
+                      "name": "codeBlock",
+                      "width": "fill_container",
+                      "fill": "#161B22",
+                      "stroke": {
+                        "align": "center",
+                        "thickness": 1,
+                        "fill": "#21262D"
+                      },
+                      "layout": "vertical",
+                      "gap": 4,
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "LownY",
+                          "name": "codeLine1",
+                          "fill": "#6E7681",
+                          "content": "// Spring实战 - 深入学习Spring框架",
+                          "fontFamily": "Courier New",
+                          "fontSize": 11
+                        },
+                        {
+                          "type": "text",
+                          "id": "khoDZ",
+                          "name": "codeLine2",
+                          "fill": "#6E7681",
+                          "content": "// Posted: 2026-01-07 | Category: JAVA",
+                          "fontFamily": "Courier New",
+                          "fontSize": 11
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MvlFz",
+                  "name": "postSeparator",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "#21262D"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "2XTJU",
+              "name": "sidebar",
+              "width": 220,
+              "layout": "vertical",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "LO8AL",
+                  "name": "sidebarAbout",
+                  "width": "fill_container",
+                  "fill": "#161B22",
+                  "stroke": {
+                    "align": "center",
+                    "thickness": 1,
+                    "fill": "#21262D"
+                  },
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "i0Fon",
+                      "name": "aboutTitle",
+                      "fill": "#7C3AED",
+                      "content": "ABOUT ME",
+                      "fontFamily": "Courier New",
+                      "fontSize": 11
+                    },
+                    {
+                      "type": "text",
+                      "id": "72z33",
+                      "name": "aboutDesc",
+                      "fill": "#8B949E",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "不要让任何事情成为你不去学习的理由！",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Courier New",
+                      "fontSize": 11
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xUguC",
+                  "name": "sidebarTags",
+                  "width": "fill_container",
+                  "fill": "#161B22",
+                  "stroke": {
+                    "align": "center",
+                    "thickness": 1,
+                    "fill": "#21262D"
+                  },
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "M7wjs",
+                      "name": "tagsTitle",
+                      "fill": "#7C3AED",
+                      "content": "FEATURED TAGS",
+                      "fontFamily": "Courier New",
+                      "fontSize": 11
+                    },
+                    {
+                      "type": "frame",
+                      "id": "udh1P",
+                      "name": "tagsContainer",
+                      "width": "fill_container",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "TfHlC",
+                          "name": "tag1Frame",
+                          "fill": "#161B22",
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "#21262D"
+                          },
+                          "padding": [
+                            1,
+                            4
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "17VB8",
+                              "name": "tag1Text",
+                              "fill": "#58A6FF",
+                              "content": "Spring",
+                              "fontFamily": "Courier New",
+                              "fontSize": 10
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "qmMny",
+                          "name": "tag2Frame",
+                          "fill": "#161B22",
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "#21262D"
+                          },
+                          "padding": [
+                            1,
+                            4
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "vDGTH",
+                              "name": "tag2Text",
+                              "fill": "#58A6FF",
+                              "content": "Java",
+                              "fontFamily": "Courier New",
+                              "fontSize": 10
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pbL2k",
+          "name": "footer",
+          "width": "fill_container",
+          "fill": "#0D1117",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            20,
+            0
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "wtAjc",
+              "name": "footerText",
+              "fill": "#6E7681",
+              "content": "Copyright © XGuider Blog 2026",
+              "fontFamily": "Courier New",
+              "fontSize": 11
+            },
+            {
+              "type": "text",
+              "id": "xP8Uj",
+              "name": "footerLink",
+              "fill": "#58A6FF",
+              "content": "powered by XGuider",
+              "fontFamily": "Courier New",
+              "fontSize": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "W4pDd",
+      "x": 1500,
+      "y": 0,
+      "name": "关于页面 - About Page",
+      "width": 1440,
+      "fill": "#0D1117",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "2l4YA",
+          "name": "aboutNavBar",
+          "width": "fill_container",
+          "height": 60,
+          "fill": "#0D1117",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#21262D"
+          },
+          "padding": [
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "I0OWy",
+              "name": "aboutLogo",
+              "fill": "#58A6FF",
+              "content": "XGuider Blog",
+              "fontFamily": "Courier New",
+              "fontSize": 18
+            },
+            {
+              "type": "frame",
+              "id": "j6u6B",
+              "name": "aboutNavLinks",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "DQsMT",
+                  "name": "aboutNavHome",
+                  "fill": "#C9D1D9",
+                  "content": "Home",
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "BNonE",
+                  "name": "aboutNavAI",
+                  "fill": "#C9D1D9",
+                  "content": "AI导航",
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "qMOK7",
+                  "name": "aboutNavResource",
+                  "fill": "#C9D1D9",
+                  "content": "一碗资源",
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "Fl5gN",
+                  "name": "aboutNavAbout",
+                  "fill": "#58A6FF",
+                  "content": "About",
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "EjkWF",
+          "name": "aboutHeader",
+          "width": "fill_container",
+          "height": 180,
+          "fill": "#0D1117",
+          "layout": "vertical",
+          "padding": [
+            40,
+            0
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "YA40J",
+              "name": "aboutHeaderTitle",
+              "fill": "#58A6FF",
+              "content": "About",
+              "fontFamily": "Courier New",
+              "fontSize": 32
+            },
+            {
+              "type": "text",
+              "id": "hBY8G",
+              "name": "aboutHeaderSubtitle",
+              "fill": "#7C3AED",
+              "content": "Hi, this is XGuider.",
+              "fontFamily": "Courier New",
+              "fontSize": 13
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "qOZv9",
+          "name": "aboutMain",
+          "width": "fill_container",
+          "fill": "#0D1117",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            100
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "6Fnn0",
+              "name": "langSelector",
+              "height": 40,
+              "fill": "#161B22",
+              "stroke": {
+                "thickness": 1,
+                "fill": "#21262D"
+              },
+              "padding": [
+                6,
+                12
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "QwrIq",
+                  "name": "langText",
+                  "fill": "#C9D1D9",
+                  "content": "中文 Chinese",
+                  "fontFamily": "Courier New",
+                  "fontSize": 12
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "esEsu",
+              "name": "aboutContent",
+              "width": 650,
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "EfD3r",
+                  "name": "aboutPara1",
+                  "fill": "#C9D1D9",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Hi，我是XGuider，90后程序猿一枚，昵称XGuider。",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "fz4He",
+                  "name": "aboutPara2",
+                  "fill": "#C9D1D9",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "目前投身于IT行业，同时在其他方面打打辅助!",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "kplce",
+                  "name": "aboutPara3",
+                  "fill": "#C9D1D9",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "希望通过这个博客能结识更多志同道合的人，学习分享的路上与君共勉!",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Courier New",
+                  "fontSize": 13
+                },
+                {
+                  "type": "frame",
+                  "id": "SoLEi",
+                  "name": "aboutContact",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ihuM7",
+                      "name": "contactBlock",
+                      "width": "fill_container",
+                      "fill": "#161B22",
+                      "stroke": {
+                        "align": "center",
+                        "thickness": 1,
+                        "fill": "#21262D"
+                      },
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "hA7tI",
+                          "name": "contactLine1",
+                          "fill": "#6E7681",
+                          "content": "// Contact Information",
+                          "fontFamily": "Courier New",
+                          "fontSize": 11
+                        },
+                        {
+                          "type": "text",
+                          "id": "DFLrZ",
+                          "name": "contactLine2",
+                          "fill": "#7C3AED",
+                          "content": "QQ: 1275660493@qq.com",
+                          "fontFamily": "Courier New",
+                          "fontSize": 12
+                        },
+                        {
+                          "type": "text",
+                          "id": "si6dw",
+                          "name": "contactLine3",
+                          "fill": "#58A6FF",
+                          "content": "Weibo: https://weibo.com/XGuider",
+                          "fontFamily": "Courier New",
+                          "fontSize": 12
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "Ergt4",
+                  "name": "aboutPrompt",
+                  "fill": "#7C3AED",
+                  "content": ">",
+                  "fontFamily": "Courier New",
+                  "fontSize": 14
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "2OwPV",
+          "name": "aboutFooter",
+          "width": "fill_container",
+          "fill": "#0D1117",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            20,
+            0
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "FWsu4",
+              "name": "aboutFooterText",
+              "fill": "#6E7681",
+              "content": "Copyright © XGuider Blog 2026",
+              "fontFamily": "Courier New",
+              "fontSize": 11
+            },
+            {
+              "type": "text",
+              "id": "nXBIf",
+              "name": "aboutFooterLink",
+              "fill": "#58A6FF",
+              "content": "powered by XGuider",
+              "fontFamily": "Courier New",
+              "fontSize": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "BzLdQ",
+      "x": 3000,
+      "y": 0,
+      "name": "Image Generation Frames",
+      "width": 1920,
+      "fill": "#0D1117",
+      "layout": "vertical",
+      "gap": 40,
+      "padding": 40,
+      "children": [
+        {
+          "type": "frame",
+          "id": "1Eyxb",
+          "name": "home-bg-art",
+          "width": 1920,
+          "height": 600,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "./images/generated-1769675471265.png",
+            "mode": "fill"
+          }
+        },
+        {
+          "type": "frame",
+          "id": "IDk2Z",
+          "name": "post-bg-alitrip",
+          "width": 1920,
+          "height": 600,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "./images/generated-1769675480366.png",
+            "mode": "fill"
+          }
+        },
+        {
+          "type": "frame",
+          "id": "a6pS5",
+          "name": "post-bg",
+          "width": 1920,
+          "height": 600,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "./images/generated-1769675489598.png",
+            "mode": "fill"
+          }
+        },
+        {
+          "type": "frame",
+          "id": "GO6DZ",
+          "name": "404-bg",
+          "width": 1920,
+          "height": 600,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "./images/generated-1769675498536.png",
+            "mode": "fill"
+          }
+        },
+        {
+          "type": "frame",
+          "id": "nc4Mz",
+          "name": "favicon",
+          "width": 64,
+          "height": 64,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "./images/generated-1769675508094.png",
+            "mode": "fill"
+          }
+        }
+      ]
+    }
+  ]
+}

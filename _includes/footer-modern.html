@@ -1,0 +1,111 @@
+<!-- Modern Footer -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <ul class="social-links" role="list">
+            {% if site.RSS %}
+            <li>
+                <a href="{{ "/feed.xml" | prepend: site.baseurl }}" aria-label="RSS Feed">
+                    <span class="icon-stack">
+                        <i class="fa-solid fa-circle"></i>
+                        <i class="fa-solid fa-rss"></i>
+                    </span>
+                </a>
+            </li>
+            {% endif %}
+
+            {% if site.zhihu_username %}
+            <li>
+                <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}" rel="noopener noreferrer" aria-label="知乎">
+                    <span class="icon-stack">
+                        <i class="fa-solid fa-circle"></i>
+                        <span class="zhihu-icon" aria-hidden="true">知</span>
+                    </span>
+                </a>
+            </li>
+            {% endif %}
+
+            {% if site.github_username %}
+            <li>
+                <a target="_blank" href="https://github.com/{{ site.github_username }}" rel="noopener noreferrer" aria-label="GitHub">
+                    <span class="icon-stack">
+                        <i class="fa-solid fa-circle"></i>
+                        <i class="fa-brands fa-github"></i>
+                    </span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        <p class="copyright">
+            Copyright © {{ site.title }} {{ site.time | date: '%Y' }}
+            <br>
+            powered by <a href="https://XGuider.github.io/" target="_blank" rel="noopener noreferrer">XGuider</a>
+        </p>
+    </div>
+</footer>
+
+<!-- Modern JavaScript without jQuery/Bootstrap dependencies -->
+<script src="{{ '/js/main.bundle.js' | prepend: site.baseurl }}" defer></script>
+
+<!-- Analytics with privacy-first approach -->
+{% if site.analytics.google.tag_id and site.analytics.google.tag_id != "G-XXXXXXXXXX" %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google.tag_id }}" integrity="sha384-{{ site.analytics.google.tag_id | truncate: 64, '' }}" crossorigin="anonymous"></script>
+<script defer>
+  // Only initialize analytics if user hasn't opted out
+  if (navigator.doNotTrack !== '1' && !window.location.href.match(/localhost|127\.0\.0\.1/)) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.analytics.google.tag_id }}', {
+      'send_page_view': true,
+      'anonymize_ip': true,
+      'allow_google_signals': false,
+      'transport_type': 'beacon',
+      'link_attribution': true
+    });
+  }
+</script>
+{% endif %}
+
+{% if site.analytics.plausible.domain %}
+<script defer data-domain="{{ site.analytics.plausible.domain }}" src="https://plausible.io/js/plausible.js"></script>
+{% endif %}
+
+<!-- Tag cloud functionality -->
+<script defer>
+  // Only load tag cloud on tag pages
+  const tagCloudElement = document.getElementById('tag_cloud');
+  if (tagCloudElement) {
+    fetch('{{ "/js/tagcloud.min.js" | prepend: site.baseurl }}')
+      .then(response => response.text())
+      .then(code => {
+        // Create a lightweight tag cloud implementation
+        const tags = tagCloudElement.querySelectorAll('a');
+        const colors = ['#bbbbee', '#7799bb', '#557799', '#226688', '#0085a1'];
+
+        tags.forEach((tag, index) => {
+          const fontSize = 0.9 + (index / tags.length) * 0.8; // Scale from 0.9em to 1.7em
+          const color = colors[Math.floor(index / (tags.length / colors.length))];
+          tag.style.fontSize = fontSize + 'em';
+          tag.style.color = color;
+        });
+      });
+  }
+</script>
+
+<!-- Service Worker for PWA -->
+{% if site.service-worker %}
+<script>
+if ('serviceWorker' in navigator) {
+  // Only register if not already registered
+  if (!navigator.serviceWorker.controller) {
+    navigator.serviceWorker.register('{{ '/sw.bundle.js' | prepend: site.baseurl }}', { scope: '/' })
+      .then(registration => {
+        console.log('Service Worker registered successfully');
+      })
+      .catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+  }
+}
+</script>
+{% endif %}

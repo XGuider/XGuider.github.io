@@ -1,0 +1,72 @@
+{
+  "name": "xguider-blog",
+  "version": "2.0.0",
+  "description": "Modern personal blog with Jekyll and modern frontend tools",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:css && npm run build:js && npm run build:img",
+    "build:css": "postcss css/main.css -o css/main.min.css --map",
+    "build:js": "webpack --mode=production",
+    "build:img": "node scripts/optimize-images.js",
+    "dev": "concurrently \"npm run dev:css\" \"npm run dev:js\"",
+    "dev:css": "postcss css/main.css -o css/main.min.css --watch --map",
+    "dev:js": "webpack --mode=development --watch",
+    "serve": "bundle exec jekyll serve --livereload",
+    "deploy": "npm run build && bundle exec jekyll build",
+    "test": "npm run lint && npm run test:accessibility",
+    "lint": "eslint js/**/*.js && stylelint css/**/*.css",
+    "test:accessibility": "lhci autorun"
+  },
+  "keywords": [
+    "jekyll",
+    "blog",
+    "pwa",
+    "modern-web",
+    "personal-website"
+  ],
+  "author": "XGuider",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@lhci/cli": "^0.12.0",
+    "autoprefixer": "^10.4.16",
+    "babel-loader": "^9.1.0",
+    "concurrently": "^8.2.2",
+    "css-loader": "^6.8.1",
+    "cssnano": "^6.0.1",
+    "eslint": "^8.52.0",
+    "eslint-config-standard": "^17.1.0",
+    "imagemin": "^8.0.1",
+    "imagemin-webp": "^7.0.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "postcss-loader": "^7.3.3",
+    "postcss-preset-env": "^9.4.0",
+    "sharp": "^0.32.6",
+    "style-loader": "^3.3.3",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "workbox-cacheable-response": "^7.4.0",
+    "workbox-expiration": "^7.4.0",
+    "workbox-precaching": "^7.4.0",
+    "workbox-routing": "^7.4.0",
+    "workbox-strategies": "^7.4.0",
+    "workbox-webpack-plugin": "^7.4.0"
+  },
+  "dependencies": {
+    "instant.page": "^5.2.0",
+    "prismjs": "^1.24.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "name": "XGuider Blog",
+  "short_name": "XGuider Blog",
+  "description": "技术博客分享 - Web开发、编程知识和学习心得",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3498db",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "categories": ["education", "technology"],
+  "icons": [
+    {
+      "src": "/img/icons/icon-72x72.webp",
+      "sizes": "72x72",
+      "type": "image/webp"
+    },
+    {
+      "src": "/img/icons/icon-96x96.webp",
+      "sizes": "96x96",
+      "type": "image/webp"
+    },
+    {
+      "src": "/img/icons/icon-128x128.webp",
+      "sizes": "128x128",
+      "type": "image/webp"
+    },
+    {
+      "src": "/img/icons/icon-144x144.webp",
+      "sizes": "144x144",
+      "type": "image/webp"
+    },
+    {
+      "src": "/img/icons/icon-152x152.webp",
+      "sizes": "152x152",
+      "type": "image/webp"
+    },
+    {
+      "src": "/img/icons/icon-192x192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/img/icons/icon-384x384.webp",
+      "sizes": "384x384",
+      "type": "image/webp"
+    },
+    {
+      "src": "/img/icons/icon-512x512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/screenshots/desktop.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Desktop view of XGuider Blog"
+    },
+    {
+      "src": "/img/screenshots/mobile.webp",
+      "sizes": "390x844",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Mobile view of XGuider Blog"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "最新文章",
+      "short_name": "文章",
+      "description": "查看最新发布的文章",
+      "url": "/#latest-posts",
+      "icons": [
+        {
+          "src": "/img/icons/posts.webp",
+          "sizes": "192x192",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "标签云",
+      "short_name": "标签",
+      "description": "浏览文章标签分类",
+      "url": "/#tags",
+      "icons": [
+        {
+          "src": "/img/icons/tags.webp",
+          "sizes": "192x192",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "关于我",
+      "short_name": "关于",
+      "description": "了解作者信息",
+      "url": "/about",
+      "icons": [
+        {
+          "src": "/img/icons/about.webp",
+          "sizes": "192x192",
+          "type": "image/webp"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share/",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "version": "2.0.0"
+}

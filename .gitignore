@@ -25,3 +25,4 @@ Thumbs.db
 
 # 转换后的临时文件（如果需要）
 # _posts/*.markdown（如果不想提交转换后的文件，取消注释）
+node_modules

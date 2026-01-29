@@ -1,0 +1,171 @@
+<!-- Modern Footer CSS -->
+<style>
+.site-footer {
+    margin-top: 3rem;
+    padding: 3rem 1rem;
+    border-top: 1px solid #eee;
+    background-color: #f8f9fa;
+}
+
+.footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-links li {
+    display: inline-flex;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #0085a1;
+    transform: translateY(-2px);
+}
+
+.icon-stack {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.icon-stack i {
+    position: absolute;
+}
+
+.zhihu-icon {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.copyright {
+    font-size: 0.875rem;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.copyright a {
+    color: #0085a1;
+    text-decoration: none;
+}
+
+.copyright a:hover {
+    text-decoration: underline;
+}
+
+/* Modern animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.site-footer {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .social-links {
+        gap: 1rem;
+    }
+
+    .site-footer {
+        padding: 2rem 1rem;
+    }
+}
+</style>
+<!-- Modern Footer without Bootstrap -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <ul class="social-links" role="list" aria-label="社交媒体链接">
+            {% if site.RSS %}
+            <li>
+                <a href="{{ "/feed.xml" | prepend: site.baseurl }}" aria-label="RSS Feed">
+                    <span class="icon-stack">
+                        <i class="fa-solid fa-circle"></i>
+                        <i class="fa-solid fa-rss"></i>
+                    </span>
+                </a>
+            </li>
+            {% endif %}
+
+            {% if site.zhihu_username %}
+            <li>
+                <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}" rel="noopener noreferrer" aria-label="知乎主页">
+                    <span class="icon-stack">
+                        <i class="fa-solid fa-circle"></i>
+                        <span class="zhihu-icon" aria-hidden="true">知</span>
+                    </span>
+                </a>
+            </li>
+            {% endif %}
+
+            {% if site.github_username %}
+            <li>
+                <a target="_blank" href="https://github.com/{{ site.github_username }}" rel="noopener noreferrer" aria-label="GitHub主页">
+                    <span class="icon-stack">
+                        <i class="fa-solid fa-circle"></i>
+                        <i class="fa-brands fa-github"></i>
+                    </span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        <p class="copyright">
+            Copyright © {{ site.title }} {{ site.time | date: '%Y' }}
+            <br>
+            powered by <a href="https://XGuider.github.io/" target="_blank" rel="noopener noreferrer">XGuider</a>
+        </p>
+    </div>
+</footer>
+
+<!-- Modern Analytics -->
+{% if site.analytics.google.tag_id and site.analytics.google.tag_id != "G-XXXXXXXXXX" %}
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google.tag_id }}" integrity="sha512-VG7tu5meV0fK4BdUM4a2Q1h2n6VluF7qKXBqBdGiQq5qFbfFAZJopr73m3H1uq1wuxtPcMmYx5EVZhtK0g==" crossorigin="anonymous"></script>
+<script defer>
+  if (navigator.doNotTrack !== '1' && !window.location.href.match(/localhost|127\.0\.0\.1/)) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.analytics.google.tag_id }}', {
+      'send_page_view': true,
+      'anonymize_ip': true,
+      'allow_google_signals': false
+    });
+  }
+</script>
+{% endif %}
+
+{% if site.analytics.plausible.domain %}
+<!-- Plausible Analytics (Privacy-first alternative) -->
+<script defer data-domain="{{ site.analytics.plausible.domain }}" src="https://plausible.io/js/plausible.js"></script>
+{% endif %}
+
+<!-- Main bundle -->
+<script src="{{ '/js/main.bundle.js' | prepend: site.baseurl }}" defer></script>

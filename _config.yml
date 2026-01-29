@@ -1,12 +1,24 @@
 # Site settings
-title: XGuider Blog
-SEOTitle: XGuider的博客 | XGuider Blog
-header-img: img/home-bg-art.jpg
-email: 1275660493@qq.com
+title: "XGuider Blog"
+seo_title: "XGuider的博客 | XGuider Blog"
+header_img: "img/home-bg-art.webp"
+email: "1275660493@qq.com"
 description: "@XGuider,不要让任何事情成为你不去学习的理由！"
-keyword: "XGuider, @XGuider, XGuider的博客,XGuider Blog, 博客, 个人网站, 互联网"
-url: "https://XGuider.github.io/"              # your host, for absolute URL
-baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+keywords: ["XGuider", "@XGuider", "XGuider的博客", "XGuider Blog", "博客", "个人网站", "互联网", "Web开发", "技术博客"]
+url: "https://xguider.github.io"
+baseurl: ""
+
+# Modern SEO and social media
+lang: "zh-CN"
+author: "XGuider"
+twitter:
+  username: "XGuider"
+  card: "summary_large_image"
+facebook:
+  app_id: ""
+  publisher: ""
+linkedin_username: "xguider"
+instagram_username: "xguider"
 
 
 
@@ -24,22 +36,29 @@ anchorjs: true                          # if you want to customize anchor. check
 
 
 
-# Plugins
-# GitHub Pages支持的插件
+# Modern Jekyll plugins
 plugins:
-  - jekyll-paginate
+  - jekyll-paginate-v2
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-redirect-from
+  - jekyll-pwa-plugin
 
 
 
-# Markdown settings
-# replace redcarpet to kramdown,
-# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
-# document: http://jekyllrb.com/docs/configuration/#kramdown
+# Modern Markdown configuration
 markdown: kramdown
 kramdown:
-  input: GFM                            # use Github Flavored Markdown !important
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
 
 
@@ -51,13 +70,17 @@ kramdown:
 livere_uid: MTAyMC8yODkzOC81NTA3
 
 
-# Analytics settings
-# Baidu Analytics (百度统计)
-ba_track_id: 969b089e87ca4b02f96f2c1ee3553b06
-
-# Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx (请更新为你的Google Analytics ID)
-ga_domain: XGuider.github.io
+# Modern analytics
+analytics:
+  google:
+    tag_id: "G-XXXXXXXXXX"  # GA4 Measurement ID
+  baidu:
+    tracking_id: "969b089e87ca4b02f96f2c1ee3553b06"
+  plausible:
+    domain: "xguider.github.io"
+  umami:
+    website_id: ""
+    src: ""
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.

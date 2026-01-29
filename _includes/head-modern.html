@@ -1,0 +1,122 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta name="keywords" >
+    <meta name="theme-color" content="#3498db">
+
+    <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
+
+    {# Web App Manifest #}
+    <link rel="manifest" href="{{ '/manifest.json' | prepend: site.baseurl }}">
+
+    {# Favicon #}
+    <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
+
+    {# Canonical URL #}
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+    {# Modern Preloading #}
+    <link rel="preload" href="{{ '/css/main.min.css' | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ '/css/main.min.css' | prepend: site.baseurl }}"></noscript>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="preload" as="font" type="font/woff2" crossorigin>
+
+    {# Fast fonts #}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    {# Font Awesome #}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css">
+
+    {# Structured data #}
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "{%- if page.layout == 'post' -%}BlogPosting{%- else -%}WebSite{%- endif -%}",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}",
+      "author": {
+        "@type": "Person",
+        "name": "X Guider",
+        "url": "{{ site.url }}"
+      },
+      "description": "{{ page.description | default: site.description | escape }}"
+      {% if page.layout == 'post' %},
+      "headline": "{{ page.title }}",
+      "datePublished": "{{ page.date | date_to_xmlschema }}"
+      {% endif %}
+    }</script>
+
+    {# Performance improvements with critical CSS #}
+    <style>*{
+      box-sizing:border-box;
+      margin:0;
+      padding:0
+    }
+    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{
+      font-size:100%;
+      font:inherit;
+      vertical-align:baseline
+    }
+    article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
+      display:block
+    }
+    body{
+      line-height:1;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      background:#fff;
+      color:#333;
+      overflow-y:scroll;
+    }
+    /* Modern scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3498db;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2980b9;
+    }
+    </style>
+
+    {# Modern analytics #}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_track_id }}"></script>
+    <script>
+      if (navigator.doNotTrack !== '1') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ site.ga_track_id }}', {
+          'send_page_view': false,
+          'anonymize_ip': true,
+          'allow_google_signals': false
+        });
+      }
+    </script>
+
+    {# PWA features #}
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+
+    <script>
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('{{ '/js/sw.bundle.js' | prepend: site.baseurl }}')
+          .then(reg => {
+            console.log('Service Worker registered successfully');
+          }).catch(err => {
+            console.error('Service Worker registration failed:', err);
+          });
+      }
+    </script>
+</head>

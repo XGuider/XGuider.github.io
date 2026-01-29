@@ -59,6 +59,7 @@ cd XGuider.github.io
 
 #### 4. 安装依赖
 
+**安装 Ruby 依赖：**
 ```bash
 bundle install
 ```
@@ -67,6 +68,26 @@ bundle install
 ```bash
 bundle update
 ```
+
+**安装 Node.js 依赖：**
+```bash
+npm install
+```
+
+**⚠️ 如果遇到 `sharp` 安装超时问题：**
+
+如果 `npm install` 时出现 `sharp: Installation error: Request timed out` 错误（通常是因为无法从 GitHub 下载预构建二进制文件），可以使用以下命令强制从源码构建：
+
+```bash
+npm_config_sharp_binary_host="" npm_config_sharp_libvips_binary_host="" npm_config_build_from_source=true npm install
+```
+
+或者单独安装 sharp：
+```bash
+npm_config_sharp_binary_host="" npm_config_sharp_libvips_binary_host="" npm_config_build_from_source=true npm install sharp --save-dev
+```
+
+> **注意：** 从源码构建可能需要 10-15 分钟，请耐心等待。
 
 #### 5. 启动本地服务器
 
@@ -107,6 +128,12 @@ bundle update
 # 清理缓存并重新构建
 bundle exec jekyll clean
 bundle exec jekyll build
+```
+
+**问题5: sharp 安装超时**
+```bash
+# 使用从源码构建的方式安装
+npm_config_sharp_binary_host="" npm_config_sharp_libvips_binary_host="" npm_config_build_from_source=true npm install sharp --save-dev
 ```
 
 ## 📦 部署到 GitHub Pages
