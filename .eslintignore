@@ -1,0 +1,13 @@
+# Ignore bundled files
+js/*.bundle.js
+js/*.bundle.js.map
+js/sw.bundle.js
+js/sw.bundle.js.map
+
+# Ignore node_modules
+node_modules/
+
+# Ignore build outputs
+_site/
+dist/
+build/

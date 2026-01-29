@@ -3,15 +3,15 @@
  * Provides PWA functionality with offline support
  */
 
-import { precacheAndRoute } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate, CacheFirst, NetworkFirst } from 'workbox-strategies';
-import { ExpirationPlugin } from 'workbox-expiration';
-import { CacheableResponsePlugin } from 'workbox-cacheable-response';
+import { precacheAndRoute } from 'workbox-precaching'
+import { registerRoute } from 'workbox-routing'
+import { StaleWhileRevalidate, CacheFirst, NetworkFirst } from 'workbox-strategies'
+import { ExpirationPlugin } from 'workbox-expiration'
+import { CacheableResponsePlugin } from 'workbox-cacheable-response'
 
 // Precache static assets
 // The manifest will be injected by workbox-webpack-plugin
-precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute(self.__WB_MANIFEST)
 
 // Cache CSS files with stale-while-revalidate strategy
 registerRoute(
@@ -28,7 +28,7 @@ registerRoute(
       })
     ]
   })
-);
+)
 
 // Cache JavaScript files with stale-while-revalidate strategy
 registerRoute(
@@ -45,7 +45,7 @@ registerRoute(
       })
     ]
   })
-);
+)
 
 // Cache images with cache-first strategy
 registerRoute(
@@ -62,7 +62,7 @@ registerRoute(
       })
     ]
   })
-);
+)
 
 // Cache fonts with cache-first strategy
 registerRoute(
@@ -79,7 +79,7 @@ registerRoute(
       })
     ]
   })
-);
+)
 
 // Network-first strategy for HTML pages
 registerRoute(
@@ -96,6 +96,6 @@ registerRoute(
       })
     ]
   })
-);
+)
 
-console.log('Service Worker with Workbox initialized');
+console.log('Service Worker with Workbox initialized')

@@ -12,6 +12,9 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
+  globals: {
+    gtag: 'readonly'
+  },
   rules: {
     'no-console': 'warn',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
