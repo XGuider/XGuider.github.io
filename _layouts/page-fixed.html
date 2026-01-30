@@ -1,0 +1,177 @@
+---
+layout: default
+---
+
+<header class="page-header" role="banner" style="{% if page.header-img %}background-image: url('{{ site.baseurl }}/{{ page.header-img }}'){% endif %}">
+    <div class="page-header-overlay"></div>
+    <div class="page-header-content">
+        <h1 class="page-title">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+        {% if page.description %}
+        <p class="page-description">{{ page.description }}</p>
+        {% endif %}
+    </div>
+</header>
+
+<style>
+.page-header {
+    position: relative;
+    padding: 4rem 0 3rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    {% if page.header-img %}background-size: cover; background-position: center;{% endif %}
+    color: white;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.page-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    {% if page.header-img %}opacity: 0.6;{% endif %}
+}
+
+.page-header-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.page-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+}
+
+.page-description {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin: 0;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 3rem 0 2rem;
+    }
+}
+</style>
+
+<main class="page-content">
+    {% if site.sidebar == true %}
+        <div class="container-content">
+            <div class="content-grid">
+                <!-- Main Content -->
+                <article class="content-main">
+                    {{ content }}
+                </article>
+
+                <!-- Sidebar -->
+                <aside class="content-sidebar">
+                    {% include sidebar.html %}
+                </aside>
+            </div>
+        </div>
+    {% else %}
+        <div class="container-narrow">
+            <article class="content-full">
+                {{ content }}
+            </article>
+        </div>
+    {% endif %}
+</main>
+
+<style>
+.page-content {
+    padding: 3rem 0 4rem;
+    background: var(--bg-color);
+    min-height: 60vh;
+}
+
+.container-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.content-main {
+    background: var(--bg-color);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.content-sidebar {
+    position: sticky;
+    top: 100px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+}
+
+.content-full {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+}
+
+@media (max-width: 992px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+        position: static;
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-full {
+        padding: 2rem;
+    }
+
+    .content-sidebar {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-full,
+    .content-main {
+        padding: 1.5rem;
+    }
+}
+
+@media print {
+    .page-header {
+        background: none !important;
+        color: var(--gray-900) !important;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .content-sidebar {
+        display: none !important;
+    }
+}
+</style>

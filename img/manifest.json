@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "images": [],
+  "formats": [
+    "webp",
+    "jpeg"
+  ],
+  "sizes": [
+    {
+      "suffix": "_lg",
+      "width": 1920
+    },
+    {
+      "suffix": "_md",
+      "width": 1024
+    },
+    {
+      "suffix": "_sm",
+      "width": 640
+    }
+  ]
+}
