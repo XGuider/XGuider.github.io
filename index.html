@@ -189,7 +189,34 @@ header-img: "img/home-bg-art.jpg"
     {% endfor %}
 {% endif %}
 
-{% if all_categories.size == 0 and uncategorized_posts.size == 0 %}
+<!-- 显示 Videos 视频内容 -->
+{% if site.videos.size > 0 %}
+    <div class="category-header">
+        <h2 class="category-title">
+            <span class="category-icon">🎬</span>
+            <span class="category-name">视频</span>
+            <span class="category-count">({{ site.videos.size }})</span>
+        </h2>
+    </div>
+
+    {% for video in site.videos %}
+        <article class="article-card">
+            <a href="{{ video.url | prepend: site.baseurl | replace: '//', '/' }}">
+                <h2 class="article-card-title">
+                    {{ video.title }}
+                </h2>
+                <p class="article-card-desc">
+                    {{ video.content | strip_html | truncate:100 }}
+                </p>
+                <p class="article-card-meta">
+                    {{ video.date | date: "%Y-%m-%d" }} · 视频
+                </p>
+            </a>
+        </article>
+    {% endfor %}
+{% endif %}
+
+{% if all_categories.size == 0 and uncategorized_posts.size == 0 and site.videos.size == 0 %}
     <div class="post-preview">
         <p class="post-meta">暂无文章</p>
     </div>

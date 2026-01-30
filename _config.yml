@@ -2,8 +2,8 @@
 title: "XGuider Blog"
 seo_title: "XGuider的博客 | XGuider Blog"
 header_img: "img/home-bg-art.webp"
-email: "1275660493@qq.com"
-description: "@XGuider,不要让任何事情成为你不去学习的理由！"
+email: "973279990@qq.com"
+description: "@XGuider,学习路上与君共勉！"
 keywords: ["XGuider", "@XGuider", "XGuider的博客", "XGuider Blog", "博客", "个人网站", "互联网", "Web开发", "技术博客"]
 url: "https://xguider.github.io"
 baseurl: ""
@@ -30,8 +30,17 @@ github_username:    XGuider
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
 permalink: pretty
-paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md","scripts","_posts/*.docx","_posts/*.doc","_posts/*.pdf"]
+# Pagination (using jekyll-paginate-v2)
+pagination:
+  enabled: true
+  per_page: 10
+  permalink: '/page/:num/'
+  title: ':title - page :num'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md","scripts","_posts/*.docx","_posts/*.doc","_posts/*.pdf","Gemfile","Gemfile.lock"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
 
@@ -84,7 +93,7 @@ analytics:
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "不要让任何事情成为你不去学习的理由！"
+sidebar-about-description: "热爱技术分享的开发者，专注于AI与IT技术领域。欢迎交流！"
 sidebar-avatar: /img/favicon.ico      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
