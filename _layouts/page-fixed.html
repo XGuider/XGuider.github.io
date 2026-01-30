@@ -15,7 +15,10 @@ layout: default
 <style>
 .page-header {
     position: relative;
-    padding: 4rem 0 3rem;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     {% if page.header-img %}background-size: cover; background-position: center;{% endif %}
     color: white;
@@ -90,7 +93,7 @@ layout: default
 <style>
 .page-content {
     padding: 3rem 0 4rem;
-    background: var(--bg-color);
+    background: #F9FAFB;
     min-height: 60vh;
 }
 
@@ -114,18 +117,13 @@ layout: default
 }
 
 .content-main {
-    background: var(--bg-color);
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
+    background: transparent;
+    overflow: visible;
 }
 
 .content-sidebar {
     position: sticky;
     top: 100px;
-    background: var(--bg-color);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    padding: 2rem;
 }
 
 .content-full {
