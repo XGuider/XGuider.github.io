@@ -1,0 +1,93 @@
+---
+layout: "post"
+title: "环境配置"
+subtitle: "系统与运维"
+date: "2026-03-25 16:48:00"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/环境配置.md`
+
+#java
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
+PATH=$JAVA_HOME/bin:$PATH:
+CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:
+export JAVA_HOME
+export PATH
+export CLASSPATH
+
+
+
+#maven
+export M2_HOME= /opt/homebrew/Cellar/maven/3.9.6/libexec
+export PATH=$PATH:$M2_HOME/bin
+
+
+#mysql
+brew install mysql
+brew services start mysql -自启动
+brew services list mysql 
+mysql -u root
+mysql -uroot -h127.0.0.1 
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'newPass'; -密码修改
+/opt/homebrew/Cellar/mysql/9.3.0/bin/mysqld_safe --datadir=/opt/homebrew/var/mysql
+brew services start mysql@8.0
+brew services list
+
+# 登录 MySQL
+mysql -u root -p
+-- 创建用户
+CREATE USER 'ai'@'localhost' IDENTIFIED BY 'ai';
+
+-- 授予 data_agent 数据库的所有权限
+GRANT ALL PRIVILEGES ON data_agent.* TO 'ai'@'localhost';
+
+-- 刷新权限
+FLUSH PRIVILEGES;
+
+
+# 查看用户权限
+SELECT 
+    User, 
+    Host, 
+    Db AS DatabaseName,
+    GROUP_CONCAT(
+        CASE WHEN Select_priv = 'Y' THEN 'SELECT' END,
+        CASE WHEN Insert_priv = 'Y' THEN 'INSERT' END,
+        CASE WHEN Update_priv = 'Y' THEN 'UPDATE' END,
+        CASE WHEN Delete_priv = 'Y' THEN 'DELETE' END,
+        CASE WHEN Create_priv = 'Y' THEN 'CREATE' END,
+        CASE WHEN Drop_priv = 'Y' THEN 'DROP' END,
+        CASE WHEN Grant_priv = 'Y' THEN 'GRANT' END
+    ) AS Privileges
+FROM mysql.db
+GROUP BY User, Host, Db;
+
+# 
+SELECT * FROM mysql.db where User = 'ai';
+
+-- 查看当前登录用户的权限
+SHOW GRANTS;
+
+-- 查看指定用户的权限（注意引号和主机名）
+SHOW GRANTS FOR 'myuser'@'localhost';
+
+
+
+#大模型
+ollama
+
+
+#kafka
+brew services list: 服务list
+
+
+#redis
+brew services start redis@6.2
+#Homebrew 重新管理 Redis 的链接
+brew unlink redis && brew link redis

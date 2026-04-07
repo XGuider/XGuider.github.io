@@ -1,0 +1,82 @@
+---
+layout: "post"
+title: "根据事件时间窗口数据流"
+subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
+date: "2025-03-13 15:17:39"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 实时计算
+    - Flink实时数据仓库
+categories:
+    - 大数据
+---
+
+> 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/根据事件时间窗口数据流.md`
+
+import org.apache.flink.streaming.api.TimeCharacteristic;
+import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
+import org.apache.flink.streaming.api.windowing.time.Time;
+
+public class EventTimeWindowExample {
+
+    public static void main(String[] args) throws Exception {
+        final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        // 设置时间特征为事件时间
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+
+        // 输入数据流
+        DataStream<T> stream = ...;
+
+        // 使用 TumblingEventTimeWindows 对数据流进行窗口化
+        DataStream<T> windowedStream = stream
+            .assignTimestampsAndWatermarks(...)  // 在事件时间上分配时间戳和水印
+            .windowAll(TumblingEventTimeWindows.of(Time.minutes(5)))  // 每5分钟一个窗口
+            .apply(new MyWindowFunction());  // 应用窗口函数进行处理
+
+        // 执行程序
+        env.execute("Event Time Window Example");
+    }
+}
+
+
+
+##周期性watermark
+.assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<T>() {
+    private final long maxOutOfOrderness = 3500; // 最大允许的乱序时间
+
+    @Override
+    public long extractTimestamp(T element, long previousElementTimestamp) {
+        // 从事件中提取时间戳
+        return element.getTimestamp();
+    }
+
+    @Override
+    public Watermark getCurrentWatermark() {
+        // 周期性生成水印，水印的时间戳为当前处理时间减去最大允许的乱序时间
+        return new Watermark(System.currentTimeMillis() - maxOutOfOrderness);
+    }
+})
+
+
+##特定事件watermark
+.assignTimestampsAndWatermarks(new AssignerWithPunctuatedWatermarks<T>() {
+    @Override
+    public long extractTimestamp(T element, long previousElementTimestamp) {
+        // 从事件中提取时间戳
+        return element.getTimestamp();
+    }
+
+    @Override
+    public Watermark checkAndGetNextWatermark(T lastElement, long extractedTimestamp) {
+        // 根据特定的事件生成水印
+        if (lastElement.getType() == EventType.END_MARKER) {
+            return new Watermark(extractedTimestamp);
+        }
+        return null;
+    }
+})

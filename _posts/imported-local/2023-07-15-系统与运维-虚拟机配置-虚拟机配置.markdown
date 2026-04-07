@@ -1,0 +1,32 @@
+---
+layout: "post"
+title: "虚拟机配置"
+subtitle: "系统与运维"
+date: "2023-07-15 11:50:56"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/虚拟机配置.md`
+
+设置密码:sudo passwd hadoop
+虚拟机密码：hadoop
+ssh hadoop@192.168.18.101 
+ssh hadoop@192.168.18.102
+ssh hadoop@192.168.18.103
+
+
+sudo vi /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+192.168.18.101	hadoop101
+192.168.18.102	hadoop102
+192.168.18.103	hadoop103
+192.168.18.104	hadoop104
+192.168.18.105	hadoop105
+192.168.18.106	hadoop106

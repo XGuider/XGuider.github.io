@@ -1,0 +1,101 @@
+---
+layout: "post"
+title: "检查点基础知识"
+subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
+date: "2025-02-26 21:06:03"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 实时计算
+    - Flink实时数据仓库
+categories:
+    - 大数据
+---
+
+> 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/检查点基础知识.md`
+
+检查点分界线（Barrier）：借鉴水位线的设计，在数据流中插入一个特殊的数据结构，专门用来表示触发检查点保存的时间点。收到保存检查点的指令后，Source任务可以在当前数据流中插入这个结构
+
+watermark指示的是“之前的数据全部到齐了”，而barrier指示的是“之前所有数据的状态更改保存入当前检查点”：它们都是一个“截止时间”的标志。所以在处理多个分区的传递时，也要以是否还会有数据到来作为一个判断标准。
+
+
+问题：非Barrier对齐的精准一次 和 Barrier对齐的至少一次 和 Barrier对齐的精准一次区别
+Barrier 对齐
+定义：Flink 检查点机制中，Barrier 是划分流数据快照的标记。对齐指 Barrier 到达算子时，暂停处理 Barrier 之后的数据，直到 Barrier 之前的数据处理完毕
+
+模式                     Barrier对齐   一致性    性能  典型场景
+非Barrier对齐的精准一次 ❌ 不对齐   ✅ 精准一次  ⚡️ 高    实时监控、广告点击统计
+Barrier对齐的至少一次  ✅ 对齐    ❌ 至少一次  ⚡️ 中等   日志分析、用户行为统计
+Barrier对齐的精准一次  ✅ 对齐    ✅ 精准一次  ⚠️ 低    金融交易、订单处理
+
+模式                对齐模式（Aligned）                          非对齐模式（Unaligned）
+工作原理            Barrier 到达时，算子暂停处理数据，等待所有输入流的Barrier 对齐后才触发快照。  不等对齐，直接“插队”处理 Barrier，允许快照时包含未对齐的数据。
+优点                严格一致性（Exactly-Once）                    避免背压（Backpressure），高吞吐、低延迟
+缺点                可能因对齐等待导致延迟和背压                   快照体积大（需保存未对齐的数据），恢复时可能重复处理
+适用场景            金融交易、计费等强一致性场景                   物联网、日志处理等高吞吐、低延迟场景
+
+
+Q：如何回答“Flink 的增量检查点如何优化 Barrier 的性能”？
+A：增量检查点（Incremental Checkpoint） 是 Flink 的一种优化机制，与传统全量检查点（Full Checkpoint）不同，它仅保存状态中自上一次检查点以来发生变化的部分（即增量数据），而非完整状态。这种设计显著降低了每次检查点的存储和传输开销
+
+Barrier 的性能瓶颈通常体现在两个方面：
+存储与 I/O 开销：全量检查点需要频繁写入大量重复数据，占用磁盘和网络带宽。
+处理延迟：生成全量检查点耗时较长，可能阻塞 Barrier 的传播，导致背压（Backpressure）。
+
+
+## 检测点保存
+
+public class CheckpointConfigDemo {
+    public static void main(String[] args) throws Exception {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
+        env.setParallelism(1);
+
+        // 代码中用到hdfs，需要导入hadoop依赖、指定访问hdfs的用户名
+        System.setProperty("HADOOP_USER_NAME", "atguigu");
+
+        // TODO 检查点配置
+        // 1、启用检查点: 默认是barrier对齐的，周期为5s, 精准一次
+        env.enableCheckpointing(5000, CheckpointingMode.EXACTLY_ONCE);
+        CheckpointConfig checkpointConfig = env.getCheckpointConfig();
+        // 2、指定检查点的存储位置
+        checkpointConfig.setCheckpointStorage("hdfs://hadoop102:8020/chk");
+        // 3、checkpoint的超时时间: 默认10分钟
+        checkpointConfig.setCheckpointTimeout(60000);
+        // 4、同时运行中的checkpoint的最大数量
+        checkpointConfig.setMaxConcurrentCheckpoints(1);
+        // 5、最小等待间隔: 上一轮checkpoint结束 到 下一轮checkpoint开始 之间的间隔，设置了>0,并发就会变成1
+        checkpointConfig.setMinPauseBetweenCheckpoints(1000);
+        // 6、取消作业时，checkpoint的数据 是否保留在外部系统
+        // DELETE_ON_CANCELLATION:主动cancel时，删除存在外部系统的chk-xx目录 （如果是程序突然挂掉，不会删）
+        // RETAIN_ON_CANCELLATION:主动cancel时，外部系统的chk-xx目录会保存下来
+        checkpointConfig.setExternalizedCheckpointCleanup(CheckpointConfig.ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION);
+        // 7、允许 checkpoint 连续失败的次数，默认0--》表示checkpoint一失败，job就挂掉
+        checkpointConfig.setTolerableCheckpointFailureNumber(10);
+
+        // TODO 开启 非对齐检查点（barrier非对齐）
+        // 开启的要求： Checkpoint模式必须是精准一次，最大并发必须设为1
+        checkpointConfig.enableUnalignedCheckpoints();
+        // 开启非对齐检查点才生效： 默认0，表示一开始就直接用 非对齐的检查点
+        // 如果大于0， 一开始用 对齐的检查点（barrier对齐）， 对齐的时间超过这个参数，自动切换成 非对齐检查点（barrier非对齐）
+        checkpointConfig.setAlignedCheckpointTimeout(Duration.ofSeconds(1));
+
+
+        env
+                .socketTextStream("hadoop102", 7777)
+                .flatMap(
+                        (String value, Collector<Tuple2<String, Integer>> out) -> {
+                            String[] words = value.split(" ");
+                            for (String word : words) {
+                                out.collect(Tuple2.of(word, 1));
+                            }
+                        }
+                )
+                .returns(Types.TUPLE(Types.STRING, Types.INT))
+                .keyBy(value -> value.f0)
+                .sum(1)
+                .print();
+
+        env.execute();
+    }
+}

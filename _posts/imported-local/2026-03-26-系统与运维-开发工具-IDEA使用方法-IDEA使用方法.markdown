@@ -1,0 +1,35 @@
+---
+layout: "post"
+title: "IDEA使用方法"
+subtitle: "系统与运维 / 开发工具"
+date: "2026-03-26 14:06:02"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 开发工具
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/03-开发工具/IDEA使用方法.md`
+
+## 快捷键CTRL+H查看
+
+可以查看向上和向下的继承关系
+
+不能查看接口信息
+
+## **快捷键ctrl+alt+u**，更快捷
+
+好处：可以看向上的继承关系
+
+缺点：既能看继承关系，也能看实现了哪些接口
+
+## 快捷建：alt+enter
+
+补充代码的错误信息
+
+## 快捷键：ctrl+空格
+
+查看类的源码。

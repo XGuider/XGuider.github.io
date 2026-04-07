@@ -1,0 +1,28 @@
+---
+layout: "post"
+title: "快捷键"
+subtitle: "系统与运维"
+date: "2025-06-16 11:59:49"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/快捷键.md`
+
+MAC：
+# + shift+ g:打开文件路径
+# + option + esc: 程序管理器
+shift + command + f ：chrome浏览器隐藏顶tab
+
+
+VSCODE：
+代码折叠：# + K + 0
+创建虚拟环境：# + shift + p
+
+
+Android抓包工具
+HTTP Canary

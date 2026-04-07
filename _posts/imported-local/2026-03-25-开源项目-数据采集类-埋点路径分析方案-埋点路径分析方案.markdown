@@ -1,0 +1,98 @@
+---
+layout: "post"
+title: "埋点路径分析方案"
+subtitle: "开源项目 / 数据采集类"
+date: "2026-03-25 18:14:05"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 数据采集类
+categories:
+    - 开源项目
+---
+
+> 来源：`本机相关/07-开源项目/01-数据采集类/埋点路径分析方案.md`
+
+# 埋点路径分析方案
+
+## 📌 背景
+
+### 现有问题
+1. 现有路径分析需要设定多个关键节点，往往这样会忽略用户真正访问的热点路径
+2. 当前用户标签往往基于页面访问、点击统计值或用户数据的枚举值，缺少基于访问路径进行用户标签
+
+### 实现效果
+1. 根据用户和 session 分组，通过时间排列，通过埋点整理用户的路径，相同的埋点进行合并
+2. 将路径拆分多子路径，统计每天/每月访问最多/最少的子路径
+3. 基于路径进行标签设定
+
+---
+
+## 🔄 实现流程
+
+```
+用户行为 -> Session分组 -> 时间排序 -> 路径提取 -> 子路径拆分 -> 统计分析 -> 标签生成
+```
+
+### 步骤详解
+
+| 步骤 | 说明 |
+|------|------|
+| 1. Session 分组 | 按用户 ID 和 Session ID 分组 |
+| 2. 时间排序 | 按时间戳排序行为序列 |
+| 3. 路径提取 | 提取埋点事件序列 |
+| 4. 埋点合并 | 相同连续埋点合并 |
+| 5. 子路径拆分 | 将长路径拆分为子路径 |
+| 6. 统计分析 | 统计访问频次 |
+| 7. 标签生成 | 基于路径特征生成用户标签 |
+
+---
+
+## 🛠️ 技术方案
+
+### 数据结构
+
+```sql
+-- 用户路径表
+CREATE TABLE user_path (
+    user_id String,
+    session_id String,
+    path Array(String),      -- 埋点路径
+    path_time Array(DateTime), -- 时间戳
+    date Date
+) ENGINE = MergeTree()
+ORDER BY (user_id, session_id, date);
+```
+
+### 分析 SQL 示例
+
+```sql
+-- 统计热门子路径
+SELECT 
+    path_segment,
+    count() as visit_count
+FROM user_path
+ARRAY JOIN path as path_segment
+WHERE date = today()
+GROUP BY path_segment
+ORDER BY visit_count DESC
+LIMIT 100;
+```
+
+---
+
+## ❓ 待确认问题
+
+1. **子路径长度**: 子路径拆分的最大长度是多少？
+2. **标签规则**: 基于路径生成标签的具体规则是什么？
+3. **实时性要求**: 是否需要实时计算，还是 T+1 批量计算？
+4. **存储方案**: 路径数据存储在 ClickHouse 还是其他存储？
+
+---
+
+## 📚 相关技术
+
+- **Flink**: 实时路径分析
+- **ClickHouse**: 路径数据存储与查询
+- **Spark**: 批量路径挖掘

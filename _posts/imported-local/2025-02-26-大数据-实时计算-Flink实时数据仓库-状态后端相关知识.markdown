@@ -1,0 +1,19 @@
+---
+layout: "post"
+title: "状态后端相关知识"
+subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
+date: "2025-02-26 09:20:54"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 实时计算
+    - Flink实时数据仓库
+categories:
+    - 大数据
+---
+
+> 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/状态后端相关知识.md`
+
+“哈希表状态后端”（HashMapStateBackend）：状态存放在内存里，保存在Taskmanager的JVM堆上。普通的状态，以及窗口中收集的数据和触发器，都会以键值对的形式存储起来，所以底层是一个哈希表（HashMap）。
+“内嵌RocksDB状态后端”（EmbeddedRocksDBStateBackend）：RocksDB默认存储在TaskManager的本地数据目录里。异步快照，不会因为保存检查点而阻塞数据的处理；而且它还提供了增量式保存检查点的机制

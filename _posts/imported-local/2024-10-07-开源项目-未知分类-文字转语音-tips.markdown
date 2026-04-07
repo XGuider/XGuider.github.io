@@ -1,0 +1,26 @@
+---
+layout: "post"
+title: "tips"
+subtitle: "开源项目 / 未知分类 / 文字转语音"
+date: "2024-10-07 11:15:54"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 未知分类
+    - 文字转语音
+categories:
+    - 开源项目
+---
+
+> 来源：`本机相关/07-开源项目/04-未知分类/文字转语音/tips.md`
+
+ChatTTS的使用：
+https://cloud.tencent.com/developer/article/2425141
+https://blog.csdn.net/obullxl/article/details/139558650#:~:text=ChatTTS%E6%98%AF%E4%B8%80%E6%AC%BE
+
+安装模型：
+https://www.modelscope.cn/models/pzc163/chatTTS
+
+ChatTTS开源项目：
+https://github.com/2noise/ChatTTS

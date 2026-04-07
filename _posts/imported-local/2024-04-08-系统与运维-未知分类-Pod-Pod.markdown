@@ -1,0 +1,20 @@
+---
+layout: "post"
+title: "Pod"
+subtitle: "系统与运维 / 未知分类"
+date: "2024-04-08 14:32:23"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 未知分类
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/04-未知分类/Pod.md`
+
+vpc-monitor-eagle： 监控和告警服务
+实时埋点验证：
+topic name : rangers_simulator
+consumer_group : rangers_simulator_consumer_group_name_1 / rangers_simulator_consumer_group_name_2

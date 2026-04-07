@@ -1,0 +1,16 @@
+---
+layout: "post"
+title: "系统pw"
+subtitle: "系统与运维"
+date: "2025-02-10 10:08:42"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/系统pw.md`
+
+sudo pw:xfq@2025

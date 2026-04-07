@@ -1,0 +1,118 @@
+---
+layout: "post"
+title: "kube命令行"
+subtitle: "系统与运维"
+date: "2025-06-16 10:03:11"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/kube命令行.md`
+
+# Minikube的使用
+brew install minikube
+启动单node的minikube：minikube start
+启动3个node minikube： minikube start -n 3
+minikube node list
+minikube kubectl -- get po -A
+alias kubectl="minikube kubectl --"
+
+# 1. 删除现有集群
+minikube delete
+
+# 2. 使用指定版本新建集群（添加中国镜像源参数）
+minikube start --driver=docker \
+  --kubernetes-version=v1.28.3 \
+  --image-repository='registry.cn-hangzhou.aliyuncs.com/google_containers' \
+  --image-mirror-country='cn'
+docker pull docker.1ms.run/kicbase/stable:v0.0.47
+docker tag 3ff635df663c gcr.io/k8s-minikube/kicbase:v0.0.47
+
+镜像导入：
+minikube image load myapp11:latest
+
+创建pod：
+minikube kubectl apply -f myapp-pod.yaml
+kubectl delete deployment myapp
+
+
+
+#Kubernetes Dashboard:
+docker tag 20b332c9a70d k·ubernetesui/dashboard:v2.7.0
+docker tag 423ee41d41a0 kubernetesui/metrics-scraper:v1.0.8
+# 3. 加载到Minikube
+minikube image load kubernetesui/dashboard:v2.7.0
+minikube image load kubernetesui/metrics-scraper:v1.0.8
+
+# 4. 重启Dashboard
+minikube addons disable dashboard
+minikube addons enable dashboard
+# 查看和启动
+kubectl get pods -n kubernetes-dashboard
+minikube dashboard
+
+
+
+
+
+kubectl get sts -n minio：kubectl命令获取名为"minio"的StatefulSet在命名空间"minio"中的信息
+包括副本数量、容器状态等
+
+kubectl get modrules -n minio：查看副本情况
+kubectl get xxx -n xx -o=jsonpath='{.data@.config\.json}'>tmp.json ：
+
+kubectl get 命令来获取指定命名空间（-n xx）中名为 xxx 的资源，并使用 -o=jsonpath='{.data@.config\.json}' 选项来指定 JSONPath 表达式。这个表达式的意思是从资源的 .data 字段中选择 config.json 键的值。
+kubectl -n datarangers apply -f xxx.yaml:kubectl 应用一个 YAML 文件来创建或更新 Kubernetes 资源，其中 -n datarangers 是指定了命名空间为 datarangers。这是一个很常见的操作，通常用于部署应用程序或者更新配置。
+
+kubectl get deploy xxx -n xxx -o yaml
+
+
+
+
+
+公开暴露应用以及打标签
+https://www.macrozheng.com/k8s/k8s_start.html#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99
+
+kubectl expose deployment/kubernetes-nginx --type="NodePort" --port 80
+kubectl get services
+kubectl describe services/kubernetes-nginx
+通过CURL命令通过Minikube IP:NodePort IP可以访问Nginx服务，此时将打印Nginx主页信息
+
+kubectl describe deployment
+kubectl get pods -l app=kubernetes-nginx
+kubectl get services -l app=kubernetes-nginx
+kubectl get pods -l version=v1
+
+
+
+kubectl delete deployment my-deployment：停止服务
+kubectl指定节点部署服务
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  nodeSelector:
+	kubernetes.io/hostname: your-specific-node-name
+kubectl apply -f your-file.yaml
+
+
+
+
+#资源相关
+kubectl top node
+ansible all_nodes -m shell -a "free -g"
+
+
+查看某个资源类型的所有资源及其标签：
+kubectl get <resource_type> --show-labels
+kubectl logs -n -lapp=xxx --tail 200
+打标签
+kubectl label pod my-pod tier=frontend

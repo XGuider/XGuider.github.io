@@ -1,0 +1,452 @@
+---
+layout: "post"
+title: "递归动归以及背包总结、KMP，最短路径合辑"
+subtitle: "编程语言 / 算法"
+date: "2026-03-26 14:05:03"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/递归动归以及背包总结、KMP，最短路径合辑.md`
+
+**一、递归问题（BFS和DFS）**
+
+**1、树的遍历查找问题===>梦境效应**
+
+一、DFS：
+
+```python
+def recursion(level,param1,params,...):
+  if level>MAX_LEVEL:
+    print_result
+   ###处理当前层的数据逻辑
+   process_data(level,data...)
+   #传入下一层
+   self.recursion(level+1,p1,...)
+   #如果需要反转当前的状态
+   reverse_state(level)
+```
+二、BFS
+```python
+def Bfs(graph.start,end):
+    queue=[]
+    queue.append([start])
+    while queue:
+      node=queue.pop()
+      process(node)
+      node=generate_r_node(node)
+      queue.push(nodes)
+```
+三、树的先中后序遍历
+```plain
+def pre_root(root):##前中后依此类推
+  if root:
+      //处理数据
+      self.traverse.append(root.val)
+      self.pre_root（root.left）
+      self.pre_root（root.right）
+```
+四、判断两树是否相同
+```python
+####other_node为子树
+def deside_same(node,other_node):
+    if(!other_node) return true
+    if(!node) return false
+    return node.val=other_node.val&&dfs(node.left,other_node.left)&&dfs(node.right,other_node.right)
+```
+五、返回最长公众节点
+```python
+def  lowest_common(root,p,q):
+  if(root==null || root==p||root==q):return root;
+  left=lowest_common(root.left,p,q)
+  right=lowest_common(root.right,p,q)
+  return left==null?right:right==null?left:root
+##二叉树搜索树的最长公共节点
+def  lowest_common(root,p,q):
+  if(root==null || root==p||root==q):return root;
+  if p.val<root.val>q.val：
+    return lowest_common(root.left,p,q)
+  if p.val>root.val<q.val:
+     return lowest_common(root.right,p,q)
+  return root
+```
+六、二叉树的镜像
+```python
+中序遍历和前序遍历，正确的前序遍历
+class Solution:
+    def Mirror(self , pRoot ):
+        # write code here
+        if not pRoot:
+            return
+        node_lists=[pRoot]
+        while node_lists:
+            node=node_lists.pop()
+            temp=node.left
+            node.left=node.right
+            node.right=temp
+            if node.left:node_lists.append(node.left)
+            if node.right:node_lists.append(node.right)
+#前序遍历
+class Solution:
+    # 返回镜像树的根节点
+    def Mirror(self, root):
+        # write code here
+        if root != None:
+            root.left,root.right = root.right,root.left
+            self.Mirror(root.left)
+            self.Mirror(root.right)
+```
+七、判断一个数组是否为二叉搜索树的结果
+```python
+特点：每次与数组的最会一个数对比，则能成功分离开左右数，一直递归下去直到最后返回True
+# -*- coding:utf-8 -*-
+class Solution:
+    def VerifySquenceOfBST(self, sequence):
+        if not sequence: return False
+        
+        def recur(i, j):
+            if i >= j: return True
+            p = i
+            while sequence[p] < sequence[j]: p += 1
+            m = p
+            while sequence[p] > sequence[j]: p += 1
+            return p == j and recur(i, m - 1) and recur(m, j - 1)
+        return recur(0, len(sequence) - 1)
+```
+八：二叉中和为某一值得路径
+```python
+class Solution:
+    # 返回二维列表，内部每个列表表示找到的路径
+    def FindPath(self, root, expectNumber):
+        # write code here
+        res = []
+        path = []
+        def recur(root, tar):
+            if not root:return
+            path.append(root.val)
+            tar -= root.val
+            if (tar == 0) and not root.left and not root.right:
+                res.append(list(path))
+            recur(root.left, tar)
+            recur(root.right, tar)
+            path.pop()
+        recur(root, expectNumber)
+        return res
+```
+九、树的深度
+```python
+#树的深度
+# class Solution:
+#     def TreeDepth(self, pRoot):
+#         len=0
+#         res=self.recu(pRoot,len)
+#         return res
+#
+#     def recu(self,pRoot,len):
+#         if (pRoot==None):
+#             return len
+#         len+=1
+#         left_len = self.recu(pRoot.left,len)
+#         right_len = self.recu(pRoot.right,len)
+#         return max(left_len, right_len)
+```
+**2、部分乱七八糟的递归问题**
+
+---
+
+**二、动归问题**
+
+**解决问题:**1、最大值最小值，2、计数，3、存在性问题，4、贪心问题
+
+1. 最值型动态规划，比如求最大，最小值是多少
+
+2. 计数型动态规划，比如换硬币，有多少种换法
+
+3. 坐标型动态规划，比如在m*n矩阵求最值型，计数型，一般是二维矩阵
+
+4. 区间型动态规划，比如在区间中求最值
+
+**动归组成部分：**
+
+一、确定状态，即数组中每个元素f[j]和f[i][j]的含义，最后一步意识，子问题意识；
+
+二、转移方程--根据子问题直接得到；#需要找到子问题
+
+三、初始条件和边界条件
+
+四、计算顺序
+
+```python
+模板：
+dp=new int[m+1][n+1]
+dp[0][0]=x;
+dp[0][1]=y;
+......
+for i=0;i<=n;i++{
+  for j=0;j<=m;++j{
+    dp[i][j]=min{dp[i-1][j],dp[i][j-1],etc.}
+  }
+}
+return dp[m][n]
+**分类：**
+
+**1、坐标性动态规划：给定序列或网格求解1，2，3问题**
+
+```
+
+
+**2、序列性动态规划**
+
+
+**3、划分性动态规划**
+
+
+---
+
+
+**三、背包问题**
+
+**1、0/1背包问题**
+
+解题思路：每件商品只能选一次（选与不选），则有两种方法解决这个问题：
+
+1、二位数组：只看选/不选第i件，时候的容量j，以及选和不选的最大价值，输出的是max(f[n][i])，保证当前的容量不越界
+
+解题思路：遍历所有的商品，逆序枚举背包容量
+
+2、一位数组：同样也是选还是不选的抉择。f[j]=max(f[j],f[j-v[i]]+w[i])
+
+```python
+Code:def ZeroOneBackPack(cost,value): 
+  for i in reversed(range(cost,target+1)): #逆序遍历
+    F[i] = max(F[i],F[i-cost]+value) 
+for i in range(0,n): 
+   ZeroOneBackPack(C[i],V[i]) 
+print (F[target])
+```
+**2、完全背包问题**
+解题思路：维护一个数组，即:遍历背包容量，保证当前的容量是最大的价值
+
+1、一位数组：遍历背包容量，枚举每个物品的大小，取当前容量最大的价值，同样也是选和不选中抉择，保证当前的容量不越界
+
+2、二维数组：f[i][v]=max{f[i-1][v-k*c[i]]+k*w[i]|0<=k*c[i]<= v}。这跟01背包问题一样有O(N*V)个状态需要求解
+
+```python
+def CompleteBackPack(cost,value): 
+for i in range(cost,target+1):#这是和01背包唯一的区别 正序遍历 
+  F[i] = max(F[i],F[i-cost]+value) 
+for i in range(0,n): 
+  CompleteBackPack(C[i],V[i]) 
+print (F[target])
+```
+**3、多重背包问题-每件物品有m件物品**
+解题思路：维护一个数组，遍历所有的商品，逆序枚举背包容量，同时遍历取1个产品，两个产品或者n个产品的情况
+
+1、一位数组：遍历商品，同时枚举容量和数量
+
+2、二维数组：f[i][v]=max{f[i-1][v-k*c[i]]+ k*w[i]|0<=k<=n[i]&&0<=k*c[i]<= v}
+
+```python
+def MultipleBackPack(cost,value,count): 
+  if (cost * count) >= target:#当该种物品的个数乘以体积大于背包容量，视为有无限个即完全背包 
+    CompleteBackPack(C[i],V[i]) 
+    return 
+  temp_count = 1 #以上情况不满足，转化为以下情况，具体参考《背包九讲》多重背包的时间优化 
+  while(temp_count<count):  
+    OneZeroBackPack(temp_count*cost,temp_count*value) 
+    count = count - temp_count 
+    temp_count = temp_count * 2 #转化为1，2，4 
+  OneZeroBackPack(count*cost,count*value)#9个中剩下两个 
+for i in range(0,n): 
+    MultipleBackPack(C[i],V[i],Count[i]) 
+print (F[target])
+
+for i in range(n):
+  for j in range(m,v[i],j--)：
+    f[j]=max(f[j],f[j-v(i)]+w[i])
+    f[j-2*v(i)]+2*w[i]....)
+```
+**4、混合三种背包问题**
+解题思路：整合上面的情况
+
+1、背包和完全背包整合：
+
+```python
+def MixsBackPack(cost,value,count): 
+  if count >1:#当该种物品的个数乘以体积大于背包容量，视为有无限个即完全背包 
+    CompleteBackPack(C[i],V[i]) 
+    return  
+    #以上情况不满足，转化为以下情况，具体参考《背包九讲》多重背包的时间优化 
+  else:
+  while(temp_count<count):  
+    OneZeroBackPack(temp_count*cost,temp_count*value) 
+    return
+for i in range(0,n): 
+    MixsBackPack(C[i],V[i],Count[i]) 
+print (F[target])
+```
+2、背包，完全背包以及多重背包整合
+```python
+for i ← 1 to N
+  if 第 i 件物品属于 01 背包
+    ZeroOnePack(F,C i ,W i )
+  else if 第 i 件物品属于完全背包
+    CompletePack(F,C i ,W i )
+  else if 第 i 件物品属于多重背包
+     MultiplePack(F,C i ,W i ,N i )
+**5、二维费用背包问题**
+
+```
+题解：二维的问题--每种费用有上界，求 得到的价值最大--Ci和Di---V，D==同样是选与不选的问题。
+```python
+费用加了一维，只需状态也加一维即可。设 F[i,v,u] 表示前 i 件物品付出两种费用分别为 v 和 u 时可获得的最大价值。状态转移方程就是：
+F[i,v,u] = max{F[i − 1,v,u],F[i − 1,v − C i ,u − D i ] + W i }
+```
+**6 分组的背包问题**
+题解：N个物品和V个背包，每件物品的费用为Ci和Wi，被划分为K组，每组只能选择一件，求价值最大
+
+```python
+这个问题变成了每组物品有若干种策略：是选择本组的某一件，还是一件都不选。也就是说设 F[k,v] 表示前 k 组物品花费费用 v 能取得的最大权值，则有：
+  F[k,v] = max{F[k − 1,v],F[k − 1,v − C i ] + W i | item i ∈ group k}
+使用一维数组的伪代码如下：
+  for k ← 1 to K
+    for v ← V to 0
+        for all item i in group k
+            F[v] ← max{F[v],F[v − C i ] + W i }
+```
+**7、输出选择策略**
+1、新增一个数组维护是否选择该路径，0/1表示
+
+2、求最优方案总数
+
+```python
+G[0,0] ← 1
+  for i ← 1 to N
+    for v ← 0 to V
+      F[i,v] ← max{F[i − 1,v],F[i − 1,v − C i ] + W i }
+      G[i,v] ← 0
+      if F[i,v] = F[i − 1,v]
+          G[i,v] ← G[i,v] + G[i − 1][v]
+       if F[i,v] = F[i − 1,v − C i ] + W i
+          G[i,v] ← G[i,v] + G[i − 1][v − C i ]
+```
+
+
+
+**KMP算法**
+
+
+
+**最短路径**
+
+
+1、求每个点可以达到的所有点
+
+美团：
+
+
+网易：
+
+```plain
+小 Q 正在设计一种棋类游戏。
+在小 Q 设计的游戏中，棋子可以放在棋盘上的格点中。某些格点之间有连线，棋子只能在有连线的格点之间移动。整个棋盘上共有 V 个格点，编号为0,1,2 … , V− 1，它们是连通的，也就是说棋子从任意格点出发，总能到达所有的格点。小 Q 在设计棋盘时，还保证棋子从一个格点移动到另外任一格点的路径是唯一的。
+小 Q 现在想知道，当棋子从格点 0 出发，移动 N 步最多能经过多少格点。格点可以重复经过多次，但不重复计数。
+输入格式
+第行包含2个正整数V, N，其中 V 表示格点总数，N 表示移动步数。
+接下来V − 1行，每行两个数
+的两个格点之间有连线。
+```
+![图片](data:image/png;base64,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)
+
+```java
+public class Solution
+{
+    public static int []x=new int [100005];
+    static List []g=new List[100005];
+    public static int []dep=new int [100005];
+    public static int []used=new int [100005];
+    public static int n,m;
+
+    public static void dfs(int u)
+    {
+        used[u]=1;
+        for(int i=0;i<g[u].size();i++)
+        {
+            int v=(int)g[u].get(i);
+            if(used[v]==1)
+                continue;
+            dep[v]=dep[u]+1;
+            dfs(v);
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        Scanner S=new Scanner(System.in);
+        int n=S.nextInt(),m=S.nextInt();
+        n--;
+        for(int i=0;i<=n;i++)
+            g[i]=new ArrayList <Integer>();
+        for(int i=1;i<=n;i++)
+        {
+            int u=S.nextInt(),h=S.nextInt();
+            g[u].add(h); g[h].add(u);
+        }
+        System.out.println(Arrays.toString(g));
+        dep[0]=1; dfs(0); int mx=0;
+        System.out.println(Arrays.toString(dep));
+        for(int i=0;i<=n;i++)
+            mx=Math.max(mx,dep[i]);
+        if(m<=mx-1)
+            System.out.println(m+1);
+        else
+            System.out.println(Math.min(n,mx+(m-mx+1)/2));
+    }
+}
+```
+美团:
+```cpp
+小美要去找小团“讲道理”。小团望风而逃，他们住的地方可以抽象成一棵有n个结点的树， 小美位于x位置，小团位于y位置。小团和小美每个单位时间内都可以选择不动或者向相邻的位置转移， 假设小美足够聪明，
+很显然最终小团会无路可逃，只能延缓一下被“讲道理”的时间，请问最多经过多少个单位时间后， 小团会被追上
+思路：AC 分别以 x y 为起点搜索到所有其他点的路径长度，然后取dx > dy得最大的dx就是答案
+代码：
+const int maxn = 50005;
+void dfs(vector<vector<int>>& tree, vector<int>& dis, int u, int fa, int step) {
+    for(int v : tree[u]) {
+        if(v == fa) continue;
+        dis[v] = step+1;
+        dfs(tree, dis, v, u, step+1);
+    }
+}
+int main(void)
+{
+#ifndef ONLINE_JUDGE
+    freopen("c.txt", "r", stdin);
+#endif
+    int n, x, y;
+    while(cin >> n >> x >> y) {
+        vector<vector<int>> tree(n+1);
+        for(int i = 1; i < n; ++i) {
+            int u, v;
+            cin >> u >> v;
+            tree[u].push_back(v);
+            tree[v].push_back(u);
+        }
+        vector<int> disx(n+1, 0);
+        vector<int> disy(n+1, 0);
+        dfs(tree, disx, x, -1, 0);
+        dfs(tree, disy, y, -1, 0);
+        int ans = 0;
+        for(int i = 1; i <= n; ++i) {
+            if(disx[i] > disy[i]) ans = max(ans, disx[i]);
+        }
+        cout << ans << endl;
+    }
+    return 0;
+}
+```

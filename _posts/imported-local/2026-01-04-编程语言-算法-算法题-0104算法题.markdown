@@ -1,0 +1,57 @@
+---
+layout: "post"
+title: "0104算法题"
+subtitle: "编程语言 / 算法 / 算法题"
+date: "2026-01-04 22:44:32"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+    - 算法题
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/算法题/0104算法题.md`
+
+给定一个字符串 s，请你判断它是否是一个回文串。
+
+回文串是指正读和反读都一样的字符串（忽略大小写）。
+本题中，我们将只考虑字母和数字字符，并忽略其他字符（如标点符号、空格等）。
+
+示例 1：
+输入: s = "A man, a plan, a canal: Panama"
+输出: true
+解释: "amanaplanacanalpanama" 是回文串。
+
+class Solution {
+    public boolean isPalindrome(String s) {
+        // 使用双指针，i 从头开始，j 从尾开始
+        int i = 0;
+        int j = s.length() - 1;
+
+        while (i < j) {
+            // 移动 i 指针，直到找到一个字母或数字
+            while (i < j && !Character.isLetterOrDigit(s.charAt(i))) {
+                i++;
+            }
+            // 移动 j 指针，直到找到一个字母或数字
+            while (i < j && !Character.isLetterOrDigit(s.charAt(j))) {
+                j--;
+            }
+
+            // 比较当前两个字符（转为小写后）
+            if (Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))) {
+                return false; // 发现不相等，立即返回 false
+            }
+
+            // 移动指针，继续下一对字符
+            i++;
+            j--;
+        }
+
+        // 循环结束，说明是回文串
+        return true;
+    }
+}

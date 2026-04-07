@@ -1,0 +1,222 @@
+---
+layout: "post"
+title: "智能体开发入门"
+subtitle: "AI智能 / 框架与项目"
+date: "2026-03-29 13:56:41"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 框架与项目
+categories:
+    - AI智能
+---
+
+> 来源：`本机相关/04-AI智能/02-框架与项目/智能体开发入门.md`
+
+---
+tags: [AI, 智能体, Agent, 提示词, 知识库, LangChain]
+created: 2024-01-01
+updated: 2026-03-29
+status: published
+confidence: high
+---
+
+# 智能体开发入门指南
+
+> 不会代码也能 3 分钟开发一个智能体网页
+
+## 概述
+
+本文档介绍智能体（Agent）开发的基础知识，包括提示词编写、模型选择、编排模式和知识库功能，帮助快速入门 AI 智能体开发。
+
+## 📝 提示词编写
+
+提示词是一种自然语言指令，它为大语言模型（LLM）提供任务指导。搭建智能体的第一步就是编写提示词，为智能体设定身份和目标。
+
+智能体会根据大语言模型对人物设定和回复逻辑的理解，来响应用户问题。因此提示词编写得越清晰明确，智能体的回复也会越符合预期。
+
+### 提示词编写原则
+
+| 原则 | 说明 |
+|------|------|
+| 明确身份 | 定义智能体的角色定位 |
+| 清晰目标 | 说明智能体需要完成的任务 |
+| 约束条件 | 设定回复的格式、风格限制 |
+| 示例引导 | 提供期望的输入输出示例 |
+
+### 示例提示词
+
+```markdown
+你是一位大模型提示词生成专家，请根据用户的需求编写一个智能助手的提示词，来指导大模型进行内容生成，要求：
+1. 以 Markdown 格式输出
+2. 贴合用户需求，描述智能助手的定位、能力、知识储备
+3. 提示词应清晰、精确、易于理解，在保持质量的同时，尽可能简洁
+4. 只输出提示词，不要输出多余解释
+```
+
+### 提示词优化技巧
+
+```markdown
+# 角色定义
+你是一个 [角色名称]，专门负责 [具体职责]
+
+# 能力范围
+你可以：[能力列表]
+你不可以：[限制列表]
+
+# 回复格式
+请按照以下格式回复：
+1. [字段1]
+2. [字段2]
+...
+
+# 注意事项
+- [注意事项1]
+- [注意事项2]
+```
+
+---
+
+## 🤖 模型选择
+
+推荐模型：**DeepSeek**
+
+### 模型选择参考
+
+| 模型 | 优势 | 适用场景 |
+|------|------|----------|
+| DeepSeek | 中文能力强、成本低 | 中文对话、代码生成 |
+| GPT-4 | 推理能力强 | 复杂任务、专业领域 |
+| Claude | 长文本处理 | 文档分析、内容创作 |
+| Qwen | 国产大模型 | 国内业务、合规场景 |
+
+---
+
+## 🔀 编排模式
+
+### 单 Agent 模式
+
+智能体默认采用单 Agent 模式，即通过一个智能体独立完成所有任务。
+
+```
+用户输入 → 单一 Agent → 输出响应
+```
+
+**适用场景**：
+- 任务逻辑简单
+- 无需多角色协作
+- 响应速度要求高
+
+### 多 Agent 模式
+
+当需要搭建更复杂、功能更全面的智能体时，可选择多 Agent 模式：
+
+```
+用户输入 → 路由 Agent → 专业 Agent A/B/C → 汇总输出
+```
+
+**多 Agent 优势**：
+- 为不同的 Agent 配置不同的提示
+- 将复杂的任务分解为一组更简单的任务
+- 避免在一个智能体的提示中设置所有的判断条件和使用限制
+
+### 多 Agent 架构示例
+
+```python
+# 伪代码示例
+class AgentOrchestrator:
+    def __init__(self):
+        self.router = RouterAgent()      # 路由分发
+        self.coder = CodeAgent()         # 代码专家
+        self.writer = WriterAgent()      # 内容创作
+        self.analyst = AnalystAgent()    # 数据分析
+    
+    def process(self, user_input):
+        agent_type = self.router.classify(user_input)
+        if agent_type == "code":
+            return self.coder.handle(user_input)
+        elif agent_type == "writing":
+            return self.writer.handle(user_input)
+        else:
+            return self.analyst.handle(user_input)
+```
+
+---
+
+## 📚 知识库功能
+
+知识库功能支持添加本地或线上数据供智能体使用，以提升大模型回复的可用性和准确性。
+
+### 记忆类型
+
+| 类型 | 说明 | 持久性 |
+|------|------|--------|
+| **短期记忆** | 会话级别的上下文记忆 | 会话结束即清除 |
+| **长期记忆** | 跨会话的持久化记忆 | 永久保存 |
+
+### 知识库构建
+
+```
+原始文档 → 文本分块 → 向量化 → 存储到向量数据库
+                    ↓
+用户查询 → 向量检索 → 相关文档 → 大模型生成回答
+```
+
+### 常用向量数据库
+
+| 数据库 | 特点 |
+|--------|------|
+| Pinecone | 云端托管，易于使用 |
+| Milvus | 开源，高性能 |
+| Chroma | 轻量级，本地部署 |
+| Weaviate | 语义搜索能力强 |
+
+---
+
+## 🚀 快速开始
+
+### 开发流程
+
+```
+1. 编写提示词 → 定义智能体的身份和能力
+2. 选择模型 → 根据任务选择合适的 LLM
+3. 配置知识库 → 添加相关数据源（可选）
+4. 选择编排模式 → 单 Agent 或多 Agent
+5. 测试与迭代 → 优化提示词和配置
+```
+
+### 最小可行示例
+
+```python
+# 使用 LangChain 快速搭建
+from langchain.agents import initialize_agent, AgentType
+from langchain.llms import DeepSeek
+
+llm = DeepSeek(model="deepseek-chat")
+
+agent = initialize_agent(
+    tools=[],
+    llm=llm,
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True
+)
+
+agent.run("你好，请介绍一下你自己")
+```
+
+---
+
+## 最佳实践
+
+1. **提示词迭代**：从简单开始，逐步完善
+2. **模型测试**：多个模型对比选择最优
+3. **知识库更新**：定期更新知识库内容
+4. **错误处理**：设计友好的错误提示
+5. **用户反馈**：收集反馈持续优化
+
+## 延伸阅读
+
+- [LangChain 官方文档](https://python.langchain.com/)
+- [DeepSeek API 文档](https://platform.deepseek.com/docs)
+- [Agent 设计模式](https://www.deeplearning.ai/)

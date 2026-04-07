@@ -1,0 +1,225 @@
+---
+layout: "post"
+title: "状态相关基础知识"
+subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
+date: "2025-03-13 15:27:22"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 实时计算
+    - Flink实时数据仓库
+categories:
+    - 大数据
+---
+
+> 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/状态相关基础知识.md`
+
+托管状态（Managed State）：算子状态（Operator State）和按键分区状态（Keyed State）
+原始状态（Raw State）：自定义的，相当于就是开辟了一块内存
+
+算子状态（Operator State）：当前算子的本地缓存
+按键分区状态（Keyed State：keyBy进行按键分区的。按键分区之后，任务所进行的所有计算都应该只针对当前key有效，所以状态也应该按照key彼此隔离。
+
+通过富函数类（Rich Function）来自定义Keyed State，所以只要提供了富函数类接口的算子，也都可以使用Keyed State。所以即使是map、filter这样无状态的基本转换算子，我们也可以通过富函数类给它们“追加”Keyed State。比如RichMapFunction、RichFilterFunction。在富函数中，我们可以调用.getRuntimeContext()获取当前的运行时上下文（RuntimeContext），进而获取到访问状态的句柄；这种富函数中自定义的状态也是Keyed State。从这个角度讲，Flink中所有的算子都可以是有状态的
+
+
+
+eg:检测每种传感器的水位值，如果连续的两个水位值超过10，就输出报警。
+public class WaterSensor {
+    public String id;
+    public Long ts;
+    public Integer vc;
+
+    public WaterSensor() {
+    }
+
+    public WaterSensor(String id, Long ts, Integer vc) {
+        this.id = id;
+        this.ts = ts;
+        this.vc = vc;
+    }
+}
+
+public class WaterSensorMapFunction implements MapFunction<String,WaterSensor> {
+    @Override
+    public WaterSensor map(String value) throws Exception {
+        String[] datas = value.split(",");
+        return new WaterSensor(datas[0],Long.valueOf(datas[1]) ,Integer.valueOf(datas[2]) );
+    }
+}
+
+public class KeyedValueStateDemo {
+    public static void main(String[] args) throws Exception {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(1);
+        SingleOutputStreamOperator<WaterSensor> sensorDS = env
+                .socketTextStream("hadoop102", 7777)
+                .map(new WaterSensorMapFunction())
+                .assignTimestampsAndWatermarks(
+                        WatermarkStrategy
+                                .<WaterSensor>forBoundedOutOfOrderness(Duration.ofSeconds(3))
+                                .withTimestampAssigner((element, ts) -> element.getTs() * 1000L)
+                );
+        sensorDS.keyBy(r -> r.getId())
+                .process(
+                        new KeyedProcessFunction<String, WaterSensor, String>() {
+                            // TODO 1.定义状态
+                            ValueState<Integer> lastVcState;
+                            @Override
+                            public void open(Configuration parameters) throws Exception {
+                                super.open(parameters);
+                                // 一、添加ttl事件
+                                // TODO 2.在open方法中，初始化状态
+                                // 状态描述器两个参数：第一个参数，起个名字，不重复；第二个参数，存储的类型
+                                // TODO 1.创建 StateTtlConfig
+                                StateTtlConfig stateTtlConfig = StateTtlConfig
+                                        .newBuilder(Time.seconds(5)) // 过期时间5s
+//                                        .setUpdateType(StateTtlConfig.UpdateType.OnCreateAndWrite) // 状态 创建和写入（更新） 更新 过期时间
+                                        .setUpdateType(StateTtlConfig.UpdateType.OnReadAndWrite) // 状态 读取、创建和写入（更新） 更新 过期时间
+                                        .setStateVisibility(StateTtlConfig.StateVisibility.NeverReturnExpired) // 不返回过期的状态值
+                                        .build();
+                                 // TODO 2.状态描述器 启用 TTL
+                                ValueStateDescriptor<Integer> stateDescriptor = new ValueStateDescriptor<>("lastVcState", Types.INT);
+                                stateDescriptor.enableTimeToLive(stateTtlConfig);
+                                this.lastVcState = getRuntimeContext().getState(stateDescriptor);
+                                // 二、默认事件
+                                // lastVcState = getRuntimeContext().getState(new ValueStateDescriptor<Integer>("lastVcState", Types.INT));
+                            }
+                            @Override
+                            public void processElement(WaterSensor value, Context ctx, Collector<String> out) throws Exception {
+//                                lastVcState.value();  // 取出 本组 值状态 的数据
+//                                lastVcState.update(); // 更新 本组 值状态 的数据
+//                                lastVcState.clear();  // 清除 本组 值状态 的数据
+                                // 1. 取出上一条数据的水位值(Integer默认值是null，判断)
+                                int lastVc = lastVcState.value() == null ? 0 : lastVcState.value();
+                                // 2. 求差值的绝对值，判断是否超过10
+                                Integer vc = value.getVc();
+                                if (Math.abs(vc - lastVc) > 10) {
+                                    out.collect("传感器=" + value.getId() + "==>当前水位值=" + vc + ",与上一条水位值=" + lastVc + ",相差超过10！！！！");
+                                }
+                                // 3. 更新状态里的水位值
+                                lastVcState.update(vc);
+                            }
+                        }
+                )
+                .print();
+
+        env.execute();
+    }
+}
+
+eg:在map算子中计算数据的个数。
+public class OperatorListStateDemo {
+    public static void main(String[] args) throws Exception {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(2);
+        env
+                .socketTextStream("hadoop102", 7777)
+                .map(new MyCountMapFunction())
+                .print();
+        env.execute();
+    }
+
+
+    // TODO 1.实现 CheckpointedFunction 接口
+    public static class MyCountMapFunction implements MapFunction<String, Long>, CheckpointedFunction {
+
+        private Long count = 0L;
+        private ListState<Long> state;
+        @Override
+        public Long map(String value) throws Exception {
+            return ++count;
+        }
+
+        /**
+         * TODO 2.本地变量持久化：将 本地变量 拷贝到 算子状态中,开启checkpoint时才会调用
+         *
+         * @param context
+         * @throws Exception
+         */
+        @Override
+        public void snapshotState(FunctionSnapshotContext context) throws Exception {
+            System.out.println("snapshotState...");
+            // 2.1 清空算子状态
+            state.clear();
+            // 2.2 将 本地变量 添加到 算子状态 中
+            state.add(count);
+        }
+        /**
+         * TODO 3.初始化本地变量：程序启动和恢复时， 从状态中 把数据添加到 本地变量，每个子任务调用一次
+         *
+         * @param context
+         * @throws Exception
+         */
+        @Override
+        public void initializeState(FunctionInitializationContext context) throws Exception {
+            System.out.println("initializeState...");
+            // 3.1 从 上下文 初始化 算子状态
+            state = context
+                    .getOperatorStateStore()
+                    .getListState(new ListStateDescriptor<Long>("state", Types.LONG));
+
+            // 3.2 从 算子状态中 把数据 拷贝到 本地变量
+            if (context.isRestored()) {
+                for (Long c : state.get()) {
+                    count += c;
+                }
+            }
+        }
+    }
+}
+
+eg:水位超过指定的阈值发送告警，阈值可以动态修改。
+public class OperatorBroadcastStateDemo {
+    public static void main(String[] args) throws Exception {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(2);
+        // 数据流
+        SingleOutputStreamOperator<WaterSensor> sensorDS = env
+                .socketTextStream("hadoop102", 7777)
+                .map(new WaterSensorMapFunction());
+
+        // 配置流（用来广播配置）
+        DataStreamSource<String> configDS = env.socketTextStream("hadoop102", 8888);
+        // TODO 1. 将 配置流 广播
+        MapStateDescriptor<String, Integer> broadcastMapState = new MapStateDescriptor<>("broadcast-state", Types.STRING, Types.INT);
+        BroadcastStream<String> configBS = configDS.broadcast(broadcastMapState);
+        // TODO 2.把 数据流 和 广播后的配置流 connect
+        BroadcastConnectedStream<WaterSensor, String> sensorBCS = sensorDS.connect(configBS);
+        // TODO 3.调用 process
+        sensorBCS.process(
+                        new BroadcastProcessFunction<WaterSensor, String, String>() {
+                            /**
+                             * 数据流的处理方法： 数据流 只能 读取 广播状态，不能修改
+                             */
+                            @Override
+                            public void processElement(WaterSensor value, ReadOnlyContext ctx, Collector<String> out) throws Exception {
+                                // TODO 5.通过上下文获取广播状态，取出里面的值（只读，不能修改）
+                                ReadOnlyBroadcastState<String, Integer> broadcastState = ctx.getBroadcastState(broadcastMapState);
+                                Integer threshold = broadcastState.get("threshold");
+                                // 判断广播状态里是否有数据，因为刚启动时，可能是数据流的第一条数据先来
+                                threshold = (threshold == null ? 0 : threshold);
+                                if (value.getVc() > threshold) {
+                                    out.collect(value + ",水位超过指定的阈值：" + threshold + "!!!");
+                                }
+
+                            }
+                            /**
+                             * 广播后的配置流的处理方法:  只有广播流才能修改 广播状态
+                             */
+                            @Override
+                            public void processBroadcastElement(String value, Context ctx, Collector<String> out) throws Exception {
+                                // TODO 4. 通过上下文获取广播状态，往里面写数据
+                                BroadcastState<String, Integer> broadcastState = ctx.getBroadcastState(broadcastMapState);
+                                broadcastState.put("threshold", Integer.valueOf(value));
+
+                            }
+                        }
+
+                )
+                .print();
+
+        env.execute();
+    }
+}

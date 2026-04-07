@@ -1,0 +1,20 @@
+---
+layout: "post"
+title: "Go配置"
+subtitle: "系统与运维 / 未知分类"
+date: "2023-12-26 23:55:50"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 未知分类
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/04-未知分类/Go配置.md`
+
+Go配置
+
+go env -w GO111MODULE=on         Golang1.16默认开启,1.16一下需要执行这条命令
+go env -w  GOPROXY=https://goproxy.cn,direct     设置七牛CDN

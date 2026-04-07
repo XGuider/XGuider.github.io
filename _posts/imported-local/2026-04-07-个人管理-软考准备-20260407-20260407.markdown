@@ -1,0 +1,21 @@
+---
+layout: "post"
+title: "20260407"
+subtitle: "个人管理 / 软考准备"
+date: "2026-04-07 16:54:04"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 软考准备
+categories:
+    - 个人管理
+---
+
+> 来源：`本机相关/08-个人管理/06-软考准备/20260407.md`
+
+---
+tags:
+  - 软考
+创建日期: 2026-04-07 16:53
+---

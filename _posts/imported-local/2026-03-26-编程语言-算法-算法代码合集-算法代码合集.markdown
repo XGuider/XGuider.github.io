@@ -1,0 +1,231 @@
+---
+layout: "post"
+title: "算法代码合集"
+subtitle: "编程语言 / 算法"
+date: "2026-03-26 14:04:08"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/算法代码合集.md`
+
+2020/8/2
+
+刷题地址：
+
+[https://www.nowcoder.com/ta/coding-interviews](https://www.nowcoder.com/ta/coding-interviews)
+
+[https://blog.csdn.net/qq_37886086/article/details/90725931?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task](https://blog.csdn.net/qq_37886086/article/details/90725931?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task)
+
+
+冒泡排序：原理比较两个想领的元素，将最大值交换到右边，依此的比较；N个数字排序需要
+
+N-1躺排序，时间复杂度为O（n^2）
+
+TopK的问题：
+
+1、全排序，暴力O(n*n）
+
+2、冒泡O(n*lg(k))
+
+3、最小堆，python heapy和java的优先队列O(n*lg(k))
+
+4、快排------核心思想：分治
+
+
+分治法，大问题分解为小问题，小问题都要递归各个分支，例如：快速排序
+
+减治法，大问题分解为小问题，小问题只要递归一个分支，例如：二分查找，随机选择
+
+Leetocde : 215
+
+我的：最小堆求解
+
+```python
+import heapq
+class Solution(object):
+ def findKthLargest(self, nums, k):
+        pq=list()
+        for i, num in enumerate(nums):
+            if (i<k):
+                heapq.heappush(pq,num)
+                continue
+            if num > pq[0]:
+                heapq.heapreplace(pq, num)
+        return  pq[0]
+
+heapq的方法：
+1、使用一个空列表，然后使用heapq.heappush()函数把值加入堆中
+2、另外一种就是使用heap.heapify(list)转换列表成为堆结构
+3、heapq.heappop() 函数弹出堆中最小值
+4、删除堆中最小元素并加入一个元素，可以使用heapq.heaprepalce()
+5、获取堆最大或最小值heapq.nlargest() 或heapq.nsmallest()可以设置范围和key的排序方式
+6、heapq.heappushpop(h, n)加入并且弹出最小值
+```
+   
+```java
+快排代码块：https://blog.csdn.net/cdlwhm1217096231/article/details/90713530
+左右互换位置
+public class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        int start = 0, end = nums.length - 1, index = nums.length - k;
+        while (start < end) {
+            int pivot = partion(nums, start, end);
+            if (pivot < index) start = pivot + 1; 
+            else ifpivot - 1; (pivot > index) end = pivot - 1;
+            else return nums[pivot];
+        }
+        return nums[start];
+    }
+    
+```
+   void Swap(Sqlist *L, int i, int j)
+    {
+
+        int temp = L->r[i];
+
+        L->r[i] = L->r[j];
+
+        L->r[j] = temp;
+
+    }
+
+    // 确定主元
+
+    int Partition(Sqlist *L, int low, int high)
+
+    {
+
+        int pivotkey; // 主元
+
+        pivotkey = L->r[low];
+
+        while (low < high)
+
+        {
+
+            while (low < high && L->r[high] >= pivotkey) // 比主元大的放在主元的右边，不交换
+
+                high--;
+
+            Swap(L, low, high);                         // 比主元小的放在主元的右边，进行交换
+
+            while (low < high && L->r[low] <= pivotkey) // 比主元小的放在主元的左边，不交换
+
+                low++;
+
+            Swap(L, low, high); // 比主元大的放在主元的左边，进行交换
+
+        }
+
+        return low;
+
+    }
+
+
+
+```java
+
+    private int partion(int[] nums, int start, int end) {
+        int pivot = start, temp;
+        while (start <= end) {
+            while (start <= end && nums[start] <= nums[pivot])start++;
+            while (start <= end && nums[end] > nums[pivot]) end--;
+            if (start > end) break;
+            temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+        }
+        temp = nums[end];
+        nums[end] = nums[pivot];
+        nums[pivot] = temp;
+        return end;
+    }
+}
+```
+
+
+Leetocde :  50. Pow(x, n)
+
+```python
+我的：垃圾---X^2呀
+class Solution(object):
+    def myPow(self, x, n):
+        """
+        :type x: float
+        :type n: int
+        :rtype: float
+        """
+        flag=0
+        if(n==0):return 1
+        if(n==1):return x
+        if(n<0):
+            n=-n
+            flag=1
+        if(n%2)==0:
+           a=self.myPow(x,n/2)
+           sum=a*a
+        if(n%2)==1:
+           a=self.myPow(x,((n-1)/2))
+           sum=a*a*x
+        if(flag==1):
+            sum=1/sum
+        return sum
+```
+
+
+
+```java
+好代码
+public class Solution {
+    public double pow(double x, int n) {
+        if(n == 0)
+            return 1;
+        if(n<0){
+            n = -n;
+            x = 1/x;
+        }
+        return (n%2 == 0) ? pow(x*x, n/2) : x*pow(x*x, n/2);
+    }
+}
+```
+#### [169](https://leetcode-cn.com/problems/majority-element/)[. ](https://leetcode-cn.com/problems/majority-element/)[多数元素](https://leetcode-cn.com/problems/majority-element/)
+
+```plain
+我的code:两重循环有点浪费
+from collections import defaultdict
+class Solution:
+    def majorityElement(self, nums):
+        dic=defaultdict()
+        for i,num in enumerate(nums):
+            dic[num]=dic.get(num,0)+1
+        for num in nums:
+            if(dic[num]>len(nums)/2):
+                break
+        return num
+```
+
+
+```plain
+1、class Solution {
+    public int majorityElement(int[] nums) {
+        Map<Integer, Long> map = Arrays.stream(nums).boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        long limit = nums.length >> 1;
+        for (Map.Entry<Integer, Long> entry : map.entrySet())
+            if (entry.getValue() > limit)
+                return entry.getKey();
+        return -1;
+    }
+}
+2、class Solution {
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        return nums[nums.length >> 1];
+    }
+}
+```

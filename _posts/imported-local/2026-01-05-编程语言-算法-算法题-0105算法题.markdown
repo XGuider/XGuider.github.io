@@ -1,0 +1,117 @@
+---
+layout: "post"
+title: "0105算法题"
+subtitle: "编程语言 / 算法 / 算法题"
+date: "2026-01-05 22:35:56"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+    - 算法题
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/算法题/0105算法题.md`
+
+编写一个函数来查找字符串数组中的最长公共前缀。
+如果不存在公共前缀，返回空字符串 ""。
+
+示例 1：
+输入: strs = ["flower","flow","flight"]
+输出: "fl"
+
+示例 2：
+输入: strs = ["dog","racecar","car"]
+输出: ""
+解释: 输入不存在公共前缀。
+
+class Solution {
+	public String longestCommonPrefix(String[] strs) {
+		StringBuilder sb = new StringBuilder();
+		if (strs.length() <= 1) {return "";}
+		String st = strs[0];
+		int len = 0;
+		int j = 0;
+
+		for (int i = 1; i < strs.length(); i++) {
+			len = str[i].length() < st.length()? str[i].length(): st.length();
+			while(j < len){
+				if (st.charAt[j] == str[i].char[j]) {
+					sb.add('')
+				}
+			}
+		}
+
+	}
+}
+
+==========标准解答=========
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return ""; // 处理空数组或 null
+        }
+
+        // 以第一个字符串为基准
+        String baseStr = strs[0];
+        
+        // 遍历第一个字符串的每个字符位置
+        for (int i = 0; i < baseStr.length(); i++) {
+            char currentChar = baseStr.charAt(i);
+
+            // 遍历其余字符串，比较第 i 个字符
+            for (int j = 1; j < strs.length; j++) {
+                // 如果当前字符串长度不够，或者字符不匹配
+                if (i >= strs[j].length() || strs[j].charAt(i) != currentChar) {
+                    // 返回从 0 到 i 的子串
+                    return baseStr.substring(0, i);
+                }
+            }
+            // 如果所有字符串在位置 i 都匹配，则继续下一位
+        }
+
+        // 如果第一个字符串的所有字符都匹配，则它本身就是公共前缀
+        return baseStr;
+    }
+}
+
+================
+
+public class StringBuilderExample {
+    public static void main(String[] args) {
+        // 1. 创建
+        StringBuilder sb = new StringBuilder(); // 初始容量为 16
+        StringBuilder sbWithCapacity = new StringBuilder(20); // 指定初始容量
+        StringBuilder sbWithString = new StringBuilder("Initial");
+
+        // 2. append: 追加内容
+        sb.append("Hello");
+        sb.append(" ");
+        sb.append("World");
+        sb.append(123); // 可以追加数字、布尔值等基本类型
+        System.out.println(sb.toString()); // 输出: Hello World123
+
+        // 3. insert: 在指定位置插入
+        sb.insert(5, "_"); // 在索引 5 (即 'W' 前) 插入 "_"
+        System.out.println(sb.toString()); // 输出: Hello_World123
+
+        // 4. delete: 删除指定范围的字符 (包含起始索引，不包含结束索引)
+        sb.delete(5, 6); // 删除索引 5 的字符 '_'
+        System.out.println(sb.toString()); // 输出: HelloWorld123
+
+        // 5. reverse: 反转字符串
+        sb.reverse();
+        System.out.println(sb.toString()); // 输出: 321dlroWolleH
+
+        // 6. length, capacity
+        System.out.println("Length: " + sb.length()); // 输出当前字符数量
+        System.out.println("Capacity: " + sb.capacity()); // 输出当前缓冲区容量
+
+        // 7. toString: 转换为 String
+        String finalString = sb.toString();
+        System.out.println(finalString); // 输出: 321dlroWolleH
+    }
+}

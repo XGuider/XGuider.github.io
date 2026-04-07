@@ -1,0 +1,52 @@
+---
+layout: "post"
+title: "语法"
+subtitle: "系统与运维 / influxDB"
+date: "2024-08-21 16:53:38"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - influxDB
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/influxDB/语法.md`
+
+influxDB查询结果中的时间time默认是精确到纳秒级的时间戳，这样看起来很麻烦，如何格式化成我们一眼可以看出来的时间格式呢？
+1.进入influxdb，执行 precision rfc3339 命令(这一步会把时间格式化出国际标准时间)
+2.在每个查询语句的最后加上 tz('Asia/Shanghai') (这一步会把时间调整为北京时间)
+
+
+select non_negative_derivate('value',1s) from table1 where. $timeFilter Group by time($_interval)
+
+SELECT non_negative_derivative("request_count", 1s) FROM "api_requests" WHERE $timeFilter GROUP BY time($__interval)
+$__interval 为5s， 
+time	request_count
+2024-08-21T00:00:00	100
+2024-08-21T00:00:01	150
+2024-08-21T00:00:02	200
+2024-08-21T00:00:03	250
+2024-08-21T00:00:04	300
+2024-08-21T00:00:05	350
+2024-08-21T00:00:06	400
+2024-08-21T00:00:07	450
+2024-08-21T00:00:08	500
+
+SELECT non_negative_derivative("request_count", 1s) 
+FROM "api_requests" 
+WHERE time >= '2024-08-21T00:00:00Z' AND time < '2024-08-21T00:00:10Z' 
+GROUP BY time(5s)
+
+计算结果
+对于上述数据，计算结果将是每 5 秒的请求速率变化。假设在每秒的数据点中，我们可以得到以下非负导数结果：
+
+time	non_negative_derivative
+2024-08-21T00:00:00	50
+2024-08-21T00:00:05	50
+结果解释
+从 2024-08-21T00:00:00 到 2024-08-21T00:00:05：请求数量从 100 增加到 350，每秒增长 50。
+从 2024-08-21T00:00:05 到 2024-08-21T00:00:10：请求数量从 350 增加到 500，每秒增长 50。
+
+SELECT sum("request_count") FROM "api_requests" WHERE $timeFilter GROUP BY time

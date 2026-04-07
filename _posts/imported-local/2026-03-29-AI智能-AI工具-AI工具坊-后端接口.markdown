@@ -1,0 +1,215 @@
+---
+layout: "post"
+title: "后端接口"
+subtitle: "AI智能 / AI工具 / AI工具坊"
+date: "2026-03-29 14:00:25"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - AI工具
+    - AI工具坊
+categories:
+    - AI智能
+---
+
+> 来源：`本机相关/04-AI智能/01-AI工具/AI工具坊/后端接口.md`
+
+---
+tags: [API接口, RESTful, 用户管理, 微信登录]
+created: 2024-01-01
+updated: 2026-03-29
+status: draft
+confidence: high
+---
+
+# 后端 API 接口文档
+
+> 用户相关接口定义
+
+## 概述
+
+本文档记录用户相关的后端 API 接口，包括用户注册、登录、权限管理等操作。
+
+---
+
+## 一、用户接口列表
+
+### 1. 用户注册
+
+```
+POST /api/users/register
+```
+
+**请求体**：
+```json
+{
+  "id": 0,
+  "openId": "string",
+  "unionId": "string",
+  "nickname": "string",
+  "avatar": "string",
+  "level": "GUEST",
+  "vipExpireTime": "2025-07-26T08:05:06.554Z",
+  "todayVisitCount": 0,
+  "lastVisitTime": "2025-07-26T08:05:06.554Z",
+  "status": "NORMAL",
+  "createTime": "2025-07-26T08:05:06.554Z",
+  "updateTime": "2025-07-26T08:05:06.554Z"
+}
+```
+
+### 2. 用户登录
+
+```
+POST /api/users/login
+```
+
+### 3. 微信登录
+
+```
+GET /api/users/login/wechat?code=1111
+```
+
+**参数**：
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| code | string | 微信授权码 |
+
+### 4. 获取用户列表
+
+```
+GET /api/users
+```
+
+### 5. 获取单个用户
+
+```
+GET /api/users/{id}
+```
+
+**参数**：
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| id | long | 用户 ID |
+
+### 6. 根据 OpenID 获取用户
+
+```
+GET /api/users/openid/{openId}
+```
+
+**说明**：openId 是后端构建
+
+### 7. 记录用户访问
+
+```
+GET /api/users/record-visit?openId=1
+```
+
+**参数**：
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| openId | string | 用户 OpenID |
+
+---
+
+## 二、管理员接口
+
+### 1. 添加/清理管理员
+
+```
+GET /api/users/admin/{id}
+```
+
+**参数**：
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| id | long | 用户 ID |
+
+---
+
+## 三、VIP 相关接口
+
+### 1. 升级 VIP
+
+```
+POST /api/users/{id}/upgrade-vip?months=12
+```
+
+**参数**：
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| id | long | 用户 ID |
+| months | int | VIP 月数 |
+
+**示例**：
+```
+POST /api/users/3/upgrade-vip?months=12
+```
+
+---
+
+## 四、用户状态管理
+
+### 1. 封禁用户
+
+```
+POST /api/users/{id}/ban
+```
+
+**示例**：
+```
+POST /api/users/10/ban
+```
+
+### 2. 解禁用户
+
+```
+POST /api/users/{id}/unban
+```
+
+**示例**：
+```
+POST /api/users/1/unban
+```
+
+---
+
+## 五、接口汇总表
+
+| 接口 | 方法 | 说明 |
+|------|------|------|
+| `/api/users/register` | POST | 用户注册 |
+| `/api/users/login` | POST | 用户登录 |
+| `/api/users/login/wechat` | GET | 微信登录 |
+| `/api/users` | GET | 获取用户列表 |
+| `/api/users/{id}` | GET | 获取单个用户 |
+| `/api/users/openid/{openId}` | GET | 根据 OpenID 获取用户 |
+| `/api/users/record-visit` | GET | 记录用户访问 |
+| `/api/users/admin/{id}` | GET | 管理员操作 |
+| `/api/users/{id}/upgrade-vip` | POST | 升级 VIP |
+| `/api/users/{id}/ban` | POST | 封禁用户 |
+| `/api/users/{id}/unban` | POST | 解禁用户 |
+
+---
+
+## 六、响应状态码
+
+| 状态码 | 说明 |
+|--------|------|
+| 200 | 成功 |
+| 400 | 请求参数错误 |
+| 401 | 未授权 |
+| 403 | 权限不足 |
+| 404 | 资源不存在 |
+| 500 | 服务器错误 |
+
+---
+
+## 七、注意事项
+
+1. **鉴权**：除登录接口外，其他接口需携带 Token
+2. **限流**：建议对接口进行限流保护
+3. **日志**：记录关键操作的审计日志
+4. **幂等性**：确保接口幂等性设计

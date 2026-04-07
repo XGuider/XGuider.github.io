@@ -1,0 +1,152 @@
+---
+layout: "post"
+title: "0227算法题"
+subtitle: "编程语言 / 算法 / 算法题"
+date: "2026-02-27 22:49:59"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+    - 算法题
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/算法题/0227算法题.md`
+
+题目编号： LeetCode 139
+题目名称： 单词拆分
+难度： 🟠 中等
+标签： 字符串、动态规划、哈希表
+📝 题目描述
+给你一个字符串 s 和一个字符串列表 wordDict 作为字典。如果可以利用字典中出现的一个或多个单词拼接出 s，则返回 true。
+注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。
+💡 示例
+示例 1：
+输入： s = "leetcode", wordDict = ["leet", "code"]
+输出： true
+解释： 返回 true 因为 "leetcode" 可以由 "leet" 和 "code" 拼接成。
+
+我的：
+class Solution:
+	def wordBreak(self, s: str, wordDict: List[str]) -> bool: 
+		str_len = len(str)
+		dp = [false for i in range(str_len)]
+		for i in range(1，str_len):
+			for j in range(0, i):
+				if (dp[j] and wordDict.contains(str[j:i])):
+					dp[i] = true
+					break
+		return dp[-1]
+
+
+修正：
+from typing import List
+
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        word_set = set(wordDict) # 优化：转换为集合以加快查找
+        str_len = len(s) # 修正1: 获取 s 的长度
+        
+        # 修正2: dp 数组长度为 len(s) + 1
+        dp = [False for _ in range(str_len + 1)]
+        
+        # 修正3: 设置初始状态
+        dp[0] = True 
+
+        # 修正4: 循环范围从 1 到 str_len (包含)
+        for i in range(1, str_len + 1):
+            for j in range(i): # j 的范围是 [0, i)
+                # 修正5: 使用 'in' 操作符，并检查 dp[j]
+                if dp[j] and s[j:i] in word_set:
+                    dp[i] = True
+                    # 修正6: break 以优化，一旦找到一种拆分方式即可
+                    break 
+        
+        # 修正7: 返回 dp[str_len]
+        return dp[str_len]
+
+# 测试用例
+# s = "leetcode"
+# wordDict = ["leet", "code"]
+# print(Solution().wordBreak(s, wordDict)) # 输出: True
+
+
+
+			
+
+
+# 递归写法
+
+class Solution {
+	private Set<String> hs;
+	public boolean wordBreak (String str, String[] wordDict)) {
+		this.hs = new HashSet<>();
+		for (String word : wordDict) { // 使用增强for循环更简洁
+            this.hs.add(word);
+        }
+        int str_len = str.length;
+        return solve(str, 0, str_len);
+	}
+
+	public boolean solve(String str, int i, int j) {
+		if (this.hs.contains(str.substring(i,j))) {
+			return true;
+		}
+
+		for(int k = i; k < j; k++) { // k = i+1
+			if (this.hs.contains(str.substring(i,k))) {
+				solve(str, k, j);
+			}
+		}
+
+	}
+
+}
+
+
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    private Set<String> wordSet;
+    private Boolean[] memo; // 使用 Boolean 类型，可以是 true, false, 或 null (未计算)
+
+    public boolean wordBreak(String s, String[] wordDict) {
+        this.wordSet = new HashSet<>();
+        for (String word : wordDict) {
+            this.wordSet.add(word);
+        }
+        int n = s.length();
+        this.memo = new Boolean[n]; // memo[i] 表示从索引 i 开始的子串是否可以拆分
+        return solve(s, 0, n);
+    }
+
+    private boolean solve(String s, int start, int len) {
+        // 递归的终点：如果 start 到达字符串末尾，则说明前面的拆分都是成功的
+        if (start == len) {
+            return true;
+        }
+
+        // 检查备忘录，如果已经计算过，直接返回
+        if (memo[start] != null) {
+            return memo[start];
+        }
+
+        // 状态转移：枚举第一个单词的结束位置
+        for (int end = start + 1; end <= len; end++) {
+            String prefix = s.substring(start, end);
+            // 如果第一个单词在字典中，并且剩余部分也可以被拆分，则返回 true
+            if (wordSet.contains(prefix) && solve(s, end, len)) {
+                memo[start] = true;
+                return true;
+            }
+        }
+
+        // 如果所有可能性都尝试过且失败，则记录并返回 false
+        memo[start] = false;
+        return false;
+    }
+}

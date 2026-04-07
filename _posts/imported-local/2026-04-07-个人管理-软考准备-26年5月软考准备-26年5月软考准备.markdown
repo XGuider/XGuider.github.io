@@ -1,0 +1,21 @@
+---
+layout: "post"
+title: "26年5月软考准备"
+subtitle: "个人管理 / 软考准备"
+date: "2026-04-07 14:43:45"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 软考准备
+categories:
+    - 个人管理
+---
+
+> 来源：`本机相关/08-个人管理/06-软考准备/26年5月软考准备.md`
+
+资料：
+[07. 机考讲解及模拟/【官方】软考机考-绘图指南.pdf · CTO说/软件设计师 - Gitee.com](https://gitee.com/zaonai/software_designer_new/blob/main/07.%20%E6%9C%BA%E8%80%83%E8%AE%B2%E8%A7%A3%E5%8F%8A%E6%A8%A1%E6%8B%9F/%E3%80%90%E5%AE%98%E6%96%B9%E3%80%91%E8%BD%AF%E8%80%83%E6%9C%BA%E8%80%83-%E7%BB%98%E5%9B%BE%E6%8C%87%E5%8D%97.pdf)
+
+书籍：
+[Readest — Where You Read, Digest and Get Insight](https://web.readest.com/reader/8edc954ec1d43b1eea9a77620d807b79)

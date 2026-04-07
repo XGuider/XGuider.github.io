@@ -1,0 +1,35 @@
+---
+layout: "post"
+title: "插件"
+subtitle: "开源项目 / 未知分类 / 插件"
+date: "2025-03-20 15:53:11"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 未知分类
+    - 插件
+categories:
+    - 开源项目
+---
+
+> 来源：`本机相关/07-开源项目/04-未知分类/插件/插件.md`
+
+插件开发流程：https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html
+想法：
+主要功能：
+1、可以链接各个AI端口
+2、进行大模型切换
+3、扩展功能，支持配置定时任务
+3.1、 支持实时数据查看
+
+次要功能：
+1、支持上下拖动
+2、模仿monica
+3、浏览器书签同步以及展开
+
+
+
+阿里云白练
+sk-49624ac993ec401bba7a49f20abea73c
+https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation

@@ -1,0 +1,131 @@
+---
+layout: "post"
+title: "两阶段提交 和 幂等操作"
+subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
+date: "2025-04-05 11:38:50"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 实时计算
+    - Flink实时数据仓库
+categories:
+    - 大数据
+---
+
+> 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/两阶段提交 和 幂等操作.md`
+
+1. 两阶段提交（2PC）的伪代码：场景：跨服务的强一致性事务（如订单支付需同时扣款、减库存）
+Flink与Kafka通过**两阶段提交协议（2PC）**实现端到端的Exactly-Once语义。
+其核心思路是：将Flink的Checkpoint机制与Kafka的事务特性结合，在预提交阶段锁定状态和外部事务，在全局确认后统一提交，确保所有环节的原子性。”
+
+阶段1：预提交（Pre-Commit）
+Checkpoint触发：
+JobManager周期性触发Checkpoint，向所有TaskManager发送Barrier（逻辑标记）。
+Barrier将数据流分割为Checkpoint周期内的批次，确保状态一致性。
+状态快照与事务预提交：
+Flink算子：收到Barrier后，将当前状态（如Kafka消费的Offset、处理中的中间数据）异步写入持久化存储（如HDFS）。
+Kafka事务（Sink端）：
+数据通过Kafka Producer写入目标Topic，但标记为“未提交”（事务未完成）。
+数据暂存到Broker的临时文件，但对外不可见（消费者需配置isolation.level=read_committed）。
+预提交确认：
+所有算子完成状态快照后，向JobManager发送ACK信号。此时，系统处于“预提交完成”状态，但外部事务未最终生效。
+
+
+阶段2：全局提交（Commit）
+全局确认：
+JobManager收到所有算子的ACK后，标记Checkpoint完成，进入提交阶段。
+事务提交：
+Kafka Producer：提交事务，数据正式对外可见。
+Kafka Consumer（Source端）：
+Offset已记录在Checkpoint中，故障恢复时从该Offset重新消费，避免重复或丢失数据。
+失败回滚：
+若Checkpoint失败（如部分算子ACK未到达），JobManager丢弃本次Checkpoint，通知所有算子回滚事务（如Kafka Producer终止事务）。
+
+// Flink启用Exactly-Once Checkpoint
+env.enableCheckpointing(10000, CheckpointingMode.EXACTLY_ONCE);
+env.getCheckpointConfig().setCheckpointTimeout(60000); // 超时需大于事务提交时间
+
+
+// Kafka Producer配置
+properties.setProperty("transactional.id", "flink-tx-"+UUID.randomUUID());
+properties.setProperty("enable.idempotence", "true");
+事务ID（transactional.id）：
+每个Flink作业的Kafka Producer需配置唯一ID，用于故障恢复后关联未完成的事务。
+例如：transactional.id = "flink-job-"+taskId。
+幂等性（enable.idempotence）：
+Producer端配置enable.idempotence=true，确保单分区内数据不重复（依赖序列号去重）。
+
+
+// Kafka Consumer配置
+properties.setProperty("isolation.level", "read_committed");
+
+Q：如果外部系统不支持事务怎么办？
+A：只能通过幂等写入或业务层去重（如Redis记录已处理数据的ID）补偿，无法严格保证Exactly-Once。
+
+Q：非对齐Checkpoint（Unaligned Checkpoint）有什么作用？
+A：允许Barrier越过未处理的数据，减少Checkpoint耗时，但可能导致状态略大，需权衡吞吐量和恢复时间。
+
+Q：Kafka事务ID为什么要唯一？
+A：Kafka Broker通过事务ID追踪事务状态，若重复会导致旧事务被误提交或终止。
+
+
+# 协调者
+class Coordinator:
+    def commit(self, transaction_id):
+        # 阶段1：准备请求
+        participants = [OrderService, PaymentService, InventoryService]
+        prepared = []
+        for p in participants:
+            if not p.prepare(transaction_id):
+                self.rollback(participants, transaction_id)
+                return False
+            prepared.append(p)
+        
+        # 阶段2：提交请求
+        for p in prepared:
+            if not p.commit(transaction_id):
+                self.rollback(prepared, transaction_id)
+                return False
+        return True
+
+    def rollback(self, participants, transaction_id):
+        for p in participants:
+            p.rollback(transaction_id)
+
+# 参与者（以订单服务为例）
+class OrderService:
+    def prepare(self, transaction_id):
+        # 检查资源是否可用，锁定订单
+        if self.check_inventory():
+            self.lock_order(transaction_id)
+            return True
+        return False
+    
+    def commit(self, transaction_id):
+        # 正式提交订单
+        self.confirm_order(transaction_id)
+    
+    def rollback(self, transaction_id):
+        # 释放锁定的订单
+        self.unlock_order(transaction_id)
+
+
+2. 幂等操作的代码实现（订单支付场景）：场景：重复请求可能导致副作用的接口（如支付、订单创建）。
+ # 使用唯一订单ID实现幂等性
+class PaymentService:
+    def __init__(self):
+        self.processed_orders = set()  # 已处理订单ID缓存
+
+    def pay(self, order_id, amount):
+        if order_id in self.processed_orders:
+            return {"status": "success", "msg": "订单已处理"}  # 幂等返回
+        
+        # 执行业务逻辑（扣款、更新状态）
+        self.process_payment(order_id, amount)
+        self.processed_orders.add(order_id)
+        return {"status": "success", "msg": "支付成功"}
+
+    def process_payment(self, order_id, amount):
+        # 实际支付逻辑（如调用银行接口）
+        pass

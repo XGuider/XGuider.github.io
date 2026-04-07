@@ -1,0 +1,81 @@
+---
+layout: "post"
+title: "AI相关项目"
+subtitle: "AI智能 / 未知分类"
+date: "2026-03-29 13:55:04"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 未知分类
+categories:
+    - AI智能
+---
+
+> 来源：`本机相关/04-AI智能/03-未知分类/AI相关项目.md`
+
+---
+tags: [AI项目, ChatGPT, 语音识别, 爬虫, 开源项目]
+created: 2024-01-01
+updated: 2026-03-29
+status: draft
+confidence: medium
+---
+
+# AI 相关开源项目汇总
+
+> 收集整理 AI 领域相关的开源项目和工具链接
+
+## 概述
+
+本文档汇总了 AI 领域常用的开源项目，涵盖聊天机器人、语音识别、爬虫工具等方向。
+
+## 聊天机器人项目
+
+| 项目名称 | 链接 | 说明 |
+|----------|------|------|
+| ChatGPT Next Web | [GitHub](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web) | 一键部署私有 ChatGPT 网页应用 |
+| ChatGPT on WeChat | [GitHub](https://github.com/zhayujie/chatgpt-on-wechat) | 微信接入 ChatGPT 机器人 |
+
+### 讯飞星火
+
+- 官方文档：https://www.xfyun.cn/doc/spark/Web.html#_1-接口说明
+
+## 语音识别
+
+| 项目名称 | 链接 | 说明 |
+|----------|------|------|
+| FunASR | [GitHub](https://github.com/modelscope/FunASR) | 阿里达摩院语音识别工具 |
+
+## 爬虫工具
+
+| 项目名称 | 链接 | 说明 |
+|----------|------|------|
+| Scrapegraphai | GitHub | AI 驱动的爬虫代码库 |
+
+## 应用场景
+
+### 爬虫 + ChatGPT 组合
+
+```
+爬取需要的数据 → 交给 ChatGPT 总结 → 发送给用户
+```
+
+典型应用流程：
+1. 使用爬虫获取目标数据
+2. 数据清洗和预处理
+3. 调用 ChatGPT API 进行内容总结
+4. 推送结果给用户
+
+## 项目选择建议
+
+| 场景 | 推荐项目 |
+|------|----------|
+| 快速搭建 ChatGPT 网页 | ChatGPT Next Web |
+| 微信机器人 | ChatGPT on WeChat |
+| 语音转文字 | FunASR |
+| 智能爬虫 | Scrapegraphai |
+
+---
+
+> 🤔 **存疑**：部分链接缺少具体 URL，需要补充完整

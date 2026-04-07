@@ -1,0 +1,46 @@
+---
+layout: "post"
+title: "车房爬虫"
+subtitle: "开源项目 / 数据采集类 / inforSum"
+date: "2025-02-25 10:31:42"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 数据采集类
+    - inforSum
+categories:
+    - 开源项目
+---
+
+> 来源：`本机相关/07-开源项目/01-数据采集类/inforSum/车房爬虫.md`
+
+cd /Users/faqingxiong/Documents/code/quick-buy-ai
+docker-compose up --build
+
+docker-compose logs -f
+
+docker-compose down
+
+
+docker build -t quick-buy-ai .
+
+
+1. 使用场景
+- Dockerfile：构建单个应用的镜像
+- docker-compose：编排多个容器的运行环境
+2. 配置范围
+- Dockerfile：关注容器内部环境
+- docker-compose：关注容器间的关系和整体应用架构
+
+
+# 构建镜像
+docker build -t quick-buy-ai .
+# 运行容器
+docker run quick-buy-ai
+
+
+# 启动所有服务
+docker-compose up
+# 停止所有服务
+docker-compose down

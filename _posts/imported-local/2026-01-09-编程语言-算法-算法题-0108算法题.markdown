@@ -1,0 +1,79 @@
+---
+layout: "post"
+title: "0108算法题"
+subtitle: "编程语言 / 算法 / 算法题"
+date: "2026-01-09 10:33:17"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+    - 算法题
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/算法题/0108算法题.md`
+
+1、给你一个整数数组 nums，判断是否存在三个元素 a、b、c，使得 a + b + c = 0？请你找出所有和为 0 且不重复的三元组。
+示例 1：
+输入: nums = [-1,0,1,2,-1,-4]
+输出: [[-1,-1,2],[-1,0,1]]
+解释: nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0。
+nums[0] + nums[1] =  -nums[2] 
+
+nums[0] + nums[2] + nums[3] = (-1) + 1 + 2 = 0。
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0。
+nums[0] + nums[1] + nums[5] = (-1) + 0 + (-1) = -2。
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0。
+nums[1] + nums[3] + nums[5] = 0 + 2 + (-1) = 1。
+nums[2] + nums[3] + nums[4] = 1 + 2 + (-1) = 2。
+nums[2] + nums[4] + nums[5] = 1 + (-1) + (-1) = -1。
+nums[3] + nums[4] + nums[5] = 2 + (-1) + (-1) = 0。
+不同的三元组是 [-1,0,1] 和 [-1,-1,2]
+
+class Solution {
+	public List<List<Integer>> threeSum(int nums) {
+	       // 边界条件：数组长度小于3，无法构成三元组
+        if (nums == null || n < 3) {
+            return result;
+        }
+		List<List<Integer>> al = new ArrayList<>();
+		Arrays.sort(nums); // -4,-1,-1,0,1,2
+		int i = 0;
+		int fix_num = 0;
+		int left = 0;
+		int right = nums.length -1;
+
+		while (i < nums.length - 2 ) {
+
+			// 去重：如果当前数字和上一个数字相同，则跳过，避免重复结果
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            left = i + 1;
+            right = n - 1;
+			fix_num = nums[i];
+			while(left < right) {
+				if (nums[left] + nums[right] + fix_num == 0) {
+					# al.add(new ArrayList<>(){fix_num, nums[left], nums[right]});
+					al.add(new ArrayList<>(Arrays.asList(fix_num, nums[left], nums[right])));
+					while(left < right && nums[left] = nums[left+1]) left++;
+					while(left < right && nums[right] = nums[right-1]) right--;
+					left++;
+					right--;
+				}
+				else if (nums[left] + nums[right] + fix_num > 0) {
+					right -= 1;
+				}
+				else { 
+                // 和太小，需要增大，移动左指针
+                    left++;
+				}
+			i++;
+
+		}
+		return al;
+	}
+	
+}

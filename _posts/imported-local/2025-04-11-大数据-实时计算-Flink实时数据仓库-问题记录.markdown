@@ -1,0 +1,56 @@
+---
+layout: "post"
+title: "问题记录"
+subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
+date: "2025-04-11 17:12:58"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 实时计算
+    - Flink实时数据仓库
+categories:
+    - 大数据
+---
+
+> 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/问题记录.md`
+
+1、uid的作用
+1.1 持久化状态
+状态恢复：当 Flink 作业重启或从故障中恢复时，Flink 需要知道如何恢复每个算子的状态。uid 用于唯一标识每个算子，确保在作业重启后能够正确地恢复状态。
+状态迁移：如果你在作业中添加或删除算子，Flink 需要知道哪些状态属于哪个算子。uid 可以帮助 Flink 在作业结构发生变化时正确地迁移状态。
+1.2 调试和监控
+调试：在调试 Flink 作业时，uid 可以帮助你识别和定位特定的算子，尤其是在复杂的作业中。
+监控：在监控 Flink 作业时，uid 可以用于标识和跟踪特定的算子，帮助你了解算子的性能和状态。
+DataStream<String> input = ...;
+
+input
+    .map(new MyMapper())
+    .uid("my-mapper")
+    .keyBy(/* some key */)
+    .window(/* some window */)
+    .reduce(new MyReducer())
+    .uid("my-reducer");
+
+
+
+
+
+2、设置 checkpoint 模式: 精准一次
+Exactly-once：确保每个事件只处理一次，状态更新也只发生一次。
+At-least-once：确保每个事件至少处理一次，状态更新可能发生多次。
+None：不进行 Checkpoint，通常用于测试或不需要容错的场景。
+
+StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+// 启用 Checkpoint
+env.enableCheckpointing(1000); // 每 1000 毫秒进行一次 Checkpoint
+// 设置 Checkpoint 模式为 Exactly-once
+env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);
+
+#// Flink 提供了多种状态后端，如 MemoryStateBackend、FsStateBackend 和 RocksDBStateBackend
+env.setStateBackend(new HashMapStateBackend()); #// 设置状态后端
+env.getCheckpointConfig().setCheckpointStorage("hdfs://namenode:9000/flink-checkpoints");
+2.1、
+检查点的保存离不开 JobManager 和 TaskManager，以及外部存储系统的协调。在应用进行检查点保存时，
+首先会由 JobManager 向所有 TaskManager 发出触发检查点的命令；TaskManger 收到之后，将当前任务的所有状态进行快照保存，
+持久化到远程的存储介质中。

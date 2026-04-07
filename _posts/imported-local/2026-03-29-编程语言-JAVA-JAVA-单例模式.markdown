@@ -1,0 +1,86 @@
+---
+layout: "post"
+title: "单例模式"
+subtitle: "编程语言 / JAVA / JAVA"
+date: "2026-03-29 14:07:21"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - JAVA
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/01-JAVA/JAVA/单例模式.md`
+
+---
+tags:
+  - Java
+  - 编程语言
+  - 设计模式
+  - 单例模式
+created: 2024-01-01
+updated: 2026-03-29
+status: final
+confidence: high
+---
+
+public class SingleObject {
+ 
+   //创建 SingleObject 的一个对象
+   private static SingleObject instance = new SingleObject();
+ 
+   //让构造函数为 private，这样该类就不会被实例化
+   private SingleObject(){}
+ 
+   //获取唯一可用的对象
+   public static SingleObject getInstance(){
+      return instance;
+   }
+ 
+   public void showMessage(){
+      System.out.println("Hello World!");
+   }
+}
+================
+
+public class SingletonDemo {
+    // 私有静态变量，volatile 确保多线程环境下的内存可见性
+    private static volatile SingletonDemo instance = null;
+
+    // 私有构造函数，防止外部通过 new 实例化
+    private SingletonDemo() {
+    }
+
+    // 公有静态方法，提供全局访问点
+    public static SingletonDemo getInstance() {
+        // 首次检查，避免同步带来的开销
+        if (instance == null) {
+            // 同步块，确保只有一个线程能进入
+            synchronized (SingletonDemo.class) {
+                // 二次检查，避免多个线程同时创建实例
+                if (instance == null) {
+                    instance = new SingletonDemo();
+                }
+            }
+        }
+        return instance;
+    }
+
+    // 其他业务方法
+    public void doSomething() {
+        System.out.println("Doing something...");
+    }
+
+    // 主方法，演示单例的使用
+    public static void main(String[] args) {
+        // 获取单例对象
+        SingletonDemo singleton = SingletonDemo.getInstance();
+        singleton.doSomething();
+
+        // 尝试获取第二个实例，应该与第一个是同一个对象
+        SingletonDemo anotherSingleton = SingletonDemo.getInstance();
+        singleton.doSomething();
+    }
+}

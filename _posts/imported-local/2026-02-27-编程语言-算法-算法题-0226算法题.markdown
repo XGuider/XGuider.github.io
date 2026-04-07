@@ -1,0 +1,121 @@
+---
+layout: "post"
+title: "0226算法题"
+subtitle: "编程语言 / 算法 / 算法题"
+date: "2026-02-27 22:21:39"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+    - 算法题
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/算法题/0226算法题.md`
+
+题目编号： LeetCode 312
+题目名称： 戳气球
+难度： 🔴 困难
+标签： 数组、动态规划
+
+
+📝 题目描述
+有 n 个气球，编号为 0 到 n - 1，每个气球上都标着一个数字，这些数字存在数组 nums 中。
+现在要求你戳破所有的气球。如果你戳破气球 i，就可以获得 nums[i - 1] * nums[i] * nums[i + 1] 枚硬币。这里的 i - 1 和 i + 1 代表和 i 相邻的两个气球的序号。如果 i - 1 或 i + 1 超出了数组的边界，那么就当它是一个数字为 1 的气球。
+
+求所能获得硬币数的 最大值。
+
+
+class Solution {
+    public int maxCoins(int[] nums) {
+        int len = nums.length;
+        // 1. 预处理：创建 new_nums 数组，在首尾添加虚拟气球
+        int[] new_nums = new int[len + 2]; // 修正1: new_nums 应该是 int[] 而不是 int
+        new_nums[0] = 1;
+        new_nums[len + 1] = 1;
+        for (int i = 0; i < len; i++) {
+            new_nums[i + 1] = nums[i];
+        }
+
+        // 2. 定义 DP 表
+        int n = len + 2;
+        int[][] dp = new int[n][n]; // dp[i][j] 表示戳破开区间 (i, j) 内所有气球的最大收益
+
+        // 3. 状态转移：按区间长度 l 进行遍历
+        for (int l = 2; l < n; l++) { // 区间长度至少为 2 才能包含一个待戳破的气球
+            for (int i = 0; i < n - l; i++) {
+                int j = i + l; // 确定区间 [i, j]
+                // 在开区间 (i, j) 中枚举最后一个被戳破的气球 k
+                for (int k = i + 1; k < j; k++) {
+                    // 计算戳破 k 的即时收益，以及左右子区间的最大收益
+                    int coins = dp[i][k] + new_nums[i] * new_nums[k] * new_nums[j] + dp[k][j];
+                    // 更新 dp[i][j] 为所有可能的 k 中的最大值
+                    dp[i][j] = Math.max(dp[i][j], coins);
+                }
+            }
+        }
+
+        // 4. 最终结果：戳破整个数组（除了首尾虚拟气球）的最大收益
+        return dp[0][n - 1];
+    }
+}
+
+
+#### 递归解决 ####
+class Solution {
+    private int[] points;
+    private int[][] memo;
+
+    public int maxCoins(int[] nums) {
+        int n = nums.length;
+        // 创建 points 数组，预处理边界
+        this.points = new int[n + 2];
+        this.points[0] = 1;
+        this.points[n + 1] = 1;
+        for (int i = 0; i < n; i++) {
+            this.points[i + 1] = nums[i];
+        }
+
+        // 初始化 memo 备忘录
+        this.memo = new int[n + 2][n + 2];
+        for (int[] row : memo) {
+            Arrays.fill(row, -1); // -1 表示该状态还未计算
+        }
+
+        // 从区间 [1, n] 开始求解（跳过首尾的虚拟气球）
+        return solve(1, n);
+    }
+
+    /**
+     * 递归函数：计算戳破 points 数组 [i, j] 区间内所有气球的最大收益
+     */
+    private int solve(int i, int j) {
+        // 1. 检查备忘录
+        if (memo[i][j] != -1) {
+            return memo[i][j];
+        }
+
+        // 2. 基本情况：如果区间无效或为空，则收益为 0
+        if (i > j) {
+            memo[i][j] = 0;
+            return 0;
+        }
+
+        // 3. 递归步骤：枚举最后一个被戳破的气球 k
+        int maxCoinsForThisRange = 0;
+        for (int k = i; k <= j; k++) {
+            // 戳破 k 的即时收益
+            int coin = points[i - 1] * points[k] * points[j + 1];
+            // 总收益 = 即时收益 + 左子区间最大收益 + 右子区间最大收益
+            int total = coin + solve(i, k - 1) + solve(k + 1, j);
+            // 更新当前区间的最大收益
+            maxCoinsForThisRange = Math.max(maxCoinsForThisRange, total);
+        }
+
+        // 4. 将结果存入备忘录并返回
+        memo[i][j] = maxCoinsForThisRange;
+        return maxCoinsForThisRange;
+    }
+}

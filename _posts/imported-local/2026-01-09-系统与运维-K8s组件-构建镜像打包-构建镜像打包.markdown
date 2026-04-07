@@ -1,0 +1,165 @@
+---
+layout: "post"
+title: "构建镜像打包"
+subtitle: "系统与运维 / K8s组件"
+date: "2026-01-09 15:50:38"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - K8s组件
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/K8s组件/构建镜像打包.md`
+
+构建Dockerfile文件
+
+FROM openjdk:8-jre
+ADD target/test-1.0-SNAPSHOT-jar-with-dependencies.jar /application.jar
+ENTRYPOINT ["java", "-jar","/application.jar"]
+
+构建镜像：
+
+./build.sh
+构建镜像：
+APPNAME="hbase-test"
+TAG_DAY=`date +"%Y%m%d"`
+TAG_NO="001"
+TAG=${TAG_DAY}${TAG_NO}
+IMAGE_NAME="${APPNAME}:${TAG}"
+echo IMAGE_NAME:${IMAGE_NAME}
+docker build -t="${IMAGE_NAME}" .
+### upload
+ARTIFACT_URL="sea.hub:5000"
+echo "TAG URL: ${ARTIFACT_URL}/${IMAGE_NAME}"
+### tag image
+docker tag ${IMAGE_NAME} ${ARTIFACT_URL}/${IMAGE_NAME}
+### push image
+docker push ${ARTIFACT_URL}/${IMAGE_NAME}
+
+
+
+docker tag fd9e3b9cb5cc artifactory.dev.cmbc.cn:31345/mscdp-docker-sit-local/cdp-sit/hbase-test:20250616001
+docker push artifactory.dev.cmbc.cn:31345/mscdp-docker-sit-local/cdp-sit/hbase-test:20250616001
+
+构建deployment：
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hbase-test
+  labels:
+    app: hbase-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hbase-test
+  template:
+    metadata:
+      labels:
+        app: hbase-test
+    spec:
+      containers:
+      - name: hbase-test
+        image: sea.hub:5000/hbase-test:20250617001
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 36066
+        volumeMounts:
+        - name: hbase-test-volume
+          mountPath: /app/config/master/user.keytab
+          subPath: user.keytab
+        - name: hbase-test-volume
+          mountPath: /app/config/master/krb5.conf
+          subPath: krb5.conf
+      volumes:
+      - configMap:
+          name: hbase-test--config
+          items:
+          - path: user.keytab
+            key: user.keytab
+          - path: krb5.conf
+            key: krb5.conf
+        name: hbase-test-volume
+
+// 本地挂载失败
+volumeMounts:
+- name: user-keytab
+  mountPath: /app/config/master/user.keytab
+  subPath: user.keytab
+- name: krb5-conf
+  mountPath: /app/config/master/krb5.conf
+  subPath: krb5.conf
+volumes:
+- name: user-keytab
+  hostPath:
+    path: /home/minibase/tmp/config/master/user.keytab
+    type: File
+- name: krb5-conf
+  hostPath:
+    path: /home/minibase/tmp/config/master/krb5.conf
+    type: File
+
+
+创建configmap
+kubectl create configmap hbase-test-config --from-file=./config/master \
+--from-file=master-core-site=/app/hadoop-client/HBase/hbase/conf/core-site.xml \
+--from-file=master-hdfs-site=/app/hadoop-client/HBase/hbase/conf/hdfs-site.xml \
+--from-file=standby-core-site=/app/hadoop-client-standby/HBase/conf/core-site.xml \
+--from-file=standby-hdfs-site=/app/hadoop-client-standby/HBase/conf/hdfs-site.xml \
+--from-file=krb5-conf=/opt/conf/kerberos/krb5.conf \
+--from-file=user-keytab=/opt/conf/kerberos/user.keytab
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hbase-test
+  labels:
+    app: hbase-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hbase-test
+  template:
+    metadata:
+      labels:
+        app: hbase-test
+    spec:
+      containers:
+      - name: hbase-test
+        image: sea.hub:5000/hbase-test2:20250617001
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 36066
+        volumeMounts:
+        - name: hbase-test-volume
+          mountPath: /app/config/master/user.keytab
+          subPath: user.keytab
+        - name: hbase-test-volume
+          mountPath: /app/config/master/krb5.conf
+          subPath: krb5.conf
+        - name: hbase-test-volume
+          mountPath: /app/config/master/core-site.xml
+          subPath: master-core-site
+        - name: hbase-test-volume
+          mountPath: /app/config/master/hdfs-site.xml
+          subPath: master-hdfs-site
+        - name: hbase-test-volume
+          mountPath: /app/config/standby/core-site.xml
+          subPath: standby-core-site
+        - name: hbase-test-volume
+          mountPath: /app/config/standby/hdfs-site.xml
+          subPath: standby-hdfs-site
+        - name: hbase-test-volume
+          mountPath: /app/config/standby/hbase-site.xml
+          subPath: standby-hbase-site
+      volumes:
+        - configMap:
+          name: hbase-test-config
+        name: hbase-test-volume

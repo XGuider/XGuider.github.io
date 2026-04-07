@@ -1,0 +1,79 @@
+---
+layout: "post"
+title: "Docker"
+subtitle: "开源项目 / 电商项目 / 谷粒商城"
+date: "2023-07-15 22:14:02"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 电商项目
+    - 谷粒商城
+categories:
+    - 开源项目
+---
+
+> 来源：`本机相关/07-开源项目/03-电商项目/谷粒商城/Docker.md`
+
+Docker启动：docker run -p 3306:3306 --name mysql -v /mydata/mysql/log:/var/log/mysql -v /mydata/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
+
+
+
+命令行登录命令：
+sudo docker exec -it mysql mysql -uroot -proot
+docker exec -it redis redis-cli
+appendonly yes
+
+
+
+
+
+ssh-keygen -t rsa -C "973279990@qq.com"
+
+查看docker安装mysql容器后的mysql地址
+docker inspect mysql | grep IPAddress
+
+docker 查看容器状态
+docker ps -a
+docker ps 查看正在运行的容器
+
+
+docker 启动已有的mysql容器
+docker start <container_name>
+docker restart mysql
+
+
+Docker MySQL 容器的 IP 地址
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_name_or_id>
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql
+
+docker修改为不需要sudo就能执行
+sudo usermod -aG docker $USER
+groups
+
+
+检查当前的 MySQL 配置
+docker exec mysql cat /etc/my.cnf
+docker exec mysql find / -name my.cnf
+
+
+
+
+进入某个容器
+docker exec -it mysql /bin/bash
+
+
+mysql -h 172.17.0.2 -uroot -proot -P3306
+
+
+设置 root 远程访问
+SQL：grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;
+SQL：FLUSH PRIVILEGES;
+
+
+
+容器查看是基于 什么的 Docker 镜像
+docker inspect mysql | grep "Image"
+
+下载镜像文件
+docker pull mysql:5.7

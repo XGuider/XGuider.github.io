@@ -1,0 +1,17 @@
+---
+layout: "post"
+title: "问题排查"
+subtitle: "系统与运维 / K8s组件"
+date: "2025-10-20 19:09:12"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - K8s组件
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/K8s组件/问题排查.md`
+
+1、节点资源 和 k8s资源不一致：需要重启kubelet进程

@@ -1,0 +1,81 @@
+---
+layout: "post"
+title: "0112算法题"
+subtitle: "编程语言 / 算法 / 算法题"
+date: "2026-01-12 22:39:59"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+    - 算法题
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/算法题/0112算法题.md`
+
+数字 n 代表生成括号的对数，请你设计一个函数，能够生成所有可能的并且 有效的 括号组合。
+💡 示例
+示例 1：
+输入: n = 3
+输出: ["((()))","(()())","(())()","()(())","()()()"]
+
+
+
+class Solution {
+	public List<String> generateParenthesis (int n) {
+		List<String> al = new ArrayList<>();
+		StringBuilder sb = new StringBuilder();
+		int left = n;
+		int right = n;
+		String str = "()";
+		dfs(al, left, right, sb, str);
+		return al;
+
+	}
+
+	public void dfs(List<String> al, int left, int right, StringBuilder sb, String str) {
+		if (left > right) {return;}
+		if (right == 0 && left == 0 ) {String t = sb.toString();  al.add(t); return;}
+		for (char ch : str) { // 不需要for循环
+			sb.append(ch);
+			if (ch == '(') {dfs(al, left-1, right, sb, str);}
+			if (ch == ')') {dfs(al, left, right-1, sb, str);}
+			sb.deleteCharAt(sb.length() - 1);
+		}
+	}
+}
+
+
+标准答案：
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<>();
+        backtrack(result, new StringBuilder(), n, n);
+        return result;
+    }
+
+    private void backtrack(List<String> result, StringBuilder current, int left, int right) {
+        if (left > right) return; // 核心剪枝
+        if (left == 0 && right == 0) {
+            result.add(current.toString());
+            return;
+        }
+        // 添加左括号
+        if (left > 0) {
+            current.append('(');
+            backtrack(result, current, left - 1, right);
+            current.deleteCharAt(current.length() - 1);
+        }
+        // 添加右括号
+        if (right > 0) {
+            current.append(')');
+            backtrack(result, current, left, right - 1);
+            current.deleteCharAt(current.length() - 1);
+        }
+    }
+}

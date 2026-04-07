@@ -1,0 +1,53 @@
+---
+layout: "post"
+title: "纪录"
+subtitle: "前端"
+date: "2026-03-29 11:18:49"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+categories:
+    - 前端
+---
+
+> 来源：`本机相关/05-前端/纪录.md`
+
+什么是微信支付商户：https://kf.qq.com/faq/161222NneAJf161222U7fARv.html
+微信支付号：https://kf.qq.com/faq/200729EZ7fEj200729aumYR7.html
+APPID查询：https://kf.qq.com/faq/181105JJNbmm181105eUZfee.html
+
+
+遇见造型美发店
+红谷滩新区遇见造型美发店
+
+
+微信支付
+微信小程序appid：wx41c87e9998e36c07
+微信支付商户号：1661220643
+
+密码：940422
+
+API认证证书：D:\WXpay\WXCertUtil\cert
+APIV3：8aB7cD2eF9gH4jK6mN1pQ3rS5tV0wX7z
+
+
+
+餐饮、零售批发、交通出行、生活娱乐服务、培训教育机构、民营医疗机构、代理缴纳话费等
+
+
+AppID：wx41c87e9998e36c07 原始ID：gh_1420085a2ce0 
+小程序备案---管局审核中 补充小程序的备案信息，检测是否满足备案条件。
+一直处于 审核中，帮看下是否正常
+
+
+个人的小程序：
+wxde6f82d2b75bffbb
+8232e567880721e89d2580786c0ef58c
+/Users/faqingxiong/Documents/workspace/本机相关/微信小程序/private.wxde6f82d2b75bffbb.key
+
+
+
+公宗号：
+appid：wxb8c324c0749dbca3
+AppSecret：48f2f29dae4ab1ea33a009451e0a3511

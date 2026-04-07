@@ -1,0 +1,68 @@
+---
+layout: "post"
+title: "1223算法题"
+subtitle: "编程语言 / 算法 / 算法题"
+date: "2025-12-23 22:16:08"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+    - 算法题
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/算法题/1223算法题.md`
+
+给定一个整数数组 nums 和一个整数 k，编写一个函数判断该数组中是否存在 长度至少为 2 的连续子数组，其元素总和为 k 的 整数倍（即和为 n * k，其中 n 是整数）。
+
+思路： 是否存在 i < j，使得 (nums[i] + nums[i+1] + ... + nums[j]) % k == 0，且 j - i >= 1。
+
+class Solution:
+    def checkSubarraySum(self, nums, k):
+        n = len(nums)
+        for i in range(n):
+            curr_sum = 0
+            for j in range(i, n):
+                curr_sum += nums[j]
+                # 检查长度 >= 2 且满足条件
+                if j - i >= 1:
+                    if k == 0:
+                        if curr_sum == 0:
+                            return True
+                    else:
+                        if curr_sum % k == 0:
+                            return True
+        return False
+
+
+
+如果两个前缀和 S[i] 和 S[j]（i < j）满足：
+S[j] % k == S[i] % k
+那么 (S[j] - S[i]) % k == 0 
+
+
+class Solution:
+    def checkSubarraySum(self, nums, k):
+        # 哈希表：存储 {余数: 第一次出现的下标}
+        mod_map = {0: -1}  # 关键：前缀和为0出现在下标-1（虚拟位置）
+        prefix_sum = 0
+        
+        for i, num in enumerate(nums):
+            prefix_sum += num
+            
+            if k != 0:
+                remainder = prefix_sum % k
+            else:
+                remainder = prefix_sum  # k=0 时，我们关心 sum 是否为 0
+            
+            if remainder in mod_map:
+                # 检查子数组长度是否 >= 2
+                if i - mod_map[remainder] >= 2:
+                    return True
+            else:
+                # 只记录第一次出现的位置（为了保证最长可能）
+                mod_map[remainder] = i
+        
+        return False

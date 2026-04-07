@@ -1,0 +1,76 @@
+---
+layout: "post"
+title: "系统相关指令"
+subtitle: "系统与运维 / Linux问题排查"
+date: "2026-03-06 17:56:26"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - Linux问题排查
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/Linux问题排查/系统相关指令.md`
+
+top 命令的输出中，你可以看到各个进程的 CPU 使用情况，按 P 键可以按 CPU 使用率排序
+ps aux --sort=-%cpu | head -n 10 :列出 CPU 占用率最高的 10 个进程
+mpstat -P ALL 1 命令用于显示每个 CPU 的统计信息，包括 CPU 占用率
+sar -u 1 每隔 1 秒显示一次 CPU 使用率的统计信息
+uptime 命令用于显示系统的负载平均值，可以间接反映 CPU 占用情况
+
+
+空跑指令
+timeout 600 yes > /dev/null | xargs -P $(($(nproc)*4/10)) -n 1 sleep 0.01
+timeout 600 yes > /dev/null | xargs -P $(($(nproc)/2)) -n 1 yes > /dev/null :
+xargs 命令会并行地启动多个 yes 进程，并行度为 CPU 核心数的一半（$(($(nproc)/2))），每个 yes 进程的输出都会被重定向到 /dev/null
+
+
+
+一次端链接排查：
+telnet -anlp ： 查看服务端口是否可以通；
+ss -nl ： 显示本地打开端口的请求
+ss -ant: 显示所有的TCP的socket
+ss -anu: 显示所有的UDP的socket
+
+
+存在占用太多的端口：
+netstat -n | awk '/^tcp/ {++S{$NF}} END {for(a in S) print a, S[a]}': 并发数查看
+SYN_RECV： 正在等待处理的请求；
+ESTABLISHED： 正常数据传输，当前的并发数；
+TIME_WAIT：处理完毕，等待超时时间关闭；
+CLOSE_WAIT: 客户端异常关闭，没有完成4次挥手
+
+
+
+ping / traceroute / mtr：检查到目标主机的网络延迟和路由情况。
+dig / nslookup：检查 DNS 解析是否正确、是否缓慢。
+
+
+
+IO问题问题排查
+top 中wa代表：wa = iowait（等待 I/O）
+iotop -o   # 只显示有 I/O 的进程
+iostat -x 1   # 每秒刷新一次，关注 %util 和 await
+
+指标	全称	含义	高值说明
+us	user	用户态 CPU 使用率（应用程序代码）	应用计算密集（如 Java、Python 进程）
+sy	system	内核态 CPU 使用率（系统调用、中断处理）	频繁系统调用、上下文切换过多
+ni	nice	低优先级（nice > 0）用户进程 CPU 使用率	人为调低优先级的任务占用资源
+id	idle	CPU 空闲时间	越高系统越空闲（但需结合 wa 看是否真空闲）
+wa	iowait	等待 I/O 完成的时间	I/O 瓶颈（磁盘/存储慢）✅
+hi	hardware interrupts	硬中断 CPU 占用	网卡、磁盘等硬件频繁中断（通常很低）
+si	software interrupts	软中断 CPU 占用	网络包处理（如高流量服务器可能较高）
+st	steal time	虚拟机被宿主机“偷走”的 CPU 时间	虚拟化环境中宿主机过载
+
+us + sy 高 → CPU 真正繁忙
+wa 高 + id 高 → CPU 闲但卡在 I/O
+si 异常高 → 网络或软中断瓶颈（如 DDoS、高并发连接）
+
+
+系统卡顿、响应慢	wa、load average、D 状态进程
+CPU 占用高	us/sy、%CPU（按 P 排序）
+内存不足	avail Mem、Swap used、%MEM（按 M 排序）
+磁盘 I/O 慢	wa + iotop/iostat
+网络延迟高	si（软中断）、netstat/ss

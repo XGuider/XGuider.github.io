@@ -1,0 +1,17 @@
+---
+layout: "post"
+title: "仪表盘"
+subtitle: "系统与运维"
+date: "2025-03-12 10:15:02"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/仪表盘.md`
+
+根据prometheus + grafana
+https://docs.starrocks.io/zh/docs/administration/management/monitoring/Monitor_and_Alert/

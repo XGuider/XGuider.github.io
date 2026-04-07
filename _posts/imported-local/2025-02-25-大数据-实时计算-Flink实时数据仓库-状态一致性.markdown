@@ -1,0 +1,120 @@
+---
+layout: "post"
+title: "状态一致性"
+subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
+date: "2025-02-25 23:19:11"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 实时计算
+    - Flink实时数据仓库
+categories:
+    - 大数据
+---
+
+> 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/状态一致性.md`
+
+“端到端（end-to-end）的状态一致性”，它取决于三个组件中最弱的那一环。一般来说，能否达到at-least-once一致性级别，主要看数据源能够重放数据；而能否达到exactly-once级别，流处理器内部、数据源、外部存储都要有相应的保证机制
+
+数据源：可重放数据，或者说可重置读取数据偏移量，加上Flink的Source算子将偏移量作为状态保存进检查点，就可以保证数据不丢。这是达到at-least-once一致性语义的基本要求，当然也是实现端到端exactly-once的基本要求。
+
+下游：
+幂等（Idempotent）写入所谓“幂等”操作，就是说一个操作可以重复执行很多次，但只导致一次结果更改。也就是说，后面再重复执行就不会对结果起作用了。
+这相当于说，我们并没有真正解决数据重复计算、写入的问题；而是说，重复写入也没关系，结果不会改变。所以这种方式主要的限制在于外部存储系统必须支持这样的幂等写入：比如Redis中键值存储，或者关系型数据库（如MySQL）中满足查询条件的更新操作。
+事务（Transactional）写入：
+输出端最大的问题，就是写入到外部系统的数据难以撤回。而利用事务就可以实现对已写入数据的撤回。
+当Sink任务遇到barrier时，开始保存状态的同时就开启一个事务，接下来所有数据的写入都在这个事务中；待到当前检查点保存完毕时，将事务提交，所有写入的数据就真正可用了
+
+两阶段提交（two-phase-commit，2PC）：
+①当第一条数据到来时，或者收到检查点的分界线时，Sink任务都会启动一个事务。
+②接下来接收到的所有数据，都通过这个事务写入外部系统；这时由于事务没有提交，所以数据尽管写入了外部系统，但是不可用，是“预提交”的状态。
+③当Sink任务收到JobManager发来检查点完成的通知时，正式提交事务，写入的结果就真正可用了
+
+
+
+问题：两阶段提交 和 幂等操作的区别和优缺点
+
+public class KafkaEOSDemo {
+    public static void main(String[] args) throws Exception {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        // 代码中用到hdfs，需要导入hadoop依赖、指定访问hdfs的用户名
+        System.setProperty("HADOOP_USER_NAME", "atguigu");
+        
+        
+        // TODO 1、启用检查点,设置为精准一次
+        env.enableCheckpointing(5000, CheckpointingMode.EXACTLY_ONCE);
+        CheckpointConfig checkpointConfig = env.getCheckpointConfig();
+        checkpointConfig.setCheckpointStorage("hdfs://hadoop102:8020/chk");
+        checkpointConfig.setExternalizedCheckpointCleanup(CheckpointConfig.ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION);
+
+
+        // TODO 2.读取kafka
+        KafkaSource<String> kafkaSource = KafkaSource.<String>builder()
+                .setBootstrapServers("hadoop102:9092,hadoop103:9092,hadoop104:9092")
+                .setGroupId("atguigu")
+                .setTopics("topic_1")
+                .setValueOnlyDeserializer(new SimpleStringSchema())
+                .setStartingOffsets(OffsetsInitializer.latest())
+                .build();
+
+        DataStreamSource<String> kafkasource = env
+                .fromSource(kafkaSource, WatermarkStrategy.forBoundedOutOfOrderness(Duration.ofSeconds(3)), "kafkasource");
+        
+
+        /**
+         * TODO 3.写出到Kafka
+         * 精准一次 写入Kafka，需要满足以下条件，缺一不可
+         * 1、开启checkpoint
+         * 2、sink设置保证级别为 精准一次
+         * 3、sink设置事务前缀
+         * 4、sink设置事务超时时间： checkpoint间隔 <  事务超时时间  < max的15分钟
+         */
+        KafkaSink<String> kafkaSink = KafkaSink.<String>builder()
+                // 指定 kafka 的地址和端口
+                .setBootstrapServers("hadoop102:9092,hadoop103:9092,hadoop104:9092")
+                // 指定序列化器：指定Topic名称、具体的序列化
+                .setRecordSerializer(
+                        KafkaRecordSerializationSchema.<String>builder()
+                                .setTopic("ws")
+                                .setValueSerializationSchema(new SimpleStringSchema())
+                                .build()
+                )
+                // TODO 3.1 精准一次,开启 2pc
+                .setDeliveryGuarantee(DeliveryGuarantee.EXACTLY_ONCE)
+                // TODO 3.2 精准一次，必须设置 事务的前缀
+                .setTransactionalIdPrefix("atguigu-")
+                // TODO 3.3 精准一次，必须设置 事务超时时间: 大于checkpoint间隔，小于 max 15分钟
+                .setProperty(ProducerConfig.TRANSACTION_TIMEOUT_CONFIG, 10*60*1000+"")
+                .build();
+
+
+        kafkasource.sinkTo(kafkaSink);
+
+        env.execute();
+    }
+后续读取“ws”这个topic的消费者，要设置事务的隔离级别为“读已提交”，如下：
+    public class KafkaEOSDemo2 {
+    public static void main(String[] args) throws Exception {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        // 消费 在前面使用两阶段提交写入的Topic
+        KafkaSource<String> kafkaSource = KafkaSource.<String>builder()
+                .setBootstrapServers("hadoop102:9092,hadoop103:9092,hadoop104:9092")
+                .setGroupId("atguigu")
+                .setTopics("ws")
+                .setValueOnlyDeserializer(new SimpleStringSchema())
+                .setStartingOffsets(OffsetsInitializer.latest())
+                // TODO 作为 下游的消费者，要设置 事务的隔离级别 = 读已提交
+                .setProperty(ConsumerConfig.ISOLATION_LEVEL_CONFIG, "read_committed")
+                .build();
+
+
+        env
+                .fromSource(kafkaSource, WatermarkStrategy.forBoundedOutOfOrderness(Duration.ofSeconds(3)), "kafkasource")
+                .print();
+
+        env.execute();
+    }
+}
+}

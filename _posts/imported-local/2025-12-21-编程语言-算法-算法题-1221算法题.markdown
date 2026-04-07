@@ -1,0 +1,57 @@
+---
+layout: "post"
+title: "1221算法题"
+subtitle: "编程语言 / 算法 / 算法题"
+date: "2025-12-21 19:50:38"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+    - 算法题
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/算法题/1221算法题.md`
+
+# 长度最小的子数组
+给定一个含有 n 个正整数的数组 nums 和一个正整数 target。
+找出该数组中满足 其和 ≥ target 的 长度最小的连续子数组 [numsl, numsl+1, ..., numsr-1, numsr]，并返回其长度。如果不存在符合条件的子数组，返回 0。
+
+Python:
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        n = len(nums)
+        left = 0
+        current_sum = 0
+        min_length = float('inf') -- 最大值
+        
+        for right in range(n):
+            current_sum += nums[right]
+            # 当前窗口和 >= target，尝试缩小左边界
+            while current_sum >= target:
+                min_length = min(min_length, right - left + 1)
+                current_sum -= nums[left]
+                left += 1
+        return min_length if min_length != float('inf') else 0
+
+
+Java:
+public int minSubArrayLen(int target, int[] nums) {
+    int n = nums.length;
+    int minLen = Integer.MAX_VALUE;
+
+    for (int i = 0; i < n; i++) {
+        int sum = 0;
+        for (int j = i; j < n; j++) {
+            sum += nums[j];
+            if (sum >= target) {
+                minLen = Math.min(minLen, j - i + 1);
+                break; // 提前退出内层循环（因为后续更长）
+            }
+        }
+    }
+
+    return minLen == Integer.MAX_VALUE ? 0 : minLen;
+}

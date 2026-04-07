@@ -1,0 +1,72 @@
+---
+layout: "post"
+title: "cmd"
+subtitle: "系统与运维"
+date: "2026-04-01 22:01:11"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/cmd.md`
+
+source /etc/profile
+export PATH="/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:$PATH"
+export DOCKER_PATH="/Applications/Docker.app/Contents/Resources/bin"
+export PATH=".\$PATH:$DOCKER_PATH"
+
+{
+  "dns": ["8.8.8.8", "114.114.114.114", "223.5.5.5"],
+  "registry-mirrors": [
+    "https://docker.1ms.run",
+    "https://docker.anyhub.us.kg",
+    "https://dockerhub.jobcher.com",
+    "https://dockerhub.icu",
+    "https://registry.cn-hangzhou.aliyuncs.com"
+  ],
+  "experimental": false,
+  "features": { "buildkit": true }
+}
+
+
+
+
+# 1. 构建当前目录下的Dockerfile 构建自己的Dockfile
+docker buildx build -t my-image:latest .
+docker buildx build -t local/my-image:latest --load .
+
+# 2. 构建并加载到本地
+docker buildx build -t myapp11:latest --load .
+docker buildx build -t clklog-receiver:latest --load .
+# 2.1 中间层镜像达标
+docker tag a5c0c5f1c789 my-app:latest
+# 3. 验证
+docker images | grep myapp
+# 4. 运行测试
+docker run --rm my-app:latest
+# 5. 清理
+docker rmi myapp:1.0
+
+
+docker init
+docker compose up
+或者
+Dockerfile文件这个目录下执行命令：
+docker build -t mytest
+docker images
+docker run -p 127.0.0.1:8111:80 -d --name myubuntu_test myubuntu:v8
+
+
+{
+  "dns": ["8.8.8.8", "114.114.114.114", "223.5.5.5"],
+  "registry-mirrors": [
+    "https://lh2dc8jw.mirror.aliyuncs.com",
+    "https://hub-mirror.c.163.com",
+    "https://registry.docker-cn.com"
+  ],
+  "experimental": false,
+  "features": { "buildkit": true }
+}

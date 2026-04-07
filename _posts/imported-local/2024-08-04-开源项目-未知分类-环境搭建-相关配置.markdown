@@ -1,0 +1,45 @@
+---
+layout: "post"
+title: "相关配置"
+subtitle: "开源项目 / 未知分类 / 环境搭建"
+date: "2024-08-04 03:21:45"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 未知分类
+    - 环境搭建
+categories:
+    - 开源项目
+---
+
+> 来源：`本机相关/07-开源项目/04-未知分类/环境搭建/相关配置.md`
+
+#java
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
+PATH=$JAVA_HOME/bin:$PATH:
+CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:
+export JAVA_HOME
+export PATH
+export CLASSPATH
+
+
+
+#maven
+export M2_HOME= /opt/homebrew/Cellar/maven/3.9.6/libexec
+export PATH=$PATH:$M2_HOME/bin
+
+
+#mysql
+brew install mysql
+brew services start mysql -自启动
+mysql -uroot
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'newPass'; -密码修改
+
+
+#大模型
+ollama
+
+
+#kafka
+brew services list: 服务list

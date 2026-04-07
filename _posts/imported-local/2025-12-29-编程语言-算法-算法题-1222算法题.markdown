@@ -1,0 +1,80 @@
+---
+layout: "post"
+title: "1222算法题"
+subtitle: "编程语言 / 算法 / 算法题"
+date: "2025-12-29 23:21:48"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 算法
+    - 算法题
+categories:
+    - 编程语言
+---
+
+> 来源：`本机相关/01-编程语言/05-算法/算法题/1222算法题.md`
+
+给定一个整数数组 nums 和一个整数 k，请你返回该数组中 和为 k 的连续子数组的个数。
+
+前缀和+HM：
+
+
+class Solution:
+	def subArray(self, nums, k):
+		result = 0
+		curr_sum = 0
+		nums_len = len(nums)
+		for i in range(nums_len):
+			curr_sum = 0
+			for j in range(i, nums_len): -- 比如 [0,0,0], k=0
+				curr_sum += nums[j]
+				if (curr_sum == k): 
+					result += 1
+		return result
+
+
+错误：
+class Solution {
+	public int subArraysLen(int[] nums, int k) {
+		Map<String, Integer> hm =new HashMap<>();
+		int pre_sum = 0;
+		int result = 0;
+
+		for (int i=0; i < nums.length; i++) {
+			pre_sum = nums[i] + pre_sum;
+			String tmp = String.valueOf(k - pre_sum);
+			if (hm.containsKey(tmp)) {result = result + hm.get(tmp);}
+			hm.put(tmp, hm.getOrDefault(tmp, 0) + 1);
+		}
+		return result;
+	}
+}
+
+import java.util.*;
+
+/*算法 currSum - preSum = k ;  */
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        Map<Integer, Integer> prefixSumCount = new HashMap<>();
+        // 关键：前缀和为 0 出现了 1 次（空子数组）
+        prefixSumCount.put(0, 1);
+        
+        int preSum = 0;
+        int count = 0;
+        
+        for (int num : nums) {
+            preSum += num;
+            
+            // 查找是否存在 preSum - k
+            if (prefixSumCount.containsKey(preSum - k)) {
+                count += prefixSumCount.get(preSum - k);
+            }
+            
+            // 将当前前缀和加入 map
+            prefixSumCount.put(preSum, prefixSumCount.getOrDefault(preSum, 0) + 1);
+        }
+        
+        return count;
+    }
+}

@@ -1,0 +1,31 @@
+---
+layout: "post"
+title: "开源项目"
+subtitle: "前端 / 小程序"
+date: "2024-02-26 16:08:33"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 小程序
+categories:
+    - 前端
+---
+
+> 来源：`本机相关/05-前端/02-小程序/开源项目.md`
+
+微信小程序资源：https://github.com/justjavac/awesome-wechat-weapp
+开源项目：https://huanzi-qch.gitee.io/base-admin/#/
+天涯文章：https://github.com/jiji262/tianya-docs
+秒杀系统：https://github.com/harrishee/flash-sale-system/tree/main
+
+
+
+
+https://github.com/JoeyBling/hqc_mp
+https://github.com/iamxjb/winxin-app-watch-life.net
+https://github.com/EastWorld/wechat-app-mall
+https://github.com/mindskip/xzs
+https://github.com/woniudiancang/bee
+https://github.com/imageslr/weapp-library
+https://github.com/fanchaoo/netease-cloud-music-community

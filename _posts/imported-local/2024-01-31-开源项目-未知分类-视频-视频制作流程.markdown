@@ -1,0 +1,24 @@
+---
+layout: "post"
+title: "视频制作流程"
+subtitle: "开源项目 / 未知分类 / 视频"
+date: "2024-01-31 21:32:57"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+    - 未知分类
+    - 视频
+categories:
+    - 开源项目
+---
+
+> 来源：`本机相关/07-开源项目/04-未知分类/视频/视频制作流程.md`
+
+1、数据来源：https://data.stats.gov.cn/staticreq.html
+数据excel可以下载； 
+2、视频制作地址https://alienart.io/projects/65afba88c2e237d1d22231d2
+3、Kap 录取本地视频
+4、获取数据相关的封面图片https://www.perplexity.ai/
+5、封面拼接https://photokit.com/editor/?lang=zh
+6、进行发布

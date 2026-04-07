@@ -1,0 +1,20 @@
+---
+layout: "post"
+title: "pdf压缩命令"
+subtitle: "系统与运维"
+date: "2025-12-13 21:04:00"
+author: "XGuider"
+header-img: "img/post-bg.jpg"
+catalog: true
+tags:
+categories:
+    - 系统与运维
+---
+
+> 来源：`本机相关/06-系统与运维/pdf压缩命令.md`
+
+压缩：
+
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+  -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH \
+  -sOutputFile=扫描件_劳动合同书2.pdf 扫描件_劳动合同书.pdf
