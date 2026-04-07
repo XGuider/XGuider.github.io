@@ -13,6 +13,7 @@ categories:
     - 开源项目
 ---
 
+{% raw %}
 > 来源：`本机相关/07-开源项目/04-未知分类/环境搭建/相关配置.md`
 
 #java
@@ -43,3 +44,4 @@ ollama
 
 #kafka
 brew services list: 服务list
+{% endraw %}

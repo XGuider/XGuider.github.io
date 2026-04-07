@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/数据流join.md`
 
 两条流的全量 Join，SELECT * FROM A INNER JOIN B WHERE A.id = B.id；
@@ -116,3 +117,4 @@ DataStream<String> result = broadcastStream
             ctx.getBroadcastState(broadcastStateDescriptor).put("key", value);
         }
     });
+{% endraw %}

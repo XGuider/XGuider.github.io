@@ -12,9 +12,11 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/04-未知分类/Go配置.md`
 
 Go配置
 
 go env -w GO111MODULE=on         Golang1.16默认开启,1.16一下需要执行这条命令
 go env -w  GOPROXY=https://goproxy.cn,direct     设置七牛CDN
+{% endraw %}

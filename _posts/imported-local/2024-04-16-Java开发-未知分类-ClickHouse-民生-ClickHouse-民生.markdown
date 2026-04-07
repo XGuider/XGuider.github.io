@@ -12,6 +12,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/04-未知分类/ClickHouse_民生.md`
 
 CREATE TABLE rangers.events_all (
@@ -79,3 +80,4 @@ select database,table,min(partition_id),formatReadableSize(sum(bytes_on_disk) as
 hdfs：
 需要经过 kerberos 认证，确认 hdfs 路径，再执行命令：
 hdfs dfs -du -s -h /xxxxx
+{% endraw %}

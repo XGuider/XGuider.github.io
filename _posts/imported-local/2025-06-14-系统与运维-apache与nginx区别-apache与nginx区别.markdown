@@ -11,6 +11,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/apache与nginx区别.md`
 
 架构设计：
@@ -151,3 +152,4 @@ server {
         proxy_pass http://backend_server;
     }
 }
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/influxDB/语法.md`
 
 influxDB查询结果中的时间time默认是精确到纳秒级的时间戳，这样看起来很麻烦，如何格式化成我们一眼可以看出来的时间格式呢？
@@ -50,3 +51,4 @@ time	non_negative_derivative
 从 2024-08-21T00:00:05 到 2024-08-21T00:00:10：请求数量从 350 增加到 500，每秒增长 50。
 
 SELECT sum("request_count") FROM "api_requests" WHERE $timeFilter GROUP BY time
+{% endraw %}

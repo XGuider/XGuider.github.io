@@ -13,6 +13,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/01-Spring框架/Spring/Spring 注解.md`
 
 ### 1.`@SpringBootApplication`
@@ -1344,3 +1345,4 @@ public abstract class TestBase {
     }
 复制代码
 ```
+{% endraw %}

@@ -13,6 +13,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/06-前端/React/web.md`
 
 ---
@@ -213,3 +214,4 @@ sed -i.bak '20i\ --conf spark.executor.memory=4G \\' spark-submit.sh
 - [ ] 清理调试代码
 - [ ] 测试边界情况
 - [ ] 提交代码并写好注释
+{% endraw %}

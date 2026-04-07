@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/02-Python/Python/python线程的使用.md`
 
 ---
@@ -76,3 +77,4 @@ for thread in threads:
     thread.join()
 
 print("All threads have finished")
+{% endraw %}

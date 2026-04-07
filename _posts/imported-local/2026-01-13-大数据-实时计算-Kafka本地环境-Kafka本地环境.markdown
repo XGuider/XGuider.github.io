@@ -12,6 +12,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Kafka本地环境.md`
 
 brew安装软件后，
@@ -121,3 +122,4 @@ log.retention.hours = 168 ，这个属性代表消息保留时间为多少小时
 
 netstat -an | grep 9999 查看端口是否被使用
 lsof -i :9999
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/RichSinkFunction.md`
 
 RichSinkFunction 主要特点
@@ -23,3 +24,4 @@ invoke()：数据到达 Sink 时调用的核心方法，每一条数据都会通
 状态管理：RichSinkFunction 允许你在 open() 方法中设置 状态后端，并可以维护作业中的状态。
 它支持与 Flink 的 检查点机制 配合使用，从而保证外部系统中的数据写入操作的容错能力。
 运行时上下文：RichSinkFunction 通过 RuntimeContext 提供有关作业的上下文信息，允许访问作业的配置、并行度、任务实例等信息
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/K8s组件/kubectl命令.md`
 
 Lable：
@@ -123,3 +124,4 @@ kubectl describe ingress my-ingress
 
 kubectl get ingress my-ingress -o yaml
 通过这些命令，你可以方便地查看和管理Kubernetes集群中的Ingress资源配置
+{% endraw %}

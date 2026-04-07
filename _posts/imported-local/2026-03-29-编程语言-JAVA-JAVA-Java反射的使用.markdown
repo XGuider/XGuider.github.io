@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/01-JAVA/JAVA/Java反射的使用.md`
 
 ---
@@ -52,3 +53,4 @@ public class ReflectionUtil {
         processor.process(); // 根据配置调用相应的 process 方法
     }
 }
+{% endraw %}

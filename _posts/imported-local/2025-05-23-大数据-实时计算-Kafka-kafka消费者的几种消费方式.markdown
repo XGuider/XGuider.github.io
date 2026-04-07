@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Kafka/kafka消费者的几种消费方式.md`
 
 一、消息分批消费
@@ -79,3 +80,4 @@ void processSingle(ConsumerRecord<String, String> record) {
     // 或逐条写入数据库（如 Elasticsearch 实时索引）
     database.insert(parseRecord(record));
 }
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/02-Python/Python/Jupyter的使用.md`
 
 ---
@@ -53,3 +54,4 @@ jupyter contrib nbextension install --user
 查找与替换当前单元格的内容：f (ps: 这个快捷键在重构代码时非常好用）
 设置当前单元格为Markdown：m
 查看所有快捷键：H ❗️查看快捷键的快捷键是Jupyter Notebook里一大妙笔，忘记了快捷键就可以查看❗️
+{% endraw %}

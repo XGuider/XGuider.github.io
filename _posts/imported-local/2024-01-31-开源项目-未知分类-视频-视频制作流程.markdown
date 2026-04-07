@@ -13,6 +13,7 @@ categories:
     - 开源项目
 ---
 
+{% raw %}
 > 来源：`本机相关/07-开源项目/04-未知分类/视频/视频制作流程.md`
 
 1、数据来源：https://data.stats.gov.cn/staticreq.html
@@ -22,3 +23,4 @@ categories:
 4、获取数据相关的封面图片https://www.perplexity.ai/
 5、封面拼接https://photokit.com/editor/?lang=zh
 6、进行发布
+{% endraw %}

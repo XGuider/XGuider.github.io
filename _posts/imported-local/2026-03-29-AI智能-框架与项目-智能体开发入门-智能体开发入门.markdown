@@ -12,6 +12,7 @@ categories:
     - AI智能
 ---
 
+{% raw %}
 > 来源：`本机相关/04-AI智能/02-框架与项目/智能体开发入门.md`
 
 ---
@@ -220,3 +221,4 @@ agent.run("你好，请介绍一下你自己")
 - [LangChain 官方文档](https://python.langchain.com/)
 - [DeepSeek API 文档](https://platform.deepseek.com/docs)
 - [Agent 设计模式](https://www.deeplearning.ai/)
+{% endraw %}

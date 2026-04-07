@@ -12,6 +12,7 @@ categories:
     - 个人管理
 ---
 
+{% raw %}
 > 来源：`本机相关/08-个人管理/06-软考准备/26年5月软考准备.md`
 
 资料：
@@ -19,3 +20,4 @@ categories:
 
 书籍：
 [Readest — Where You Read, Digest and Get Insight](https://web.readest.com/reader/8edc954ec1d43b1eea9a77620d807b79)
+{% endraw %}

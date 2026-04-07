@@ -12,6 +12,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/02-Docker/Docker使用.md`
 
 [https://www.runoob.com/docker/docker-hello-world.html](https://www.runoob.com/docker/docker-hello-world.html)
@@ -44,3 +45,4 @@ docker rm -f 《id》
 列出镜像列表
 docker images 
 ```
+{% endraw %}

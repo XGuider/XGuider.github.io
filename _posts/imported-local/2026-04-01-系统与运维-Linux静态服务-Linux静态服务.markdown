@@ -11,6 +11,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/Linux静态服务.md`
 
 yum install -y net-tools 安装
@@ -41,3 +42,4 @@ DNS2=8.8.8.8
 
 systemctl restart NetworkManager
 systemctl restart network
+{% endraw %}

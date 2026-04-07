@@ -13,8 +13,10 @@ categories:
     - 开源项目
 ---
 
+{% raw %}
 > 来源：`本机相关/07-开源项目/02-AI应用类/wiseflow/env.md`
 
 PocketBase:
 admin: faingx@163.com
 pw: xfq@2025@
+{% endraw %}

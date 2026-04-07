@@ -12,6 +12,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/02-Docker/Dockerfile模版.md`
 
 # 使用官方 Maven 镜像作为构建阶段
@@ -37,3 +38,4 @@ EXPOSE 8080
 
 # 启动应用
 ENTRYPOINT ["java", "-jar", "app.jar"]
+{% endraw %}

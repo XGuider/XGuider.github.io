@@ -13,6 +13,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/05-算法/算法题/0208算法题.md`
 
 题目：寻找数组中三个数的最大乘积
@@ -61,3 +62,4 @@ class Solution {
         return Math.max(max01, max02);
     }
 }
+{% endraw %}

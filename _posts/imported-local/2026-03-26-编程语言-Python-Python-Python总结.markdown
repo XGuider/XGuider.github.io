@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/02-Python/Python/Python总结.md`
 
 # 基础知识
@@ -760,3 +761,4 @@ for i in range(500):
   stuNum = stuNum+1
 get_image(url+str(stuNum)+’.JPG’,stuNum)
 ```
+{% endraw %}

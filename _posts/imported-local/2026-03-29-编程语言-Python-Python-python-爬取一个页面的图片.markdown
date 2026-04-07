@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/02-Python/Python/python----爬取一个页面的图片.md`
 
 ---
@@ -69,3 +70,4 @@ class Handler(BaseHandler):
             "title": response.doc('title').text(),
         }
 ```
+{% endraw %}

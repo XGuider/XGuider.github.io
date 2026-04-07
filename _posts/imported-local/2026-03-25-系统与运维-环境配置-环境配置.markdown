@@ -11,6 +11,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/环境配置.md`
 
 #java
@@ -91,3 +92,4 @@ brew services list: 服务list
 brew services start redis@6.2
 #Homebrew 重新管理 Redis 的链接
 brew unlink redis && brew link redis
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/01-JAVA/JAVA/stream表达式.md`
 
 ---
@@ -82,3 +83,4 @@ Optional<Integer> product = numbers.stream().reduce((a, b) -> a * b);
 #collect(Collector<T, A, R> collector): 使用 Collector 将元素收集到集合或其他结构中
 List<String> words = Arrays.asList("apple", "pie", "banana");
 Set<String> wordSet = words.stream().collect(Collectors.toSet());
+{% endraw %}

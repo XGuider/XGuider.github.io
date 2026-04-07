@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/问题记录.md`
 
 1、uid的作用
@@ -54,3 +55,4 @@ env.getCheckpointConfig().setCheckpointStorage("hdfs://namenode:9000/flink-check
 检查点的保存离不开 JobManager 和 TaskManager，以及外部存储系统的协调。在应用进行检查点保存时，
 首先会由 JobManager 向所有 TaskManager 发出触发检查点的命令；TaskManger 收到之后，将当前任务的所有状态进行快照保存，
 持久化到远程的存储介质中。
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/02-中间件/ES的学习.md`
 
 参考：[https://www.elastic.co/guide/cn/elasticsearch/guide/current/_analytics.html](https://www.elastic.co/guide/cn/elasticsearch/guide/current/_analytics.html)
@@ -681,3 +682,4 @@ curl -X GET "localhost:9200/megacorp/employee/_search?pretty" -H 'Content-Type: 
   }
 }
 ```
+{% endraw %}

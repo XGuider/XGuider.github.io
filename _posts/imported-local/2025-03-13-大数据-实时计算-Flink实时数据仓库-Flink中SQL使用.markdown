@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/Flink中SQL使用.md`
 
 CREATE TABLE topic_db (
@@ -45,3 +46,4 @@ properties.bootstrap.servers: 指定 Kafka 的 broker 地址（hadoop102:9092）
 properties.group.id: 指定 Kafka 消费者组 ID，动态传入 groupId 变量。
 scan.startup.mode: 指定启动模式为 latest-offset，表示从最新的偏移量开始消费。
 format: 指定数据格式为 json
+{% endraw %}

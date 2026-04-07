@@ -11,6 +11,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/pdf压缩命令.md`
 
 压缩：
@@ -18,3 +19,4 @@ categories:
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
   -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH \
   -sOutputFile=扫描件_劳动合同书2.pdf 扫描件_劳动合同书.pdf
+{% endraw %}

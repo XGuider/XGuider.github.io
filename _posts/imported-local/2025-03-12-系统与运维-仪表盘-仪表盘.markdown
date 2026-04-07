@@ -11,7 +11,9 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/仪表盘.md`
 
 根据prometheus + grafana
 https://docs.starrocks.io/zh/docs/administration/management/monitoring/Monitor_and_Alert/
+{% endraw %}

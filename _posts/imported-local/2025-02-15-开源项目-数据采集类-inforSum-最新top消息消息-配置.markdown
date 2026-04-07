@@ -13,6 +13,7 @@ categories:
     - 开源项目
 ---
 
+{% raw %}
 > 来源：`本机相关/07-开源项目/01-数据采集类/inforSum/最新top消息消息-配置.md`
 
 curl "https://api.bilibili.com/x/web-interface/search/square?limit=20" \
@@ -52,3 +53,4 @@ AppSecret:625bedaf9b6bb93aed6b97d757024724
 https://api.weixin.qq.com/cgi-bin/user/get?access_token=89_td9NQqtrzUH0EjbczebIkHuVwlAtrI6-I5EbpBPoYc0Of3bWLf4LMmTFVz_TdFioRSZhw0F5LBkxYtaFgU1hV_M7X4Um9I127205nSNicJc-xJKdclZZ3IaC4Q0QEYiAGAXLF
 
 curl https://api.weixin.qq.com/cgi-bin/openapi/rid/get?access_token=67af5c89-496bcbf7-261c219c
+{% endraw %}

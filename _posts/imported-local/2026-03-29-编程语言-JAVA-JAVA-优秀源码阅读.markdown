@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/01-JAVA/JAVA/优秀源码阅读.md`
 
 ---
@@ -28,3 +29,4 @@ confidence: high
 
 如果你需要快速交付，追求效率: JeecgBoot 和 RuoYi 是很好的选择，它们都有强大的代码生成功能。
 如果你是个人开发者，希望快速上手: Renren-Fast 轻量且功能完善，门槛较低。
+{% endraw %}

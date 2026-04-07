@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/changelog记录.md`
 
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -85,3 +86,4 @@ public class FlinkSQLChangelogDemo {
 changelog-mode = 'all'：捕获 MySQL 的所有变更操作（INSERT/UPDATE/DELETE）。
 enableChangelogStateBackend(true)：启用 Changelog 状态后端。
 sink.transactional-id-prefix：Kafka 事务性写入的 ID 前缀，确保 Exactly-Once
+{% endraw %}

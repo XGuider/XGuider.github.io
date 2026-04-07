@@ -13,6 +13,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/01-Spring框架/Spring/SpringBoot实践-Demo.md`
 
 ```plain
@@ -36,3 +37,4 @@ SpringApplicationBuilder(Application.class).profiles("server")
                 .properties("transport=local").run(args)
                 
 ```
+{% endraw %}

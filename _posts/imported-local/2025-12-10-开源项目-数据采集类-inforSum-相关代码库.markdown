@@ -13,6 +13,7 @@ categories:
     - 开源项目
 ---
 
+{% raw %}
 > 来源：`本机相关/07-开源项目/01-数据采集类/inforSum/相关代码库.md`
 
 舆情：https://github.com/666ghj/BettaFish?tab=readme-ov-file
@@ -23,3 +24,4 @@ categories:
 TrendRadar：
 https://newsnow.busiyi.world/api/s?id={id_value}&latest
 https://github.com/XGuider/TrendRadar_NEW ：MCP的构建和开发
+{% endraw %}

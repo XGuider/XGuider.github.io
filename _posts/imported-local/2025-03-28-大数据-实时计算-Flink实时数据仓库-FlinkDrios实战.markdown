@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/Flink+Drios实战.md`
 
 (1) Flink 写入 Doris 的三种方式
@@ -157,3 +158,4 @@ env.disableOperatorChaining();
 CPU：保留至少 1核 给操作系统
 内存：保留 10-20% 给系统进程
 磁盘：保留 15% 空间避免HDFS写失败
+{% endraw %}

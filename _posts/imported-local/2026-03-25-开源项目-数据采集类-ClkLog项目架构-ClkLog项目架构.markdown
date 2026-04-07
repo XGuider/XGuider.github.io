@@ -12,6 +12,7 @@ categories:
     - 开源项目
 ---
 
+{% raw %}
 > 来源：`本机相关/07-开源项目/01-数据采集类/ClkLog项目架构.md`
 
 # ClkLog 项目架构分析
@@ -122,3 +123,4 @@ categories:
 - **数据库**: ClickHouse, Redis, MySQL
 - **流处理**: Flink
 - **安全**: Spring Security
+{% endraw %}

@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/02-离线计算/Hudi/Hudi与Hive的对比.md`
 
 ---
@@ -453,3 +454,4 @@ SELECT * FROM staging_orders WHERE dt = '2024-01-01';
 - **Hive** = **“传统数据仓库 + 成熟 SQL”**，适合 **大规模离线分析、报表、Ad‑hoc** 场景。  
 
 在实际项目中，往往 **把 Hudi 当作写入/增量层**，**Hive 当作查询/离线层**，二者通过 **Hive Metastore** 实现统一元数据管理，兼顾 **低延迟** 与 **低成本** 的数据湖需求。
+{% endraw %}

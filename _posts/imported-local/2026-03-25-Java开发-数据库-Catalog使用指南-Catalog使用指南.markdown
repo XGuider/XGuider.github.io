@@ -12,6 +12,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/03-数据库/Catalog使用指南.md`
 
 # Catalog 使用指南
@@ -85,3 +86,4 @@ JOIN internal.db.users d ON h.user_id = d.id;
 | jdbc | JDBC 连接（MySQL、PostgreSQL 等） |
 | iceberg | Iceberg 表 |
 | hudi | Hudi 表 |
+{% endraw %}

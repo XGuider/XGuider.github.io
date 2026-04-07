@@ -13,6 +13,7 @@ categories:
     - 开源项目
 ---
 
+{% raw %}
 > 来源：`本机相关/07-开源项目/01-数据采集类/inforSum/车房爬虫.md`
 
 cd /Users/faqingxiong/Documents/code/quick-buy-ai
@@ -44,3 +45,4 @@ docker run quick-buy-ai
 docker-compose up
 # 停止所有服务
 docker-compose down
+{% endraw %}

@@ -13,6 +13,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/05-算法/算法题/0113算法题.md`
 
 给定一个 m×n二维字符网格 board 和一个字符串单词 word。如果 word 存在于网格中，返回 true；否则，返回 false。
@@ -156,3 +157,4 @@ class Solution {
         return false;
     }
 }
+{% endraw %}

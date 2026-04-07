@@ -13,6 +13,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/01-Spring框架/Spring/WEB依赖.md`
 
 <!-- spring-boot相关配置 -->	
@@ -117,3 +118,4 @@ spring-webmvc 还支持多种视图技术，如 JSP、Thymeleaf、Freemarker 等
 - **单独的 Tomcat 服务器**：适用于需要托管多个 Web 应用程序的场景，提供了更灵活的配置和管理选项，适合生产环境中的复杂部署需求。
 
 根据你的需求和项目规模，你可以选择合适的部署方式。如果你只需要运行一个简单的 Spring Boot 应用程序，嵌入式 Tomcat 是一个很好的选择；如果你需要托管多个应用程序或需要更复杂的配置，单独的 Tomcat 服务器可能更适合。
+{% endraw %}

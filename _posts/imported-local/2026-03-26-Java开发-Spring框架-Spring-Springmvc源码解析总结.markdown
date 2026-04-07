@@ -13,6 +13,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/01-Spring框架/Spring/Springmvc源码解析总结.md`
 
 ## 一、servlet与jsp执行过程
@@ -299,3 +300,4 @@ JSP编译后是"类servlet"。Servlet和JSP最主要的不同点在于，
 Servlet的应用逻辑是在Java文件中，
 
 并且完全从表示层中的HTML里分离开来。而JSP的情况是Java和HTML可以组合成一个扩展名为.jsp的文件。JSP侧重于视图，Servlet主要用于控制逻辑。
+{% endraw %}

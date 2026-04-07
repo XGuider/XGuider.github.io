@@ -13,6 +13,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/01-Spring框架/Spring/BeanFactory的构建.md`
 
 /**==如何创建一个Bean
@@ -86,3 +87,4 @@ public class BeanFactory {
         return bean;
     }*/
 }
+{% endraw %}

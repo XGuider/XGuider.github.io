@@ -13,6 +13,7 @@ categories:
     - 开源项目
 ---
 
+{% raw %}
 > 来源：`本机相关/07-开源项目/04-未知分类/文字转语音/tips.md`
 
 ChatTTS的使用：
@@ -24,3 +25,4 @@ https://www.modelscope.cn/models/pzc163/chatTTS
 
 ChatTTS开源项目：
 https://github.com/2noise/ChatTTS
+{% endraw %}

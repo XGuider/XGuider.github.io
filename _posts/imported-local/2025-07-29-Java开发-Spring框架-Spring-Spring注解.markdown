@@ -13,6 +13,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/01-Spring框架/Spring/Spring注解.md`
 
 注解（Annotation）是 Java 语言中的一种元数据（metadata），它提供了一种在代码中添加元数据的方式。注解本身不会直接影响代码的执行，但它们可以被编译器、工具或框架用来生成代码、配置文件，或者在运行时通过反射机制来获取和处理这些元数据。
@@ -121,3 +122,4 @@ public class Person {
     private String name;
     private int age;
 }
+{% endraw %}

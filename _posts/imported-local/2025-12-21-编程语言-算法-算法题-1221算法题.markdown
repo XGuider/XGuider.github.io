@@ -13,6 +13,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/05-算法/算法题/1221算法题.md`
 
 # 长度最小的子数组
@@ -55,3 +56,4 @@ public int minSubArrayLen(int target, int[] nums) {
 
     return minLen == Integer.MAX_VALUE ? 0 : minLen;
 }
+{% endraw %}

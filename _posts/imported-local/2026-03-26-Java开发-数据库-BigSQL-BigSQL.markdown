@@ -12,6 +12,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/03-数据库/BigSQL.md`
 
 ## 1、MapReduce:
@@ -25,3 +26,4 @@ categories:
 
 
 ## 3、Resilient
+{% endraw %}

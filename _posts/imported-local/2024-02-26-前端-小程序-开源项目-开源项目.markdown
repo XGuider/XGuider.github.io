@@ -12,6 +12,7 @@ categories:
     - 前端
 ---
 
+{% raw %}
 > 来源：`本机相关/05-前端/02-小程序/开源项目.md`
 
 微信小程序资源：https://github.com/justjavac/awesome-wechat-weapp
@@ -29,3 +30,4 @@ https://github.com/mindskip/xzs
 https://github.com/woniudiancang/bee
 https://github.com/imageslr/weapp-library
 https://github.com/fanchaoo/netease-cloud-music-community
+{% endraw %}

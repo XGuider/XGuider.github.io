@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/根据事件时间窗口数据流.md`
 
 import org.apache.flink.streaming.api.TimeCharacteristic;
@@ -80,3 +81,4 @@ public class EventTimeWindowExample {
         return null;
     }
 })
+{% endraw %}

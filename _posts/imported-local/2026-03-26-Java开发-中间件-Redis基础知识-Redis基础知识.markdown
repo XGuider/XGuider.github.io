@@ -12,6 +12,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/02-中间件/Redis基础知识.md`
 
 # [redis持久化（万一redis突然宕机了咋办？数据会丢失吗？）](https://www.cnblogs.com/changemax/p/12311493.html)
@@ -910,3 +911,4 @@ jedis.close();
 
 // pipelined 实际是封装过一层的指令集 ->  实际应用的还是单条指令，但是节省了网络传输开销（服务端到Redis环境的网络开销）
 ```
+{% endraw %}

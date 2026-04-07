@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/08-MySQL/MySQL的问题排查.md`
 
 ---
@@ -111,3 +112,4 @@ SELECT * FROM orders WHERE id > 100000 ORDER BY id LIMIT 20;
 
 
  InnoDB 存储引擎 : 内存结构  \ 磁盘结构 \ 后台线程
+{% endraw %}

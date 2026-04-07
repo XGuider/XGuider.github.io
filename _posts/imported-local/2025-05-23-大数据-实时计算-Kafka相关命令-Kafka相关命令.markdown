@@ -12,6 +12,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Kafka相关命令.md`
 
 检查Topic和分区状态
@@ -45,3 +46,4 @@ sudo systemctl restart kafka
 /kafka-topic.sh --bootstrap-server <broker_host:port> --describe --topic 'topic'
 查看堆积情况
 /kafka-consumer-groups.sh --bootstrap-server <broker_host:port> --describe --group 'topic'
+{% endraw %}

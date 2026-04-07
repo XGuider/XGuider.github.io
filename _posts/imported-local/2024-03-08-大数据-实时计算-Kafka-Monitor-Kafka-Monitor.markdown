@@ -12,6 +12,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Kafka Monitor.md`
 
 1. Broker级别指标
@@ -47,3 +48,4 @@ java.lang:type=Memory
 描述：JVM内存使用情况，包括堆内存和非堆内存。
 java.lang:type=GarbageCollector,name=*
 描述：垃圾回收器的性能指标，如回收次数和回收时间。
+{% endraw %}

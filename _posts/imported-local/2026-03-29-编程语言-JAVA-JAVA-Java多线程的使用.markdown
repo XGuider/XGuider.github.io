@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/01-JAVA/JAVA/Java多线程的使用.md`
 
 ---
@@ -168,3 +169,4 @@ public class Main {
         t2.start();
     }
 }
+{% endraw %}

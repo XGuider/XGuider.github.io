@@ -12,6 +12,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/03-数据库/Clickhouse和StarRock的读写过程.md`
 
 ClickHouse 的读写流程：
@@ -96,3 +97,4 @@ Join hint：https://docs.starrocks.io/zh/docs/administration/Query_planning/#que
 针对多表关联查询，优化器一般会主动选择最优的 Join 执行方式。在特殊情况下，您也可以使用 Join hint 显式地向优化器建议 Join 执行方式、以及禁用 Join Reorder。目前 Join hint 支持的 Join 执行方式有 Shuffle Join、Broadcast Join、Bucket Shuffle Join 和 Colocate Join。
 
 当您使用 Join hint 建议 Join 的执行方式后，优化器不会进行 Join Reorder，因此您需要确保右表为较小的表。并且当您所建议的 Join 执行方式为 Colocate Join 或者 Bucket Shuffle Join 时，您需要确保表的数据分布情况满足这两种 Join 执行方式的要求，否则所建议的 Join 执行方式不生效。
+{% endraw %}

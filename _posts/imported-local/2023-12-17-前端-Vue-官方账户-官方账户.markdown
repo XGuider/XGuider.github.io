@@ -12,7 +12,9 @@ categories:
     - 前端
 ---
 
+{% raw %}
 > 来源：`本机相关/05-前端/01-Vue/官方账户.md`
 
 微信支付：https://pay.weixin.qq.com/index.php/core/info
 小程序：https://mp.weixin.qq.com/wxamp/home/guide?token=418378828&lang=zh_CN
+{% endraw %}

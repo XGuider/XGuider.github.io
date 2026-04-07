@@ -13,6 +13,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/01-Spring框架/Spring/Spring实战.md`
 
 一 如何获取spring容器对象
@@ -531,3 +532,4 @@ public class CompletableFutureExample {
             return // ... 返回获取到的用户列表
         }
     }
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/08-MySQL/Mysql案例.md`
 
 1、现在有两个表，“学生表”记录了学生的基本信息，有“学号”、“姓名”。成绩”表记录了学生选修的课程，以及对应课程的成绩。这两个表通过“学号”进行关联。现在要查找出所有学生的学号，姓名，课程和成绩。
@@ -297,3 +298,4 @@ ON e.emp_no = s.emp_no
 WHERE s.to_date = '9999-01-01' 
 AND s.salary NOT IN (SELECT MAX(salary) FROM salaries)
 ```
+{% endraw %}

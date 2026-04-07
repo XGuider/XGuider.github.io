@@ -13,6 +13,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/01-Spring框架/Spring/AOP和拦截器.md`
 
 拦截器更适合处理请求 / 响应生命周期中的通用逻辑，尤其是与 HTTP 请求直接相关的操作。
@@ -79,3 +80,4 @@ public class AuthInterceptor implements HandlerInterceptor {
         return true;
     }
 }
+{% endraw %}

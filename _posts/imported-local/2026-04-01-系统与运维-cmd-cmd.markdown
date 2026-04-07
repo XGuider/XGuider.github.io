@@ -11,6 +11,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/cmd.md`
 
 source /etc/profile
@@ -70,3 +71,4 @@ docker run -p 127.0.0.1:8111:80 -d --name myubuntu_test myubuntu:v8
   "experimental": false,
   "features": { "buildkit": true }
 }
+{% endraw %}

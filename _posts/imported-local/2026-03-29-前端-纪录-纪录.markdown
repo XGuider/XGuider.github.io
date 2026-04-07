@@ -11,6 +11,7 @@ categories:
     - 前端
 ---
 
+{% raw %}
 > 来源：`本机相关/05-前端/纪录.md`
 
 什么是微信支付商户：https://kf.qq.com/faq/161222NneAJf161222U7fARv.html
@@ -51,3 +52,4 @@ wxde6f82d2b75bffbb
 公宗号：
 appid：wxb8c324c0749dbca3
 AppSecret：48f2f29dae4ab1ea33a009451e0a3511
+{% endraw %}

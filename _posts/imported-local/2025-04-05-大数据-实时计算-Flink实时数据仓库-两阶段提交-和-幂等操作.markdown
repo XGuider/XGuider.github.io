@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/两阶段提交 和 幂等操作.md`
 
 1. 两阶段提交（2PC）的伪代码：场景：跨服务的强一致性事务（如订单支付需同时扣款、减库存）
@@ -129,3 +130,4 @@ class PaymentService:
     def process_payment(self, order_id, amount):
         # 实际支付逻辑（如调用银行接口）
         pass
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/02-Python/Python/python事件管理系统.md`
 
 ---
@@ -113,3 +114,4 @@ event_manager = EventManager()
 # 触发用户加入事件
 e_context = EventContext(event="user_join")
 event_manager.emit_event(e_context, user="Alice")
+{% endraw %}

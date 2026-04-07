@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/检查点基础知识.md`
 
 检查点分界线（Barrier）：借鉴水位线的设计，在数据流中插入一个特殊的数据结构，专门用来表示触发检查点保存的时间点。收到保存检查点的指令后，Source任务可以在当前数据流中插入这个结构
@@ -99,3 +100,4 @@ public class CheckpointConfigDemo {
         env.execute();
     }
 }
+{% endraw %}

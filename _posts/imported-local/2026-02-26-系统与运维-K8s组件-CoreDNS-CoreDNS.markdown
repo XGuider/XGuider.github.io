@@ -12,6 +12,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/K8s组件/CoreDNS.md`
 
 当服务 A 的 Pod 中执行 curl http://svc-b:80 时，背后发生了以下故事：
@@ -45,3 +46,4 @@ kube-proxy 将数据包的目标 IP 地址修改为服务 B 的某个真实 Pod 
 查 DNS：进入服务 A 的 Pod，执行 nslookup svc-b。如果解析不出来，是 CoreDNS 或 Service 名称的问题。
 查 Service：在节点上执行 kubectl get endpoints svc-b。如果列表为空，说明 Service 的标签选择器（selector）没有匹配到任何 Pod。
 查连通性：如果解析和端点都正常，尝试在服务 A 中直接 curl http://<Pod-IP-of-B>。如果能通但通过 Service 不通，通常是 kube-proxy 或防火墙问题。
+{% endraw %}

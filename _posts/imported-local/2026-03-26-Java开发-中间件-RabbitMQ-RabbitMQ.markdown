@@ -12,6 +12,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/02-中间件/RabbitMQ.md`
 
 # 重点内容
@@ -472,3 +473,4 @@ MQ本身是基于异步的消息处理，前面的示例中所有的生产者（
 ### 5、Federation Queue
 
 ### 5、Shovel 插件
+{% endraw %}

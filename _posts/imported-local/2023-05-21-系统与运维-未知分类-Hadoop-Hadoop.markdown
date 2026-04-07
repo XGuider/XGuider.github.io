@@ -12,6 +12,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/04-未知分类/Hadoop.md`
 
 （1）bin 目录：存放对 Hadoop 相关服务（hdfs，yarn，mapred）进行操作的脚本
@@ -64,3 +65,4 @@ MapReduce查看执行任务端口 8088 	8088
 		 <value>hadoop102:19888</value>
 	</property>
 </configuration>
+{% endraw %}

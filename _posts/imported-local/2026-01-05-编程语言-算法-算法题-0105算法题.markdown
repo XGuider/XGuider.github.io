@@ -13,6 +13,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/05-算法/算法题/0105算法题.md`
 
 编写一个函数来查找字符串数组中的最长公共前缀。
@@ -115,3 +116,4 @@ public class StringBuilderExample {
         System.out.println(finalString); // 输出: 321dlroWolleH
     }
 }
+{% endraw %}

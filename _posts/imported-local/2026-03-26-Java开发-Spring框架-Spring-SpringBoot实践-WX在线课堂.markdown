@@ -13,6 +13,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/01-Spring框架/Spring/SpringBoot实践-WX在线课堂.md`
 
 # 0、代码架构
@@ -2057,3 +2058,4 @@ modules：聚合多个maven项目
 
 
 [Springboot的Log日志系统详解 - 简书 (jianshu.com)](https://www.jianshu.com/p/5716eadbd12d)
+{% endraw %}

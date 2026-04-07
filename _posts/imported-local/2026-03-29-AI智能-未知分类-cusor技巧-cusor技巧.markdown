@@ -12,6 +12,7 @@ categories:
     - AI智能
 ---
 
+{% raw %}
 > 来源：`本机相关/04-AI智能/03-未知分类/cusor技巧.md`
 
 ---
@@ -146,3 +147,4 @@ teammate on UX, one on technical architecture, one playing devil's advocate.
 ---
 
 > 🤔 **存疑**：`sk-9uKDgYIb0whVCLoELVopazjiY2fswsAAGbMhqX62y1RetCck` 这个密钥来源不明，建议删除或标注用途
+{% endraw %}

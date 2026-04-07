@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/04-SHELL/SHELL/基础命令.md`
 
 ---
@@ -330,3 +331,4 @@ done
 
 - [Linux 命令大全](https://zhuanlan.zhihu.com/p/642738162)
 - [Bash 脚本教程](https://wangdoc.com/bash/)
+{% endraw %}

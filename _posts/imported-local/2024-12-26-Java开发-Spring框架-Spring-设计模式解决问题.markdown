@@ -13,6 +13,7 @@ categories:
     - Java开发
 ---
 
+{% raw %}
 > 来源：`本机相关/02-Java开发/01-Spring框架/Spring/设计模式解决问题.md`
 
 一、优化if...else
@@ -378,3 +379,4 @@ class CGLibProxy implements MethodInterceptor {
         proxy.save();
     }
 }
+{% endraw %}

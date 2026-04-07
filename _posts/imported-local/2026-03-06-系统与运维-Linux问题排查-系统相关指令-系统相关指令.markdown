@@ -12,6 +12,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/Linux问题排查/系统相关指令.md`
 
 top 命令的输出中，你可以看到各个进程的 CPU 使用情况，按 P 键可以按 CPU 使用率排序
@@ -74,3 +75,4 @@ CPU 占用高	us/sy、%CPU（按 P 排序）
 内存不足	avail Mem、Swap used、%MEM（按 M 排序）
 磁盘 I/O 慢	wa + iotop/iostat
 网络延迟高	si（软中断）、netstat/ss
+{% endraw %}

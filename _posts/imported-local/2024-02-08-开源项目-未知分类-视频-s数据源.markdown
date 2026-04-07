@@ -13,6 +13,7 @@ categories:
     - 开源项目
 ---
 
+{% raw %}
 > 来源：`本机相关/07-开源项目/04-未知分类/视频/s数据源.md`
 
 https://zhuanlan.zhihu.com/p/104469963
@@ -21,3 +22,4 @@ https://zhuanlan.zhihu.com/p/419023550
 
 
 export PATH="/opt/homebrew/Cellar/python@3.11/3.11.7_1/bin:$PATH"
+{% endraw %}

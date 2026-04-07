@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/03-Go/Go/Go 基础语法.md`
 
 ---
@@ -61,3 +62,4 @@ func isValidSudoku(board [][]byte) bool {
     }
     return true
 }
+{% endraw %}

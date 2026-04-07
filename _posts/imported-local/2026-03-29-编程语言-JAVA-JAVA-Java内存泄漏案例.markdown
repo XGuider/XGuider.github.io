@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/01-JAVA/JAVA/Java内存泄漏案例.md`
 
 ---
@@ -66,3 +67,4 @@ public class StackOverflowExample {
         recursiveMethod();
     }
 }
+{% endraw %}

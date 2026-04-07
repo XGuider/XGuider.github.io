@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/02-Python/NewsSpider项目.md`
 
 ---
@@ -26,3 +27,4 @@ confidence: high
 ---
 
 链接：[https://github.com/lzjqsdd/NewsSpider](https://github.com/lzjqsdd/NewsSpider)
+{% endraw %}

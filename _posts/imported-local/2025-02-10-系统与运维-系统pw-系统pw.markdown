@@ -11,6 +11,8 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/系统pw.md`
 
 sudo pw:xfq@2025
+{% endraw %}

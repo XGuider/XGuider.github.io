@@ -11,6 +11,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/压缩拆分.md`
 
 压缩拆分
@@ -23,3 +24,4 @@ zip - ./民生银行Finder增长分析V5.0.x产品ver环境验收测试.pdf  | s
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
   -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH \
   -sOutputFile=民生银行Finder增长分析V5.0.x产品ver环境验收测试2.pdf 民生银行Finder增长分析V5.0.x产品ver环境验收测试.pdf
+{% endraw %}

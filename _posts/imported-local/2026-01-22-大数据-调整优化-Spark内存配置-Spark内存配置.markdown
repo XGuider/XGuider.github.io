@@ -12,6 +12,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/08-调整优化/Spark内存配置.md`
 
 动态资源分配（Dynamic Allocation）是 Spark 的一项强大功能，能根据任务负载自动 增加或释放 Executor。
@@ -118,3 +119,4 @@ set spark.serializer=org.apache.spark.serializer.KryoSerializer;
 常见报错4：shuffle file lost
 常见报错5：executor exit code is 143
 处理措施：Execution内存不足，首先排查是否发生数据倾斜。调整资源配比：增大Execution内存、增大Shuffle并行度、打散数据
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/K8s组件/构建镜像打包.md`
 
 构建Dockerfile文件
@@ -163,3 +164,4 @@ spec:
         - configMap:
           name: hbase-test-config
         name: hbase-test-volume
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/02-Python/Python/venv管理包.md`
 
 ---
@@ -29,3 +30,4 @@ confidence: high
 创建虚拟环境：python3 -m venv test_env
 启用虚拟环境：source ./test_env/bin/activate 
 deactivate
+{% endraw %}

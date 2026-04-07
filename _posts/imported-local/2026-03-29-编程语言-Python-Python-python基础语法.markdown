@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/02-Python/Python/python基础语法.md`
 
 ---
@@ -111,3 +112,4 @@ project/
 相对引用：from ..A.a import MyClass, my_function
         需要添加__init__.py， 告诉 Python 这些目录是包
 绝对引用：from mypackage.A.a import MyClass, my_function
+{% endraw %}

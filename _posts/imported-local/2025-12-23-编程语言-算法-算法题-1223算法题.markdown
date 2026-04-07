@@ -13,6 +13,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/05-算法/算法题/1223算法题.md`
 
 给定一个整数数组 nums 和一个整数 k，编写一个函数判断该数组中是否存在 长度至少为 2 的连续子数组，其元素总和为 k 的 整数倍（即和为 n * k，其中 n 是整数）。
@@ -66,3 +67,4 @@ class Solution:
                 mod_map[remainder] = i
         
         return False
+{% endraw %}

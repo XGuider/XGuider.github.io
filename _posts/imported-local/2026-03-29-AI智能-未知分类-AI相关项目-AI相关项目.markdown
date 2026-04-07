@@ -12,6 +12,7 @@ categories:
     - AI智能
 ---
 
+{% raw %}
 > 来源：`本机相关/04-AI智能/03-未知分类/AI相关项目.md`
 
 ---
@@ -79,3 +80,4 @@ confidence: medium
 ---
 
 > 🤔 **存疑**：部分链接缺少具体 URL，需要补充完整
+{% endraw %}

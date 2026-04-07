@@ -12,6 +12,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Flink基础知识.md`
 
 四大数据处理模块：TGwu
@@ -34,3 +35,4 @@ DataStream API编写的代码生成的最初的DAG图：逻辑流图
 StreamGraph经过优化后生成的就是作业图（JobGraph）：作业图
 JobMaster收到JobGraph后，会根据它来生成执行图：执行图
 JobMaster生成执行图后，会将它分发给TaskManager：物理图
+{% endraw %}

@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/01-JAVA/JAVA/实用插件.md`
 
 ---
@@ -31,3 +32,4 @@ MyBatis-Plus
 Rainbow
 Json Hepler
 maven help
+{% endraw %}

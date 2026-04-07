@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/01-JAVA/JAVA/Java服务排查.md`
 
 内存：
@@ -87,3 +88,4 @@ grep -B 5 -A 10 "locked" jstack_dump.txt
 -- MySQL 慢查询日志
 SHOW VARIABLES LIKE 'slow_query_log%';
 -- 或查询performance_schema
+{% endraw %}

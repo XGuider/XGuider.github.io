@@ -12,6 +12,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/01-JAVA/JAVA/Java锁的使用.md`
 
 ---
@@ -105,3 +106,4 @@ public class LockCounter {
         System.out.println("Count should be 5000: " + counter.getCount());
     }
 }
+{% endraw %}

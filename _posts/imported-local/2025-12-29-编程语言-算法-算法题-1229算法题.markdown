@@ -13,6 +13,7 @@ categories:
     - 编程语言
 ---
 
+{% raw %}
 > 来源：`本机相关/01-编程语言/05-算法/算法题/1229算法题.md`
 
 题目描述
@@ -29,3 +30,4 @@ class Solution {
         return false;
     }
 }
+{% endraw %}

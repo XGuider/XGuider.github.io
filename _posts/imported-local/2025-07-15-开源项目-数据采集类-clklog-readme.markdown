@@ -13,6 +13,7 @@ categories:
     - 开源项目
 ---
 
+{% raw %}
 > 来源：`本机相关/07-开源项目/01-数据采集类/clklog/readme.md`
 
 不同职能的团队对于行为数据的关注点完全不同，因此需要先梳理清楚使用目的和优先级。常见需求分类：
@@ -93,3 +94,4 @@ echo "[
 
 解密 //
 echo "H4sIAAW0a2gAA91STU+EMBC98yv6A4DQtVjlBrt69YCejCEVujhxaZu2kBDjf5evBNa4m3VjTPTQQ9/Mm5k38x4dhN66hxATUrSVrE0GRYTWIcWUbGKPbMLEI0lMvZgmoXdDSZBcBDRYk1t34BVgLIjcfpPGGy5shGKlUsu0HUELFY8QpjggASUrck3xFGhVF7Ca5a8jAEVHBwvcRNP8C7TNzhWzVwSKbXMaeeC+jyV28LwcqftmDdcGpIgQ8S/9lbuMRQju0hlhSs3Z2Cc+3svOKm5fZKeI1Vbe99tYdlZaKq4/70SaM3vksuDuSTqkWRSkxxVWTNRblttacz2cf8dHDc6k4wfd2MpaZ3ltrKy47pDpQLIEcSQ+OTOFUjyov+3LL8iH1f+6iXuD/Qf/LkYre5tczYZ2npwPIiK2BWIFAAA=" |base64 -d | gzip -d
+{% endraw %}

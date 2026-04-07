@@ -13,6 +13,7 @@ categories:
     - 大数据
 ---
 
+{% raw %}
 > 来源：`本机相关/03-大数据/01-实时计算/Flink实时数据仓库/聚合状态的使用.md`
 
 对用户点击事件流每 5 个数据统计一次平均时间戳
@@ -95,3 +96,4 @@ public class AverageTimestampExample {
         }
     }
 }
+{% endraw %}

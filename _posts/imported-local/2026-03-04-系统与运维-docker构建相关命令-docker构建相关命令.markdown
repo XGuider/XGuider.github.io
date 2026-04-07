@@ -11,6 +11,7 @@ categories:
     - 系统与运维
 ---
 
+{% raw %}
 > 来源：`本机相关/06-系统与运维/docker构建相关命令.md`
 
 构建镜像：
@@ -73,3 +74,4 @@ ADD . /code
 WORKDIR /code
 RUN pip install -r requirements.txt
 CMD ["python", "app.py"]
+{% endraw %}
