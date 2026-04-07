@@ -40,7 +40,7 @@ pagination:
   sort_field: 'date'
   sort_reverse: true
 
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md","scripts","_posts/*.docx","_posts/*.doc","_posts/*.pdf","Gemfile","Gemfile.lock"]
+exclude: ["less","node_modules","vendor","vendor/bundle","Gruntfile.js","package.json","README.md","README.zh.md","scripts","_posts/*.docx","_posts/*.doc","_posts/*.pdf","Gemfile","Gemfile.lock"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
 
