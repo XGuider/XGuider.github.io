@@ -1,0 +1,146 @@
+---
+layout: page-fixed
+title: 标签
+description: 按标签浏览文章
+permalink: /tags/
+---
+
+<div class="tags-page">
+    <p class="tags-page-intro">点击标签可跳转到下方对应文章列表（支持中文标签）。</p>
+    <div class="tags-page-cloud" id="tag_cloud" role="navigation" aria-label="全部标签">
+        {% for tag in site.tags %}
+            <a href="{{ site.baseurl }}/tags/#{{ tag[0] | cgi_escape }}"
+               class="tags-page-cloud-link"
+               data-count="{{ tag[1].size }}"
+               title="{{ tag[1].size }} 篇文章">{{ tag[0] }}</a>
+        {% endfor %}
+    </div>
+
+    {% for tag in site.tags %}
+    <section class="tag-section"
+             data-tag="{{ tag[0] | xml_escape }}"
+             aria-labelledby="tag-heading-{{ forloop.index }}">
+        <h2 class="tag-section-title" id="tag-heading-{{ forloop.index }}">{{ tag[0] }}</h2>
+        <p class="tag-section-count">{{ tag[1].size }} 篇文章</p>
+        <ul class="tag-section-list">
+            {% assign posts = tag[1] | sort: 'date' | reverse %}
+            {% for post in posts %}
+            <li>
+                <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">{{ post.title }}</a>
+                <span class="tag-section-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
+</div>
+
+<style>
+.tags-page-intro {
+    margin: 0 0 1.5rem;
+    color: var(--gray-600, #6B7280);
+    font-size: 0.95rem;
+}
+.tags-page-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color, #E5E7EB);
+}
+.tags-page-cloud-link {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    background: var(--gray-100, #F3F4F6);
+    color: var(--primary-color, #3B82F6);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.tags-page-cloud-link:hover {
+    background: #E0E7FF;
+    text-decoration: none;
+}
+.tag-section {
+    margin-bottom: 2.5rem;
+    scroll-margin-top: 6rem;
+}
+.tag-section-title {
+    margin: 0 0 0.25rem;
+    font-size: 1.35rem;
+    color: var(--gray-900, #111827);
+}
+.tag-section-count {
+    margin: 0 0 1rem;
+    font-size: 0.875rem;
+    color: var(--gray-500, #9CA3AF);
+}
+.tag-section-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.tag-section-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color, #E5E7EB);
+}
+.tag-section-list a {
+    color: var(--primary-color, #3B82F6);
+    text-decoration: none;
+    flex: 1;
+    min-width: 12rem;
+}
+.tag-section-list a:hover {
+    text-decoration: underline;
+}
+.tag-section-date {
+    font-size: 0.8rem;
+    color: var(--gray-500, #9CA3AF);
+}
+.tag-section--highlight {
+    outline: 2px solid var(--primary-color, #3B82F6);
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+</style>
+
+<script>
+(function () {
+    function hashToTagName(hash) {
+        if (!hash || hash.charAt(0) !== '#') return '';
+        var raw = hash.slice(1);
+        if (!raw) return '';
+        try {
+            return decodeURIComponent(raw.replace(/\+/g, ' '));
+        } catch (e) {
+            return raw;
+        }
+    }
+
+    function scrollToTagSection() {
+        var name = hashToTagName(window.location.hash);
+        if (!name) return;
+        var sections = document.querySelectorAll('.tag-section[data-tag]');
+        for (var i = 0; i < sections.length; i++) {
+            var el = sections[i];
+            var dt = el.getAttribute('data-tag');
+            if (dt === name) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                el.classList.add('tag-section--highlight');
+                setTimeout(function () {
+                    el.classList.remove('tag-section--highlight');
+                }, 2000);
+                return;
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', scrollToTagSection);
+    window.addEventListener('hashchange', scrollToTagSection);
+})();
+</script>

@@ -1,5 +1,5 @@
-<!-- Modern Sidebar with Accessibility -->
-<section class="sidebar-section" role="complementary" aria-label="Sidebar">
+<!-- Modern Sidebar：外层仅使用 page-fixed 的 .content-sidebar，避免与 .sidebar-section 重复嵌套 -->
+<div role="complementary" aria-label="侧栏内容">
     <!-- Featured Tags -->
     {% if site.featured-tags %}
     <article class="sidebar-card">
@@ -60,15 +60,9 @@
             {% endfor %}
         </ul>
     </article>
-</section>
+</div>
 
 <style>
-.sidebar-section {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
 .sidebar-card {
     padding: 20px;
     background: #FFFFFF;
