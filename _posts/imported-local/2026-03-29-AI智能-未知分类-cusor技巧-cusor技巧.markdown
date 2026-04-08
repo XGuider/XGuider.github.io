@@ -37,10 +37,10 @@ confidence: medium
 
 ```bash
 # 设置 Anthropic API Key
-export ANTHROPIC_API_KEY=sk-HRdHi1vAKnakrX7rYZpKYCv5qc5kG47VUv2FndYmKvwphnhM
+export ANTHROPIC_API_KEY=XXX
 
 # 或使用 Auth Token
-export ANTHROPIC_AUTH_TOKEN=sk-HRdHi1vAKnakrX7rYZpKYCv5qc5kG47VUv2FndYmKvwphnhM
+export ANTHROPIC_AUTH_TOKEN=XXX
 export ANTHROPIC_BASE_URL=https://api.moonshot.cn/anthropic/
 ```
 
@@ -48,7 +48,7 @@ export ANTHROPIC_BASE_URL=https://api.moonshot.cn/anthropic/
 
 ```bash
 echo -e '\n export ANTHROPIC_BASE_URL=https://api.kimi.com/coding/' >> ~/.zshrc
-echo -e '\n export ANTHROPIC_AUTH_TOKEN=sk-kimi-ej1QtdOkWs0KHcyMUate3dN2Pho1uApSZxaq0o5Zez4jbfqigjHqgbF5PlTvOWcl' >> ~/.zshrc
+echo -e '\n export ANTHROPIC_AUTH_TOKEN=sk-kimiXXX' >> ~/.zshrc
 source ~/.zshrc
 ```
 
