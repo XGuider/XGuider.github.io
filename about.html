@@ -18,10 +18,17 @@ header-img: "img/post-bg-alitrip.jpg"
   <p> Hi，我是XGuider，90后程序猿一枚，昵称<Strong>XGuider</Strong>。<br></p>
   目前投身于IT行业，同时在其他方面打打辅助!<br>   
   <p>希望通过这个博客能结识更多志同道合的人，学习分享的路上与君共勉!<br> </p>  
+
+  <hr>
+  <h3>AI周边微信公众号</h3>
+  <p>实时跟进最新信息。</p>
+  <figure class="about-wx">
+    <img src="{{ site.baseurl }}/img/person_wx.jpg" alt="AI周边微信公众号" loading="lazy">
+    <figcaption>AI周边微信公众号，实时跟进最新信息</figcaption>
+  </figure>
+
   <Strong>可通过以下方式联系到我:</Strong><br>
    <Strong>QQ邮箱:973279990@qq.com</Strong><br>
-   <Strong>微博:<a href='https://weibo.com/XGuider' target='_blank'>https://weibo.com/XGuider</a></Strong>
-   
 </div>
 
 <!-- English Version -->
@@ -34,8 +41,6 @@ header-img: "img/post-bg-alitrip.jpg"
   <p>I hope that through this blog, we can get to know more like-minded people and learn to share with them on the road of sharing!<br> </p>  
   <Strong>you can contact me in the following ways:</Strong><br>
    <Strong>QQ Email:973279990@qq.com</Strong><br>
-   <Strong>Weibo:<a href='https://weibo.com/XGuider' target='_blank'>https://weibo.com/XGuider</a></Strong>
-   
 </div>
 
 <!-- Handle Language Change -->
@@ -77,6 +82,25 @@ header-img: "img/post-bg-alitrip.jpg"
     // init
     _render();
 </script>
+
+<style>
+  .about-wx {
+    margin: 1rem 0 1.25rem;
+    text-align: center;
+  }
+  .about-wx img {
+    width: min(360px, 100%);
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+  .about-wx figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #6B7280;
+  }
+</style>
 
 {% if site.livere_uid %}
 <!-- livere 评论框 start -->

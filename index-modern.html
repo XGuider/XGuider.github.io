@@ -7,7 +7,7 @@ header-img: "img/home-bg-art.jpg"
 <!>-- Modern Homepage CSS -->
 <link rel="stylesheet" href="{{ '/css/homepage-modern.css' | prepend: site.baseurl }}?v={{ site.time | date: '%s' }}">
 
-<header class="homepage-header">
+<header class="homepage-header" style="--homepage-bg-image: url('{{ site.baseurl }}/img/home-bg-art.jpg');">
     <div class="homepage-header-content">
         <h1 class="homepage-title">{{ site.title }}</h1>
         <p class="homepage-subtitle">{{ page.description | default: site.description }}</p>
@@ -54,14 +54,22 @@ header-img: "img/home-bg-art.jpg"
                 </div>
 
                 <div class="posts-grid">
-                    {% for post in category_posts limit:6 %}
+                    {% assign pinned_posts = category_posts | where_exp: "p", "p.sticky == true" %}
+                    {% assign regular_posts = category_posts | where_exp: "p", "p.sticky != true" %}
+                    {% assign merged_posts = pinned_posts | concat: regular_posts %}
+                    {% for post in merged_posts limit:6 %}
                     <article class="post-card">
                         <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}" class="post-card-link">
-                            {% if post.cover_img %}
-                                <img src="{{ post.cover_img }}" alt="{{ post.title }}" class="post-card-image">
-                            {% endif %}
+                            {% assign card_cover = post.cover_img | default: post.header-img | default: 'img/post-bg.jpg' %}
+                            <img src="{{ card_cover | prepend: site.baseurl | replace: '//', '/' }}"
+                                 alt="{{ post.title }}"
+                                 class="post-card-image"
+                                 loading="lazy">
                             <div class="post-card-body">
-                                <h3 class="post-card-title">{{ post.title }}</h3>
+                                <h3 class="post-card-title">
+                                    {% if post.sticky == true %}<span class="post-card-pin" aria-label="置顶">置顶</span>{% endif %}
+                                    {{ post.title }}
+                                </h3>
                                 {% if post.subtitle %}
                                 <p class="post-card-subtitle">{{ post.subtitle }}</p>
                                 {% endif %}
@@ -178,7 +186,7 @@ header-img: "img/home-bg-art.jpg"
 </section>
 
 <style>
-<!-- Additional styles for homepage nav -->
+  
 .homepage-nav {
     margin-top: 2rem;
     display: flex;

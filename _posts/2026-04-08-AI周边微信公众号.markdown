@@ -1,0 +1,30 @@
+---
+layout: post
+title: "AI周边微信公众号"
+subtitle: "实时跟进最新信息"
+date: "2026-04-08 00:00:00"
+author: "XGuider"
+header-img: "img/post-bg-alitrip.jpg"
+cover_img: "img/person_wx.jpg"
+sticky: true
+catalog: false
+tags:
+    - AI
+    - 资讯
+categories:
+    - AI智能
+---
+
+{% raw %}
+如果你想**更快、更省时间**地跟进 AI 圈的新工具、新模型、新玩法，可以关注这个公众号。
+
+![AI周边微信公众号](/img/person_wx.jpg)
+
+你将获得：
+
+- 新工具/新模型的要点速览
+- 适合上手的实践路线
+- 少踩坑的配置与使用建议
+
+{% endraw %}
+
