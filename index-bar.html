@@ -1,0 +1,224 @@
+---
+layout: page
+description: "探索未知，记录成长"
+header-img: "img/home-bg-art.jpg"
+---
+
+<style>
+/* 文章卡片样式 - 匹配原型图 */
+.article-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 24px;
+    margin-bottom: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.article-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.article-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1F2937;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+}
+
+.article-card-desc {
+    font-size: 14px;
+    color: #6B7280;
+    margin: 0 0 12px 0;
+    line-height: 1.6;
+}
+
+.article-card-meta {
+    font-size: 12px;
+    color: #9CA3AF;
+    margin: 0;
+}
+
+/* 分类标题样式 */
+.category-header {
+    margin: 32px 0 24px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #E5E7EB;
+}
+
+.category-header:first-child {
+    margin-top: 0;
+}
+
+.category-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.category-icon {
+    font-size: 20px;
+}
+
+.category-name {
+    flex: 1;
+}
+
+.category-count {
+    font-size: 14px;
+    color: #9CA3AF;
+    font-weight: normal;
+}
+</style>
+
+<!-- 收集所有分类 -->
+{% assign all_categories = '' | split: '' %}
+{% for post in site.posts %}
+    {% if post.categories and post.categories.size > 0 %}
+        {% for category in post.categories %}
+            {% unless all_categories contains category %}
+                {% assign all_categories = all_categories | push: category %}
+            {% endunless %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
+{% assign all_categories = all_categories | sort %}
+
+<!-- 按分类分组显示文章 -->
+{% if all_categories.size > 0 %}
+    {% for category in all_categories %}
+        {% comment %} 使用循环过滤文章，因为 where_exp 的 contains 在某些 Jekyll 版本中可能不支持 {% endcomment %}
+        {% assign category_posts_filtered = '' | split: '' %}
+        {% for post in site.posts %}
+            {% if post.categories contains category %}
+                {% assign category_posts_filtered = category_posts_filtered | push: post %}
+            {% endif %}
+        {% endfor %}
+        {% assign category_posts = category_posts_filtered | sort: 'date' | reverse %}
+        
+        {% if category_posts.size > 0 %}
+            <!-- 分类标题 -->
+            <div class="category-header">
+                <h2 class="category-title">
+                    <span class="category-icon">📁</span>
+                    <span class="category-name">{{ category }}</span>
+                    <span class="category-count">({{ category_posts.size }})</span>
+                </h2>
+            </div>
+            
+            <!-- 该分类下的文章列表 -->
+            {% for post in category_posts %}
+                <article class="article-card">
+                    <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+                        <h2 class="article-card-title">
+                            {{ post.title }}
+                        </h2>
+                        <p class="article-card-desc">
+                            {% if post.subtitle %}
+                                {{ post.subtitle }}
+                            {% else %}
+                                {% if post.lang == 'en' %}
+                                    {{ post.content | strip_html | truncate:150 }}
+                                {% else %}
+                                    {{ post.content | strip_html | truncate:100 }}
+                                {% endif %}
+                            {% endif %}
+                        </p>
+                        <p class="article-card-meta">
+                            {{ post.date | date: "%Y-%m-%d" }} · {{ post.categories | first | default: "未分类" }}
+                        </p>
+                    </a>
+                </article>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<!-- 显示没有分类的文章 -->
+{% assign uncategorized_posts_filtered = '' | split: '' %}
+{% for post in site.posts %}
+    {% if post.categories == nil or post.categories.size == 0 %}
+        {% assign uncategorized_posts_filtered = uncategorized_posts_filtered | push: post %}
+    {% endif %}
+{% endfor %}
+{% assign uncategorized_posts = uncategorized_posts_filtered | sort: 'date' | reverse %}
+{% if uncategorized_posts.size > 0 %}
+    <div class="category-header">
+        <h2 class="category-title">
+            <span class="category-icon">📄</span>
+            <span class="category-name">未分类</span>
+            <span class="category-count">({{ uncategorized_posts.size }})</span>
+        </h2>
+    </div>
+    
+    {% for post in uncategorized_posts %}
+        <article class="article-card">
+            <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+                <h2 class="article-card-title">
+                    {{ post.title }}
+                </h2>
+                <p class="article-card-desc">
+                    {% if post.subtitle %}
+                        {{ post.subtitle }}
+                    {% else %}
+                        {% if post.lang == 'en' %}
+                            {{ post.content | strip_html | truncate:150 }}
+                        {% else %}
+                            {{ post.content | strip_html | truncate:100 }}
+                        {% endif %}
+                    {% endif %}
+                </p>
+                <p class="article-card-meta">
+                    {{ post.date | date: "%Y-%m-%d" }} · 未分类
+                </p>
+            </a>
+        </article>
+    {% endfor %}
+{% endif %}
+
+<!-- 显示 Videos 视频内容 -->
+{% if site.videos.size > 0 %}
+    <div class="category-header">
+        <h2 class="category-title">
+            <span class="category-icon">🎬</span>
+            <span class="category-name">视频</span>
+            <span class="category-count">({{ site.videos.size }})</span>
+        </h2>
+    </div>
+
+    {% for video in site.videos %}
+        <article class="article-card">
+            <a href="{{ video.url | prepend: site.baseurl | replace: '//', '/' }}">
+                <h2 class="article-card-title">
+                    {{ video.title }}
+                </h2>
+                <p class="article-card-desc">
+                    {{ video.content | strip_html | truncate:100 }}
+                </p>
+                <p class="article-card-meta">
+                    {{ video.date | date: "%Y-%m-%d" }} · 视频
+                </p>
+            </a>
+        </article>
+    {% endfor %}
+{% endif %}
+
+{% if all_categories.size == 0 and uncategorized_posts.size == 0 and site.videos.size == 0 %}
+    <div class="post-preview">
+        <p class="post-meta">暂无文章</p>
+    </div>
+{% endif %}
+
