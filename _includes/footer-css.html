@@ -145,26 +145,45 @@
 </footer>
 
 <!-- Modern Analytics -->
-{% if site.analytics.google.tag_id and site.analytics.google.tag_id != "G-XXXXXXXXXX" %}
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google.tag_id }}" integrity="sha512-VG7tu5meV0fK4BdUM4a2Q1h2n6VluF7qKXBqBdGiQq5qFbfFAZJopr73m3H1uq1wuxtPcMmYx5EVZhtK0g==" crossorigin="anonymous"></script>
-<script defer>
-  if (navigator.doNotTrack !== '1' && !window.location.href.match(/localhost|127\.0\.0\.1/)) {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ site.analytics.google.tag_id }}', {
-      'send_page_view': true,
-      'anonymize_ip': true,
-      'allow_google_signals': false
-    });
-  }
+{% if site.analytics.google.tag_id and site.analytics.google.tag_id != "" and site.analytics.google.tag_id != "G-XXXXXXXXXX" %}
+<!-- Google tag (gtag.js) — ID 来自 _config.yml analytics.google.tag_id -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google.tag_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ site.analytics.google.tag_id }}');
 </script>
 {% endif %}
 
 {% if site.analytics.plausible.domain %}
 <!-- Plausible Analytics (Privacy-first alternative) -->
 <script defer data-domain="{{ site.analytics.plausible.domain }}" src="https://plausible.io/js/plausible.js"></script>
+{% endif %}
+
+{% assign baidu_id = site.analytics.baidu.tracking_id | default: site.ba_track_id %}
+{% if baidu_id and baidu_id != "" %}
+<!-- 百度统计：首屏后空闲时再拉取 hm.js，降低对 LCP 的影响 -->
+<script defer>
+(function () {
+  if (navigator.doNotTrack === '1') return;
+  if (/localhost|127\.0\.0\.1/.test(window.location.hostname)) return;
+  function loadBaidu() {
+    window._hmt = window._hmt || [];
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?' + '{{ baidu_id }}';
+    hm.async = true;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  }
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadBaidu, { timeout: 4000 });
+  } else {
+    window.addEventListener('load', function () { setTimeout(loadBaidu, 0); });
+  }
+})();
+</script>
 {% endif %}
 
 <!-- Main bundle -->

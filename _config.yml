@@ -82,7 +82,7 @@ livere_uid: MTAyMC8yODkzOC81NTA3
 # Modern analytics
 analytics:
   google:
-    tag_id: "G-XXXXXXXXXX"  # GA4 Measurement ID
+    tag_id: "G-SD3JQVC25K"  # GA4 Measurement ID
   baidu:
     tracking_id: "969b089e87ca4b02f96f2c1ee3553b06"
   plausible:
