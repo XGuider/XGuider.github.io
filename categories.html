@@ -1,0 +1,139 @@
+---
+layout: page-fixed
+title: 分类
+description: 按分类浏览文章
+permalink: /categories/
+---
+
+<div class="categories-page">
+    <p class="categories-page-intro">按分类浏览全部文章。</p>
+    <nav class="categories-page-cloud" aria-label="全部分类">
+        {% for category in site.categories %}
+            <a href="{{ site.baseurl }}/categories/#{{ category[0] | cgi_escape }}"
+               class="categories-page-cloud-link"
+               title="{{ category[1].size }} 篇文章">{{ category[0] }}</a>
+        {% endfor %}
+    </nav>
+
+    {% for category in site.categories %}
+    <section class="category-section" data-category="{{ category[0] | xml_escape }}">
+        <h2 class="category-section-title">{{ category[0] }}</h2>
+        <p class="category-section-count">{{ category[1].size }} 篇文章</p>
+        <ul class="category-section-list">
+            {% assign posts = category[1] | sort: 'date' | reverse %}
+            {% for post in posts %}
+            <li>
+                <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">{{ post.title }}</a>
+                <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
+</div>
+
+<style>
+.categories-page-intro {
+    margin: 0 0 1.5rem;
+    color: var(--gray-600, #6B7280);
+    font-size: 0.95rem;
+}
+.categories-page-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color, #E5E7EB);
+}
+.categories-page-cloud-link {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    background: var(--gray-100, #F3F4F6);
+    color: var(--primary-color, #3B82F6);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.categories-page-cloud-link:hover {
+    background: #E0E7FF;
+    text-decoration: none;
+}
+.category-section {
+    margin-bottom: 2.5rem;
+    scroll-margin-top: 6rem;
+}
+.category-section-title {
+    margin: 0 0 0.25rem;
+    font-size: 1.35rem;
+    color: var(--gray-900, #111827);
+}
+.category-section-count {
+    margin: 0 0 1rem;
+    font-size: 0.875rem;
+    color: var(--gray-500, #9CA3AF);
+}
+.category-section-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.category-section-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color, #E5E7EB);
+}
+.category-section-list a {
+    flex: 1;
+    min-width: 12rem;
+    color: var(--primary-color, #3B82F6);
+    text-decoration: none;
+}
+.category-section-list a:hover {
+    text-decoration: underline;
+}
+.category-section-list time {
+    font-size: 0.8rem;
+    color: var(--gray-500, #9CA3AF);
+}
+.category-section--highlight {
+    outline: 2px solid var(--primary-color, #3B82F6);
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+</style>
+
+<script>
+(function () {
+    function scrollToCategory() {
+        var hash = window.location.hash;
+        if (!hash || hash.length < 2) return;
+
+        var name;
+        try {
+            name = decodeURIComponent(hash.slice(1).replace(/\+/g, ' '));
+        } catch (e) {
+            name = hash.slice(1);
+        }
+
+        var sections = document.querySelectorAll('.category-section[data-category]');
+        for (var i = 0; i < sections.length; i++) {
+            var section = sections[i];
+            if (section.getAttribute('data-category') !== name) continue;
+
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            section.classList.add('category-section--highlight');
+            setTimeout(function () {
+                section.classList.remove('category-section--highlight');
+            }, 2000);
+            return;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', scrollToCategory);
+    window.addEventListener('hashchange', scrollToCategory);
+})();
+</script>

@@ -34,6 +34,18 @@ image: "img/home-bg-art.jpg"
     {% endfor %}
     {% assign all_categories = all_categories | sort %}
 
+    {% if all_categories.size > 0 %}
+    <nav class="homepage-category-nav" aria-label="按分类浏览">
+        <span class="homepage-category-nav-label">快速浏览</span>
+        <div class="homepage-category-nav-links">
+            {% for category in all_categories %}
+            <a href="#category-{{ category | slugify }}">{{ category }}</a>
+            {% endfor %}
+            <a class="homepage-category-nav-all" href="{{ site.baseurl }}/categories/">全部分类 <span aria-hidden="true">↗</span></a>
+        </div>
+    </nav>
+    {% endif %}
+
     <!-- Posts by Categories Grid -->
     {% if all_categories.size > 0 %}
         {% for category in all_categories %}
@@ -46,7 +58,7 @@ image: "img/home-bg-art.jpg"
             {% assign category_posts = category_posts_filtered | sort: 'date' | reverse %}
 
             {% if category_posts.size > 0 %}
-            <div class="category-section">
+            <div class="category-section" id="category-{{ category | slugify }}" style="animation-delay: {{ forloop.index0 | times: 45 }}ms">
                 <div class="category-header">
                     <h2 class="category-title">
                         <span class="category-icon">📁</span>
