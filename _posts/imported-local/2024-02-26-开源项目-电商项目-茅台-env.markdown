@@ -3,7 +3,7 @@ layout: "post"
 title: "env"
 subtitle: "开源项目 / 电商项目 / 茅台"
 date: "2024-02-26 16:08:31"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

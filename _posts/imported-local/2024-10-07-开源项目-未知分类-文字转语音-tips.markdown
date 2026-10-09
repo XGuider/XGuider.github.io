@@ -3,7 +3,7 @@ layout: "post"
 title: "tips"
 subtitle: "开源项目 / 未知分类 / 文字转语音"
 date: "2024-10-07 11:15:54"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

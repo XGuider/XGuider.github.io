@@ -3,7 +3,7 @@ layout: "post"
 title: "Springmvc源码解析总结"
 subtitle: "Java开发 / Spring框架 / Spring"
 date: "2026-03-26 14:19:26"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

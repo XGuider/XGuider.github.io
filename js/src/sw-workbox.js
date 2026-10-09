@@ -1,5 +1,5 @@
 /**
- * Service Worker using Workbox for XGuider Blog
+ * Service Worker using Workbox for Bear Frankin Blog
  * Provides PWA functionality with offline support
  */
 

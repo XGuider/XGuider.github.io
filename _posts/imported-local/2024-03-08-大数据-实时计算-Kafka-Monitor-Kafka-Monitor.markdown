@@ -3,7 +3,7 @@ layout: "post"
 title: "Kafka Monitor"
 subtitle: "大数据 / 实时计算"
 date: "2024-03-08 15:36:21"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

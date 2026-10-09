@@ -3,7 +3,7 @@ layout: "post"
 title: "Hudi与Hive的对比"
 subtitle: "大数据 / 离线计算 / Hudi"
 date: "2026-04-01 21:56:16"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

@@ -3,7 +3,7 @@ layout: "post"
 title: "纪录"
 subtitle: "前端"
 date: "2026-03-29 11:18:49"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

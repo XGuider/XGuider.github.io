@@ -3,7 +3,7 @@ layout: "post"
 title: "Kafka相关命令"
 subtitle: "大数据 / 实时计算"
 date: "2025-05-23 10:19:24"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

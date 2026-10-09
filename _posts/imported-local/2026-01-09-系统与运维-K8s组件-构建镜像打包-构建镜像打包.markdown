@@ -3,7 +3,7 @@ layout: "post"
 title: "构建镜像打包"
 subtitle: "系统与运维 / K8s组件"
 date: "2026-01-09 15:50:38"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

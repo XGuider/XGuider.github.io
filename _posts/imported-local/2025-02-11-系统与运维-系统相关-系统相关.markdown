@@ -3,7 +3,7 @@ layout: "post"
 title: "系统相关"
 subtitle: "系统与运维"
 date: "2025-02-11 15:42:07"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

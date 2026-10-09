@@ -3,7 +3,7 @@ layout: "post"
 title: "最新top消息消息-配置"
 subtitle: "开源项目 / 数据采集类 / inforSum"
 date: "2025-02-15 12:26:05"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

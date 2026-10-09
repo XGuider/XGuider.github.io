@@ -3,7 +3,7 @@ layout: "post"
 title: "Dubbo基础使用"
 subtitle: "Java开发 / 中间件"
 date: "2026-03-26 14:10:42"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

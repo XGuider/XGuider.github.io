@@ -3,7 +3,7 @@ layout: "post"
 title: "Dockerfile模版"
 subtitle: "系统与运维 / Docker"
 date: "2025-06-14 22:37:26"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

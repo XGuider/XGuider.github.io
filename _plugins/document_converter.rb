@@ -98,7 +98,7 @@ module Jekyll
         'layout' => 'post',
         'title' => file_name,
         'date' => Time.now.strftime('%Y-%m-%d %H:%M:%S'),
-        'author' => @site.config['author'] || 'XGuider',
+        'author' => @site.config['author'] || 'Bear Frankin',
         'header-img' => @site.config['header-img'] || 'img/post-bg.jpg',
         'tags' => [],
         'categories' => []

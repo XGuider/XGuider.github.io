@@ -3,7 +3,7 @@ layout: "post"
 title: "Spark学习"
 subtitle: "大数据 / 离线计算"
 date: "2026-03-26 11:50:59"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

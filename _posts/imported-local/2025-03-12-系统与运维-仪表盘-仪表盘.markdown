@@ -3,7 +3,7 @@ layout: "post"
 title: "仪表盘"
 subtitle: "系统与运维"
 date: "2025-03-12 10:15:02"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

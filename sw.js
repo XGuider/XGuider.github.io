@@ -1,9 +1,9 @@
 /*!
- * Service Worker for XGuider Blog
+ * Service Worker for Bear Frankin Blog
  * PWA support for offline functionality
  */
 
-const CACHE_NAME = 'xguider-blog-v1';
+const CACHE_NAME = 'Bear Frankin-blog-v1';
 const urlsToCache = [
     '/',
     '/css/bootstrap.min.css',
@@ -12,7 +12,7 @@ const urlsToCache = [
     '/css/videos.css',
     '/js/jquery.min.js',
     '/js/bootstrap.min.js',
-    '/js/XGuider-blog.min.js'
+    '/js/Bear Frankin-blog.min.js'
 ];
 
 // Install event - cache resources

@@ -3,7 +3,7 @@ layout: "post"
 title: "Hadoop"
 subtitle: "系统与运维 / 未知分类"
 date: "2023-05-21 20:05:14"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

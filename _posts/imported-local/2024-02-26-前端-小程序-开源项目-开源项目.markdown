@@ -3,7 +3,7 @@ layout: "post"
 title: "开源项目"
 subtitle: "前端 / 小程序"
 date: "2024-02-26 16:08:33"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

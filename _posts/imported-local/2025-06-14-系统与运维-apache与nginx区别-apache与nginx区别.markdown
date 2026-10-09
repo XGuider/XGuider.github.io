@@ -3,7 +3,7 @@ layout: "post"
 title: "apache与nginx区别"
 subtitle: "系统与运维"
 date: "2025-06-14 22:29:18"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

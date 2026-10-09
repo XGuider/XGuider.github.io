@@ -3,7 +3,7 @@ layout: "post"
 title: "java基础知识"
 subtitle: "编程语言 / JAVA"
 date: "2026-03-26 18:52:52"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

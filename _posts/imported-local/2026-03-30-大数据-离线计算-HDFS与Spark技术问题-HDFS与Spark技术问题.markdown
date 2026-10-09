@@ -3,7 +3,7 @@ layout: "post"
 title: "HDFS与Spark技术问题"
 subtitle: "大数据 / 离线计算"
 date: "2026-03-30 21:05:34"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

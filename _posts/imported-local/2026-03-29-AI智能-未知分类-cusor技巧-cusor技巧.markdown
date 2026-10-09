@@ -3,7 +3,7 @@ layout: "post"
 title: "cusor技巧"
 subtitle: "AI智能 / 未知分类"
 date: "2026-03-29 13:55:04"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

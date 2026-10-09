@@ -3,7 +3,7 @@ layout: "post"
 title: "vue3快速上手"
 subtitle: "前端 / Vue"
 date: "2026-03-26 14:02:37"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

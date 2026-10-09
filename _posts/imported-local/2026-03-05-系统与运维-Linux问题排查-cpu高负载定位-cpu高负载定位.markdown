@@ -3,7 +3,7 @@ layout: "post"
 title: "cpu高负载定位"
 subtitle: "系统与运维 / Linux问题排查"
 date: "2026-03-05 18:05:25"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

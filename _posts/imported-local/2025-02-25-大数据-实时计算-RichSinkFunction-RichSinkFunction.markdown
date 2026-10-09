@@ -3,7 +3,7 @@ layout: "post"
 title: "RichSinkFunction"
 subtitle: "大数据 / 实时计算"
 date: "2025-02-25 22:43:46"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

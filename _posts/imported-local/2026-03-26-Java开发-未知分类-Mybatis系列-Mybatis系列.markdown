@@ -3,7 +3,7 @@ layout: "post"
 title: "「Mybatis系列]"
 subtitle: "Java开发 / 未知分类"
 date: "2026-03-26 14:10:23"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

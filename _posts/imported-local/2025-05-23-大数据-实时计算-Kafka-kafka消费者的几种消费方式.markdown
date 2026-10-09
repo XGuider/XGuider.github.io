@@ -3,7 +3,7 @@ layout: "post"
 title: "kafka消费者的几种消费方式"
 subtitle: "大数据 / 实时计算 / Kafka"
 date: "2025-05-23 10:40:52"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

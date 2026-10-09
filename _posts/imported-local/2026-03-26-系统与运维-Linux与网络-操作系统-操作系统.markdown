@@ -3,7 +3,7 @@ layout: "post"
 title: "操作系统"
 subtitle: "系统与运维 / Linux与网络"
 date: "2026-03-26 14:08:55"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

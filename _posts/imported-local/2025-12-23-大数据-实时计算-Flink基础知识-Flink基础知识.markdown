@@ -3,7 +3,7 @@ layout: "post"
 title: "Flink基础知识"
 subtitle: "大数据 / 实时计算"
 date: "2025-12-23 13:23:15"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

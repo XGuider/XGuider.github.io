@@ -3,7 +3,7 @@ layout: "post"
 title: "相关配置"
 subtitle: "开源项目 / 未知分类 / 环境搭建"
 date: "2024-08-04 03:21:45"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

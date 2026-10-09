@@ -3,7 +3,7 @@ layout: "post"
 title: "kerberos认证"
 subtitle: "大数据"
 date: "2025-09-11 14:58:45"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

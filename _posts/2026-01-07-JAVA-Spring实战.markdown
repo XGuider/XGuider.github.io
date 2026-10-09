@@ -2,7 +2,7 @@
 layout: "post"
 title: "Spring实战"
 date: "2026-01-07 00:00:00"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 tags:
 categories:

@@ -3,7 +3,7 @@ layout: "post"
 title: "矿机定位（挖掘高价值信息源）"
 subtitle: "开源项目 / 未知分类 / 矿机定位"
 date: "2025-02-16 22:25:10"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

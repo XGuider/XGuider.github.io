@@ -3,7 +3,7 @@ layout: "post"
 title: "Newcoder 剑指office"
 subtitle: "编程语言 / 算法"
 date: "2026-03-26 14:04:24"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

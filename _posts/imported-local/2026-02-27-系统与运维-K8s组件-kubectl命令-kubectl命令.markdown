@@ -3,7 +3,7 @@ layout: "post"
 title: "kubectl命令"
 subtitle: "系统与运维 / K8s组件"
 date: "2026-02-27 21:29:38"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

@@ -3,7 +3,7 @@ layout: "post"
 title: "Python总结"
 subtitle: "编程语言 / Python / Python"
 date: "2026-03-26 14:05:45"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

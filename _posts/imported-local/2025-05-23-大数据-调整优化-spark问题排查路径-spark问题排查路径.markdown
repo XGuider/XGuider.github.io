@@ -3,7 +3,7 @@ layout: "post"
 title: "spark问题排查路径"
 subtitle: "大数据 / 调整优化"
 date: "2025-05-23 11:58:54"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

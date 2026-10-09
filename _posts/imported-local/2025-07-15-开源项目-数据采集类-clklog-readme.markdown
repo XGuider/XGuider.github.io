@@ -3,7 +3,7 @@ layout: "post"
 title: "readme"
 subtitle: "开源项目 / 数据采集类 / clklog"
 date: "2025-07-15 18:44:37"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

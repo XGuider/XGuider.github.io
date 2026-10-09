@@ -3,7 +3,7 @@ layout: "post"
 title: "语法"
 subtitle: "系统与运维 / influxDB"
 date: "2024-08-21 16:53:38"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

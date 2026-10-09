@@ -3,7 +3,7 @@ layout: "post"
 title: "CoreDNS"
 subtitle: "系统与运维 / K8s组件"
 date: "2026-02-26 17:34:05"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

@@ -3,7 +3,7 @@ layout: "post"
 title: "changelog记录"
 subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
 date: "2025-03-13 15:05:40"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

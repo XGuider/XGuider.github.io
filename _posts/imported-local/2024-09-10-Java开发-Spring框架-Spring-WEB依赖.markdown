@@ -3,7 +3,7 @@ layout: "post"
 title: "WEB依赖"
 subtitle: "Java开发 / Spring框架 / Spring"
 date: "2024-09-10 22:55:01"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

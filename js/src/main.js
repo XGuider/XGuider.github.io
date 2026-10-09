@@ -1,5 +1,5 @@
 /**
- * Main JavaScript entry point for XGuider Blog
+ * Main JavaScript entry point for Bear Frankin Blog
  * Initializes blog functionality and components
  * Modern implementation without jQuery/Bootstrap dependencies
  */
@@ -86,7 +86,7 @@
 
   // Initialize all components
   function initializeApp () {
-    console.log('XGuider Blog v2.0 initialized')
+    console.log('Bear Frankin Blog v2.0 initialized')
 
     // Initialize components
     initNavigation()
@@ -115,7 +115,7 @@
   }
 
   // Public API
-  window.XGuiderBlog = {
+  window.Bear FrankinBlog = {
     trackEvent,
     version: '2.0.0'
   }

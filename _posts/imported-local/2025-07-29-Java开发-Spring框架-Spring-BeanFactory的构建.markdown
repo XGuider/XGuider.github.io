@@ -3,7 +3,7 @@ layout: "post"
 title: "BeanFactory的构建"
 subtitle: "Java开发 / Spring框架 / Spring"
 date: "2025-07-29 16:00:18"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

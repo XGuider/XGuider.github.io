@@ -3,7 +3,7 @@ layout: "post"
 title: "tips"
 subtitle: "AI智能 / AI工具 / ChatGPT"
 date: "2026-03-29 14:02:18"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

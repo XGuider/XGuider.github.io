@@ -3,7 +3,7 @@ layout: "post"
 title: "SpringBoot"
 subtitle: "Java开发 / Spring框架 / Spring"
 date: "2026-03-26 14:21:01"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

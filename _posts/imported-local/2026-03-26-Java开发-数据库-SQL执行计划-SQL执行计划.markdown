@@ -3,7 +3,7 @@ layout: "post"
 title: "SQL执行计划"
 subtitle: "Java开发 / 数据库"
 date: "2026-03-26 11:50:41"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

@@ -1,7 +1,7 @@
 {
-    "name": "XGuider Blog",
-    "short_name": "XGuider",
-    "description": "XGuider的个人博客",
+    "name": "Bear Frankin Blog",
+    "short_name": "Bear Frankin",
+    "description": "Bear Frankin的个人博客",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",

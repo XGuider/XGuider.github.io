@@ -1,4 +1,4 @@
-# XGuider Blog
+# Bear Frankin Blog
 
 基于 Jekyll 的个人博客，支持 GitHub Pages 自动部署。
 
@@ -53,8 +53,8 @@ gem install bundler
 #### 3. 克隆项目
 
 ```bash
-git clone https://github.com/XGuider/XGuider.github.io.git
-cd XGuider.github.io
+git clone https://github.com/Bear Frankin/Bear Frankin.github.io.git
+cd Bear Frankin.github.io
 ```
 
 #### 4. 安装依赖
@@ -146,7 +146,7 @@ npm_config_sharp_binary_host="" npm_config_sharp_libvips_binary_host="" npm_conf
 
 1. 登录 GitHub
 2. 点击右上角的 "+" 号，选择 "New repository"
-3. 仓库名必须为：`你的用户名.github.io`（例如：`XGuider.github.io`）
+3. 仓库名必须为：`你的用户名.github.io`（例如：`Bear Frankin.github.io`）
 4. 设置为 Public（GitHub Pages 免费版需要公开仓库）
 5. 点击 "Create repository"
 
@@ -157,7 +157,7 @@ npm_config_sharp_binary_host="" npm_config_sharp_libvips_binary_host="" npm_conf
 git init
 
 # 添加远程仓库（替换为你的仓库地址）
-git remote add origin https://github.com/XGuider/XGuider.github.io.git
+git remote add origin https://github.com/Bear Frankin/Bear Frankin.github.io.git
 
 # 添加所有文件
 git add .
@@ -257,7 +257,7 @@ git commit -m "Deploy site"
 
 # 5. 推送到 gh-pages 分支
 git branch -M gh-pages
-git remote add origin https://github.com/XGuider/XGuider.github.io.git
+git remote add origin https://github.com/Bear Frankin/Bear Frankin.github.io.git
 git push -u origin gh-pages
 ```
 
@@ -311,9 +311,9 @@ git push -u origin gh-pages
 ### 站点设置
 
 ```yaml
-title: XGuider Blog                    # 博客标题
-SEOTitle: XGuider的博客 | XGuider Blog  # SEO 标题
-url: "https://XGuider.github.io/"      # 网站 URL
+title: Bear Frankin Blog                    # 博客标题
+SEOTitle: Bear Frankin的博客 | Bear Frankin Blog  # SEO 标题
+url: "https://Bear Frankin.github.io/"      # 网站 URL
 baseurl: ""                            # 基础路径
 email: your-email@example.com          # 联系邮箱
 description: "博客描述"                # 网站描述
@@ -323,7 +323,7 @@ keyword: "关键词"                      # SEO 关键词
 ### 社交网络
 
 ```yaml
-github_username: XGuider
+github_username: Bear Frankin
 ```
 
 ### 评论系统
@@ -337,7 +337,7 @@ github_username: XGuider
 
 ```yaml
 ga_track_id: 'UA-xxxxxx-xx'    # 替换为你的 Google Analytics ID
-ga_domain: XGuider.github.io    # 你的域名
+ga_domain: Bear Frankin.github.io    # 你的域名
 ```
 
 ## ✍️ 写作指南
@@ -353,7 +353,7 @@ ga_domain: XGuider.github.io    # 你的域名
 layout: post
 title: "文章标题"
 subtitle: "副标题（可选）"
-author: "XGuider"
+author: "Bear Frankin"
 tags:
   - 标签1
   - 标签2
@@ -565,8 +565,8 @@ git push origin main
 
 ## 📮 联系方式
 
-- GitHub: [@XGuider](https://github.com/XGuider)
-- 博客: [https://XGuider.github.io](https://XGuider.github.io)
+- GitHub: [@Bear Frankin](https://github.com/Bear Frankin)
+- 博客: [https://Bear Frankin.github.io](https://Bear Frankin.github.io)
 - 邮箱: 973279990@qq.com
 
 ---

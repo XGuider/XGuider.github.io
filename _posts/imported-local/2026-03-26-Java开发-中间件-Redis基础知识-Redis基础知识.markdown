@@ -3,7 +3,7 @@ layout: "post"
 title: "Redis基础知识"
 subtitle: "Java开发 / 中间件"
 date: "2026-03-26 14:09:22"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

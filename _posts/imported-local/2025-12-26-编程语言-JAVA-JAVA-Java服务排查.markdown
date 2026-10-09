@@ -3,7 +3,7 @@ layout: "post"
 title: "Java服务排查"
 subtitle: "编程语言 / JAVA / JAVA"
 date: "2025-12-26 18:43:39"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

@@ -3,7 +3,7 @@ layout: "post"
 title: "Catalog使用指南"
 subtitle: "Java开发 / 数据库"
 date: "2026-03-25 18:12:56"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

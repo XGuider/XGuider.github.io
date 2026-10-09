@@ -3,7 +3,7 @@ layout: "post"
 title: "Nginx转发"
 subtitle: "系统与运维 / 未知分类"
 date: "2026-01-16 17:20:12"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

@@ -3,7 +3,7 @@ layout: "post"
 title: "Doris和Clickhouse"
 subtitle: "Java开发 / 数据库"
 date: "2025-03-13 09:47:19"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

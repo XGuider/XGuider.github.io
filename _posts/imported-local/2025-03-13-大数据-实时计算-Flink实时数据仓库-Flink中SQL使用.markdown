@@ -3,7 +3,7 @@ layout: "post"
 title: "Flink中SQL使用"
 subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
 date: "2025-03-13 15:37:01"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

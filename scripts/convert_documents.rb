@@ -119,7 +119,7 @@ class DocumentConverter
       'layout' => 'post',
       'title' => file_name,
       'date' => Time.now.strftime('%Y-%m-%d %H:%M:%S'),
-      'author' => 'XGuider',
+      'author' => 'Bear Frankin',
       'header-img' => 'img/post-bg.jpg',
       'tags' => [],
       'categories' => []

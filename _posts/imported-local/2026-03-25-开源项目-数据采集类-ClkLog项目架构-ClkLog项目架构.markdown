@@ -3,7 +3,7 @@ layout: "post"
 title: "ClkLog项目架构"
 subtitle: "开源项目 / 数据采集类"
 date: "2026-03-25 18:13:32"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

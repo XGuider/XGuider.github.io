@@ -3,7 +3,7 @@ layout: "post"
 title: "Clickhouse和StarRock的读写过程"
 subtitle: "Java开发 / 数据库"
 date: "2025-12-13 20:02:31"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

@@ -3,7 +3,7 @@ layout: "post"
 title: "相关代码库"
 subtitle: "开源项目 / 数据采集类 / inforSum"
 date: "2025-12-10 22:28:27"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:
@@ -18,10 +18,10 @@ categories:
 
 舆情：https://github.com/666ghj/BettaFish?tab=readme-ov-file
 
-产品：https://github.com/XGuider/TrendRadar/blob/master/config/config.yaml
+产品：https://github.com/Bear Frankin/TrendRadar/blob/master/config/config.yaml
 数据源：https://github.com/ourongxing/newsnow
 
 TrendRadar：
 https://newsnow.busiyi.world/api/s?id={id_value}&latest
-https://github.com/XGuider/TrendRadar_NEW ：MCP的构建和开发
+https://github.com/Bear Frankin/TrendRadar_NEW ：MCP的构建和开发
 {% endraw %}

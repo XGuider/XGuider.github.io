@@ -3,7 +3,7 @@ layout: "post"
 title: "BigSQL"
 subtitle: "Java开发 / 数据库"
 date: "2026-03-26 11:49:32"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

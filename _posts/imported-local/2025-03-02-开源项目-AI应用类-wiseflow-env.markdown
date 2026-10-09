@@ -3,7 +3,7 @@ layout: "post"
 title: "env"
 subtitle: "开源项目 / AI应用类 / wiseflow"
 date: "2025-03-02 11:02:47"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

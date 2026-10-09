@@ -1,5 +1,5 @@
 {
-  "name": "xguider-blog",
+  "name": "Bear Frankin-blog",
   "version": "2.0.0",
   "description": "Modern personal blog with Jekyll and modern frontend tools",
   "main": "index.js",
@@ -24,7 +24,7 @@
     "modern-web",
     "personal-website"
   ],
-  "author": "XGuider",
+  "author": "Bear Frankin",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.23.0",

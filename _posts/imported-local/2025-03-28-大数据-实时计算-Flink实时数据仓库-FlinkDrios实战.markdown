@@ -3,7 +3,7 @@ layout: "post"
 title: "Flink+Drios实战"
 subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
 date: "2025-03-28 09:41:38"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

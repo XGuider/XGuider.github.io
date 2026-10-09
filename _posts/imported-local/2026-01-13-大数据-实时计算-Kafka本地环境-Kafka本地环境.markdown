@@ -3,7 +3,7 @@ layout: "post"
 title: "Kafka本地环境"
 subtitle: "大数据 / 实时计算"
 date: "2026-01-13 10:08:22"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

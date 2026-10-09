@@ -3,7 +3,7 @@ layout: "post"
 title: "快捷键"
 subtitle: "系统与运维"
 date: "2025-06-16 11:59:49"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

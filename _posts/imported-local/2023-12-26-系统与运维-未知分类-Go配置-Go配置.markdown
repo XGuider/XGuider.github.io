@@ -3,7 +3,7 @@ layout: "post"
 title: "Go配置"
 subtitle: "系统与运维 / 未知分类"
 date: "2023-12-26 23:55:50"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

@@ -3,7 +3,7 @@ layout: "post"
 title: "Spark内存配置"
 subtitle: "大数据 / 调整优化"
 date: "2026-01-22 21:31:00"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

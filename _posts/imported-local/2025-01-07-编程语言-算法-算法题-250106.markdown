@@ -3,7 +3,7 @@ layout: "post"
 title: "250106"
 subtitle: "编程语言 / 算法 / 算法题"
 date: "2025-01-07 09:22:55"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

@@ -3,7 +3,7 @@ layout: "post"
 title: "数据流join"
 subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
 date: "2025-04-10 16:01:03"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

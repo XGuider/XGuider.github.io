@@ -3,7 +3,7 @@ layout: "post"
 title: "NewsSpider项目"
 subtitle: "编程语言 / Python"
 date: "2026-03-29 14:08:07"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

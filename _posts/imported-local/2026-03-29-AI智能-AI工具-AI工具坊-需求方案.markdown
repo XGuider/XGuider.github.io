@@ -3,7 +3,7 @@ layout: "post"
 title: "需求方案"
 subtitle: "AI智能 / AI工具 / AI工具坊"
 date: "2026-03-29 14:00:25"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

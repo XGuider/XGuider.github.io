@@ -3,7 +3,7 @@ layout: "post"
 title: "stream表达式"
 subtitle: "编程语言 / JAVA / JAVA"
 date: "2026-03-29 14:07:21"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

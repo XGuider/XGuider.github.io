@@ -1,30 +1,30 @@
 # Site settings
-title: "XGuider Blog"
-seo_title: "XGuider的博客 | XGuider Blog"
+title: "Bear Frankin Blog"
+seo_title: "Bear Frankin的博客 | Bear Frankin Blog"
 header_img: "img/home-bg-art.webp"
 email: "973279990@qq.com"
-description: "@XGuider,学习路上与君共勉！"
-keywords: ["XGuider", "@XGuider", "XGuider的博客", "XGuider Blog", "博客", "个人网站", "互联网", "Web开发", "技术博客"]
-url: "https://xguider.github.io"
+description: "@Bear Frankin,学习路上与君共勉！"
+keywords: ["Bear Frankin", "@Bear Frankin", "Bear Frankin的博客", "Bear Frankin Blog", "博客", "个人网站", "互联网", "Web开发", "技术博客"]
+url: "https://Bear Frankin.github.io"
 baseurl: ""
 
 # Modern SEO and social media
 lang: "zh-CN"
-author: "XGuider"
+author: "Bear Frankin"
 twitter:
-  username: "XGuider"
+  username: "Bear Frankin"
   card: "summary_large_image"
 facebook:
   app_id: ""
   publisher: ""
-linkedin_username: "xguider"
-instagram_username: "xguider"
+linkedin_username: "Bear Frankin"
+instagram_username: "Bear Frankin"
 
 
 
 # SNS settings
 RSS: false
-github_username:    XGuider
+github_username:    Bear Frankin
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
@@ -86,7 +86,7 @@ analytics:
   baidu:
     tracking_id: "969b089e87ca4b02f96f2c1ee3553b06"
   plausible:
-    domain: "xguider.github.io"
+    domain: "Bear Frankin.github.io"
   umami:
     website_id: ""
     src: ""
@@ -131,7 +131,7 @@ defaults:
 
 # Friends
 friends: [{
-        title: "XGuider GitHub",
-        href: "https://XGuider.github.io"
+        title: "Bear Frankin GitHub",
+        href: "https://Bear Frankin.github.io"
     }
 ]

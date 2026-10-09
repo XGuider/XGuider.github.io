@@ -3,7 +3,7 @@ layout: "post"
 title: "AOP和拦截器"
 subtitle: "Java开发 / Spring框架 / Spring"
 date: "2025-07-31 15:10:26"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

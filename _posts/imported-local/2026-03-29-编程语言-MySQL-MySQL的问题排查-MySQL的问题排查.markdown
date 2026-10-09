@@ -3,7 +3,7 @@ layout: "post"
 title: "MySQL的问题排查"
 subtitle: "编程语言 / MySQL"
 date: "2026-03-29 14:06:45"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

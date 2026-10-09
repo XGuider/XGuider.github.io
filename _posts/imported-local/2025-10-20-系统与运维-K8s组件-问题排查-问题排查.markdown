@@ -3,7 +3,7 @@ layout: "post"
 title: "问题排查"
 subtitle: "系统与运维 / K8s组件"
 date: "2025-10-20 19:09:12"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

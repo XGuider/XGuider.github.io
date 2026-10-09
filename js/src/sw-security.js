@@ -1,11 +1,11 @@
 /**
- * Secure Service Worker for XGuider Blog
+ * Secure Service Worker for Bear Frankin Blog
  * Implements safe caching strategies and security measures
  */
 
 // Service Worker version and cache name
 const SW_VERSION = 'v2.0.0'
-const CACHE_NAME = `xguider-blog-${SW_VERSION}`
+const CACHE_NAME = `Bear Frankin-blog-${SW_VERSION}`
 
 // Define cache strategies
 const CACHE_STRATEGIES = {
@@ -181,7 +181,7 @@ self.addEventListener('activate', event => {
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME && cacheName.startsWith('xguider-blog-')) {
+          if (cacheName !== CACHE_NAME && cacheName.startsWith('Bear Frankin-blog-')) {
             return caches.delete(cacheName)
           }
           return null

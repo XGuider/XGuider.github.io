@@ -3,7 +3,7 @@ layout: "post"
 title: "Spring实战"
 subtitle: "Java开发 / Spring框架 / Spring"
 date: "2025-08-06 15:55:38"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

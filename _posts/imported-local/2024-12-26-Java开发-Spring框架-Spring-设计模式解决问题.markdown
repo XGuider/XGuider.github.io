@@ -3,7 +3,7 @@ layout: "post"
 title: "设计模式解决问题"
 subtitle: "Java开发 / Spring框架 / Spring"
 date: "2024-12-26 21:56:15"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

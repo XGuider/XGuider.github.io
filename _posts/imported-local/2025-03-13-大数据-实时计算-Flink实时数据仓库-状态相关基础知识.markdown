@@ -3,7 +3,7 @@ layout: "post"
 title: "状态相关基础知识"
 subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
 date: "2025-03-13 15:27:22"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

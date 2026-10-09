@@ -3,7 +3,7 @@ layout: "post"
 title: "Linux静态服务"
 subtitle: "系统与运维"
 date: "2026-04-01 22:01:05"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

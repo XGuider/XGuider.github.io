@@ -4,7 +4,7 @@
 require 'fileutils'
 
 class LocalNotesImporter
-    DEFAULT_AUTHOR = 'XGuider'
+    DEFAULT_AUTHOR = 'Bear Frankin'
     DEFAULT_HEADER_IMG = 'img/post-bg.jpg'
 
     def initialize(source_dir:, posts_dir: '_posts', output_subdir: 'imported-local')

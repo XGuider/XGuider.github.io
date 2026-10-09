@@ -3,7 +3,7 @@ layout: "post"
 title: "ClickHouse 民生"
 subtitle: "Java开发 / 未知分类"
 date: "2024-04-16 16:24:49"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

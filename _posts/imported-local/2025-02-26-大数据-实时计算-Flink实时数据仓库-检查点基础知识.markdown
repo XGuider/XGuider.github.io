@@ -3,7 +3,7 @@ layout: "post"
 title: "检查点基础知识"
 subtitle: "大数据 / 实时计算 / Flink实时数据仓库"
 date: "2025-02-26 21:06:03"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

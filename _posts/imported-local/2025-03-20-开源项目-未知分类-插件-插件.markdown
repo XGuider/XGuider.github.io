@@ -3,7 +3,7 @@ layout: "post"
 title: "插件"
 subtitle: "开源项目 / 未知分类 / 插件"
 date: "2025-03-20 15:53:11"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

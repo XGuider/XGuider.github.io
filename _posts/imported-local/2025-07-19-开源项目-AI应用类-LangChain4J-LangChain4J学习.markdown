@@ -3,7 +3,7 @@ layout: "post"
 title: "LangChain4J学习"
 subtitle: "开源项目 / AI应用类 / LangChain4J"
 date: "2025-07-19 20:36:37"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:

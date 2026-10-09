@@ -7,7 +7,7 @@ require 'digest'
 require 'date'
 
 class ImportedPostsValidator
-    LOG_PATH = '/Users/faqingxiong/Documents/code/XGuider.github.io/.cursor/debug-04b6b4.log'
+    LOG_PATH = '/Users/faqingxiong/Documents/code/Bear Frankin.github.io/.cursor/debug-04b6b4.log'
     SESSION_ID = '04b6b4'
 
     def initialize(dir)

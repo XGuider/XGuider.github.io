@@ -3,7 +3,7 @@ layout: "post"
 title: "python----爬取一个页面的图片"
 subtitle: "编程语言 / Python / Python"
 date: "2026-03-29 14:08:07"
-author: "XGuider"
+author: "Bear Frankin"
 header-img: "img/post-bg.jpg"
 catalog: true
 tags:
