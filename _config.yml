@@ -5,7 +5,7 @@ header_img: "img/home-bg-art.webp"
 email: "973279990@qq.com"
 description: "@Bear Frankin,学习路上与君共勉！"
 keywords: ["Bear Frankin", "@Bear Frankin", "Bear Frankin的博客", "Bear Frankin Blog", "博客", "个人网站", "互联网", "Web开发", "技术博客"]
-url: "https://Bear Frankin.github.io"
+url: "https://xguider.github.io"
 baseurl: ""
 
 # Modern SEO and social media
@@ -86,7 +86,7 @@ analytics:
   baidu:
     tracking_id: "969b089e87ca4b02f96f2c1ee3553b06"
   plausible:
-    domain: "Bear Frankin.github.io"
+    domain: "xguider.github.io"
   umami:
     website_id: ""
     src: ""
@@ -132,6 +132,6 @@ defaults:
 # Friends
 friends: [{
         title: "Bear Frankin GitHub",
-        href: "https://Bear Frankin.github.io"
+        href: "https://xguider.github.io"
     }
 ]
